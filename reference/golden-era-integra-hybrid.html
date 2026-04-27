@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Golden Era Integra — Las Vegas, Nevada</title>
+<meta name="description" content="A 1995 Acura Integra GS-R in Milano Red. Las Vegas, Nevada. A documented build." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* Logo-derived palette */
+    --bg: #fdf6ec;             /* warm cream paper */
+    --bg-warm: #fde8d4;        /* sunset cream */
+    --bg-deep: #2a1a3e;        /* Vegas night purple */
+    --ink: #1a0e2e;            /* deep purple-black ink */
+    --ink-soft: rgba(26, 14, 46, 0.72);
+    --ink-faint: rgba(26, 14, 46, 0.5);
+    --ink-ghost: rgba(26, 14, 46, 0.32);
+    --line: rgba(26, 14, 46, 0.14);
+    --line-soft: rgba(26, 14, 46, 0.08);
+
+    /* Sunset gradient stops */
+    --blue: #3a4fd9;
+    --magenta: #e838a4;
+    --pink: #f25d8e;
+    --orange: #f59e3a;
+    --amber: #ffc36e;
+
+    /* The car */
+    --milano: #e8224d;
+    --milano-dark: #b6132c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Subtle paper grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 100;
+    mix-blend-mode: multiply;
+  }
+
+  .font-display { font-family: 'Anton', 'Bebas Neue', sans-serif; letter-spacing: 0.01em; }
+  .font-condensed { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .font-jp { font-family: 'Noto Serif JP', serif; font-weight: 400; }
+  .font-jp-sans { font-family: 'Noto Sans JP', sans-serif; font-weight: 400; }
+
+  /* Gradient text — used sparingly */
+  .grad-text {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--magenta) 45%, var(--orange) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .grad-text-warm {
+    background: linear-gradient(135deg, var(--magenta) 0%, var(--orange) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 16px 24px;
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    background: rgba(253, 246, 236, 0.78);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  nav .row { display: flex; justify-content: space-between; align-items: center; gap: 24px; position: relative; }
+  nav .brand-lockup {
+    display: flex; align-items: center; gap: 12px;
+  }
+  nav .brand-lockup img {
+    width: 44px; height: 44px;
+    object-fit: contain;
+  }
+  nav .brand-lockup .text {
+    display: flex; flex-direction: column; line-height: 1;
+  }
+  nav .brand-lockup .name {
+    font-family: 'Anton', sans-serif;
+    font-size: 18px; letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  nav .brand-lockup .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.3em;
+    color: var(--ink-faint); margin-top: 4px;
+    text-transform: uppercase;
+  }
+  nav .links {
+    display: flex; gap: 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  nav .links a {
+    color: inherit; text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+  nav .links a::after {
+    content: ''; position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--magenta), var(--orange));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  nav .links a:hover::after { transform: scaleX(1); }
+
+  /* Hamburger toggle (mobile only) */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 10px 12px;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-toggle span {
+    width: 20px; height: 2px;
+    background: var(--ink);
+    transition: transform 0.3s, opacity 0.3s;
+    border-radius: 2px;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  @media (max-width: 768px) {
+    .nav-toggle { display: flex; }
+    nav .links {
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 24px 24px;
+      transform: translateY(-12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.3s, opacity 0.3s;
+      box-shadow: 0 12px 40px rgba(26, 14, 46, 0.08);
+    }
+    nav .links.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    nav .links a {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line-soft);
+      font-size: 12px;
+    }
+    nav .links a:last-child { border-bottom: none; }
+    nav .links a::after { display: none; }
+    nav .brand-lockup .name { font-size: 15px; }
+    nav .brand-lockup .tag { font-size: 8px; }
+    nav .brand-lockup img { width: 36px; height: 36px; }
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 160px 32px 64px;
+    display: flex; flex-direction: column; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(58, 79, 217, 0.18), transparent 55%),
+      radial-gradient(ellipse at 20% 80%, rgba(245, 158, 58, 0.22), transparent 55%),
+      radial-gradient(ellipse at 50% 50%, rgba(232, 56, 164, 0.10), transparent 60%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg-warm) 100%);
+  }
+
+  /* Decorative skyline silhouette in hero */
+  .skyline {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 180px;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .hero-meta-tl, .hero-meta-tr {
+    position: absolute; top: 110px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--ink-faint); line-height: 1.7;
+    z-index: 5;
+  }
+  .hero-meta-tl { left: 32px; }
+  .hero-meta-tr { right: 32px; text-align: right; }
+  .hero-meta-tl .accent, .hero-meta-tr .accent {
+    background: linear-gradient(135deg, var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 12px; display: block;
+    font-weight: 600;
+  }
+  .hero-meta-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--magenta);
+    margin-top: 10px;
+    text-transform: none;
+    display: block;
+  }
+
+  .hero-content {
+    position: relative; z-index: 10;
+    max-width: 1280px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: center;
+    width: 100%;
+    opacity: 0; transform: translateY(40px);
+    animation: heroIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  }
+  @keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 900px) {
+    .hero-content { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  .hero-text .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase;
+    margin-bottom: 24px;
+    color: var(--ink-faint);
+  }
+  .hero-text .eyebrow .dot {
+    display: inline-block; width: 8px; height: 8px;
+    background: var(--milano); border-radius: 50%;
+    margin-right: 10px; vertical-align: middle;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(232, 34, 77, 0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(232, 34, 77, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(232, 34, 77, 0); }
+  }
+
+  .hero-text h1 {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.88;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+  }
+  .hero-text h1 .line { display: block; }
+  .hero-text h1 .line-grad {
+    background: linear-gradient(120deg, var(--blue) 0%, var(--magenta) 50%, var(--orange) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .hero-text h1 .line-outline {
+    -webkit-text-stroke: 2px var(--ink);
+    color: transparent;
+  }
+
+  .hero-text .sub {
+    margin-top: 32px;
+    max-width: 480px;
+    font-size: 15px; line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  .hero-text .meta-strip {
+    margin-top: 40px;
+    display: flex; flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip {
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.5);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .chip.milano {
+    background: var(--milano);
+    color: white;
+    border-color: var(--milano);
+  }
+
+  /* Logo display in hero */
+  .hero-logo {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-logo img {
+    width: 100%; max-width: 520px;
+    aspect-ratio: 1; object-fit: contain;
+    filter: drop-shadow(0 30px 60px rgba(232, 56, 164, 0.25))
+            drop-shadow(0 10px 30px rgba(58, 79, 217, 0.15));
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(-1deg); }
+  }
+  .hero-logo::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      rgba(232, 56, 164, 0.1) 60deg,
+      transparent 120deg,
+      rgba(245, 158, 58, 0.1) 180deg,
+      transparent 240deg,
+      rgba(58, 79, 217, 0.1) 300deg,
+      transparent 360deg
+    );
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: rotate 20s linear infinite;
+    z-index: -1;
+  }
+  @keyframes rotate {
+    to { transform: rotate(360deg); }
+  }
+
+  /* ============ MARQUEE ============ */
+  .marquee {
+    position: relative;
+    padding: 28px 0;
+    overflow: hidden;
+    background: linear-gradient(90deg, var(--blue), var(--magenta), var(--orange));
+    color: white;
+    z-index: 10;
+  }
+  .marquee-track {
+    display: flex; white-space: nowrap;
+    animation: marquee 40s linear infinite;
+    width: max-content;
+  }
+  .marquee-track .group {
+    display: flex; align-items: center; gap: 40px; padding-right: 40px;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .marquee-track .group .star {
+    display: inline-block;
+    color: white;
+    font-size: 0.7em;
+  }
+  .marquee-track .group .ghost {
+    -webkit-text-stroke: 1.5px white;
+    color: transparent;
+  }
+  .marquee-track .group .jp {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0.1em;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ============ CHAPTER SECTIONS ============ */
+  section.chapter { position: relative; padding: 120px 32px; }
+  @media (min-width: 768px) { section.chapter { padding: 160px 32px; } }
+  .container { max-width: 1280px; margin: 0 auto; }
+
+  .grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px; }
+  @media (max-width: 768px) { .grid-12 { grid-template-columns: 1fr; gap: 24px; } }
+  .col-side { grid-column: span 3; }
+  .col-side .sticky { position: sticky; top: 120px; }
+  .col-main { grid-column: 5 / span 8; }
+  @media (max-width: 768px) { .col-side, .col-main { grid-column: 1 / -1; } }
+
+  .chapter-num-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+  }
+  .chapter-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 6rem; line-height: 0.9;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px var(--ink);
+    color: transparent;
+  }
+  .chapter-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-faint); margin-top: 16px;
+  }
+  .chapter-tag-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    color: var(--magenta);
+    margin-top: 12px;
+    display: block;
+  }
+
+  h2.chapter-h {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.5rem, 6.5vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    font-weight: 400;
+  }
+  h2.chapter-h .grad {
+    background: linear-gradient(120deg, var(--blue), var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  h2.chapter-h .outline {
+    -webkit-text-stroke: 2px var(--ink);
+    color: transparent;
+  }
+
+  .body-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    color: var(--ink-soft); font-size: 16px; line-height: 1.8;
+  }
+  @media (max-width: 768px) { .body-grid { grid-template-columns: 1fr; } }
+
+  /* Stats */
+  .stats {
+    margin-top: 64px; padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .stat .num {
+    font-family: 'Anton', sans-serif;
+    font-size: 4rem; line-height: 1;
+    background: linear-gradient(135deg, var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .stat .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--ink-faint); margin-top: 8px;
+  }
+
+  /* ============ QUOTE ============ */
+  .quote-section {
+    position: relative;
+    padding: 160px 32px;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--magenta) 50%, var(--orange) 100%);
+    color: white;
+    overflow: hidden;
+  }
+  .quote-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+  .quote-content {
+    position: relative; z-index: 2;
+    max-width: 900px; margin: 0 auto;
+    text-align: center;
+  }
+  .quote-content .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase;
+    margin-bottom: 32px;
+    opacity: 0.8;
+  }
+  .quote-content blockquote {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .quote-content blockquote em {
+    font-style: italic;
+    -webkit-text-stroke: 2px white;
+    color: transparent;
+  }
+  .quote-content cite {
+    display: block;
+    font-family: 'JetBrains Mono', monospace; font-style: normal;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    margin-top: 40px;
+    opacity: 0.7;
+  }
+
+  /* Stars decoration like the logo */
+  .star-row {
+    position: absolute;
+    left: 0; right: 0;
+    display: flex; justify-content: center; gap: 32px;
+    z-index: 1;
+    opacity: 0.5;
+  }
+  .star-row.top { top: 40px; }
+  .star-row.bot { bottom: 40px; }
+  .star-row svg {
+    width: 24px; height: 24px;
+    fill: white;
+  }
+
+  /* ============ SPECS ============ */
+  .specs-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    margin-top: 64px;
+  }
+  @media (max-width: 768px) { .specs-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .spec-cat {
+    border-top: 2px solid var(--ink); padding-top: 24px;
+    position: relative;
+  }
+  .spec-cat::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: 0;
+    width: 80px; height: 2px;
+    background: linear-gradient(90deg, var(--magenta), var(--orange));
+  }
+  .spec-cat-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 28px;
+  }
+  .spec-cat-head .name-block {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .spec-cat-head .name {
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+  .spec-cat-head .kanji {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: 0.25em;
+    color: var(--magenta);
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .spec-cat-head .kanji::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--magenta), var(--orange));
+  }
+  .spec-cat-head .idx {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 4px;
+  }
+  .spec-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid var(--line-soft);
+    padding-bottom: 12px; margin-bottom: 12px;
+    transition: border-color 0.3s;
+  }
+  .spec-row:hover { border-bottom-color: var(--magenta); }
+  .spec-row .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .spec-row .val {
+    font-size: 14px; font-weight: 500;
+    transition: color 0.3s;
+  }
+  .spec-row:hover .val { color: var(--magenta); }
+  .spec-row .val.milano-tag {
+    color: var(--milano); font-weight: 600;
+  }
+
+  /* ============ GALLERY ============ */
+  section.gallery-section {
+    background: var(--bg-warm);
+    position: relative;
+  }
+
+  .gallery-head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 48px;
+  }
+  .gallery-head h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.5rem, 6.5vw, 5rem); line-height: 0.95;
+    text-transform: uppercase;
+    background: linear-gradient(120deg, var(--blue), var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .gallery-head .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  @media (max-width: 768px) { .gallery-head .meta { display: none; } }
+
+  .gallery-grid {
+    display: grid; grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 180px; gap: 12px;
+  }
+  @media (max-width: 768px) {
+    .gallery-grid { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 120px; }
+  }
+
+  .gallery-item {
+    position: relative; overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid var(--line-soft);
+    opacity: 0; transform: translateY(30px);
+    transition-property: opacity, transform, border-color, box-shadow;
+    transition-duration: 0.8s, 0.8s, 0.4s, 0.4s;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .gallery-item.in { opacity: 1; transform: translateY(0); }
+  .gallery-item:hover {
+    border-color: var(--magenta);
+    box-shadow: 0 12px 40px rgba(232, 56, 164, 0.18);
+  }
+
+  /* Color-tinted placeholders so the grid feels alive even without photos */
+  .gallery-item.tone-1 { background: linear-gradient(135deg, #4a3a8a, #2a1a3e); }
+  .gallery-item.tone-2 { background: linear-gradient(135deg, #e838a4, #b6132c); }
+  .gallery-item.tone-3 { background: linear-gradient(135deg, #f59e3a, #e8224d); }
+  .gallery-item.tone-4 { background: linear-gradient(135deg, #3a4fd9, #e838a4); }
+  .gallery-item.tone-5 { background: linear-gradient(135deg, #f59e3a, #ffc36e); }
+  .gallery-item.tone-6 { background: linear-gradient(135deg, #2a1a3e, #b6132c); }
+  .gallery-item.tone-7 { background: linear-gradient(135deg, #e838a4, #f59e3a); }
+  .gallery-item.tone-8 { background: linear-gradient(135deg, #3a4fd9, #2a1a3e); }
+  .gallery-item.tone-9 { background: linear-gradient(135deg, #b6132c, #f59e3a); }
+
+  .gallery-item .num {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 5rem;
+    color: rgba(255,255,255,0.18);
+    text-transform: uppercase;
+  }
+  .gallery-item .label {
+    position: absolute; bottom: 0; left: 0; right: 0; padding: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: white;
+    opacity: 0; transition: opacity 0.4s;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  }
+  .gallery-item:hover .label { opacity: 1; }
+  .gallery-item .idx {
+    position: absolute; top: 12px; right: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .g1 { grid-column: span 7; grid-row: span 3; }
+  .g2 { grid-column: span 5; grid-row: span 2; }
+  .g3 { grid-column: span 3; grid-row: span 2; }
+  .g4 { grid-column: span 2; grid-row: span 1; }
+  .g5 { grid-column: span 7; grid-row: span 2; }
+  .g6 { grid-column: span 5; grid-row: span 2; }
+  .g7 { grid-column: span 4; grid-row: span 2; }
+  .g8 { grid-column: span 8; grid-row: span 3; }
+  .g9 { grid-column: span 4; grid-row: span 2; }
+
+  @media (max-width: 768px) {
+    .g1, .g8 { grid-column: span 6; grid-row: span 3; }
+    .g2, .g3, .g5, .g6, .g7, .g9 { grid-column: span 3; grid-row: span 2; }
+    .g4 { grid-column: span 6; grid-row: span 1; }
+  }
+
+  .archive-link { margin-top: 48px; display: flex; justify-content: center; }
+  .archive-link button {
+    background: linear-gradient(135deg, var(--magenta), var(--orange));
+    border: none; color: white;
+    padding: 14px 28px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(232, 56, 164, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .archive-link button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(232, 56, 164, 0.4);
+  }
+
+  /* ============ JOURNAL ============ */
+  .journal-list { margin-top: 16px; }
+  .journal-list .border-cap { border-top: 1px solid var(--line); }
+
+  .journal-entry {
+    display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px;
+    align-items: baseline;
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+    cursor: pointer; transition: border-color 0.3s, padding-left 0.3s;
+    position: relative;
+  }
+  .journal-entry::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 0;
+    width: 0; height: 2px;
+    background: linear-gradient(90deg, var(--magenta), var(--orange));
+    transition: width 0.5s;
+  }
+  .journal-entry:hover::before { width: 100%; }
+
+  .journal-entry .date {
+    grid-column: span 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-ghost);
+  }
+  .journal-entry .tag {
+    grid-column: span 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--magenta);
+    font-weight: 600;
+  }
+  .journal-entry .body { grid-column: span 6; }
+  .journal-entry .body h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+    transition: color 0.3s;
+    font-weight: 400;
+  }
+  .journal-entry:hover .body h3 {
+    background: linear-gradient(120deg, var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .journal-entry .body p {
+    margin-top: 8px;
+    font-size: 14px; color: var(--ink-soft); line-height: 1.6;
+    max-width: 500px;
+  }
+  .journal-entry .read {
+    grid-column: span 2; text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-ghost); transition: color 0.3s;
+    font-weight: 600;
+  }
+  .journal-entry:hover .read { color: var(--magenta); }
+
+  @media (max-width: 768px) {
+    .journal-entry { grid-template-columns: 1fr; gap: 12px; }
+    .journal-entry .date, .journal-entry .tag, .journal-entry .body, .journal-entry .read {
+      grid-column: 1 / -1; text-align: left;
+    }
+  }
+
+  /* ============ FILM ============ */
+  section.film-section {
+    background: var(--ink);
+    color: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+  section.film-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(58, 79, 217, 0.25), transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(232, 56, 164, 0.18), transparent 50%);
+    pointer-events: none;
+  }
+  section.film-section > * { position: relative; z-index: 2; }
+  section.film-section .chapter-tag { color: rgba(253, 246, 236, 0.5); }
+  section.film-section h2.chapter-h .outline {
+    -webkit-text-stroke: 2px var(--bg);
+  }
+  section.film-section .chapter-num {
+    -webkit-text-stroke: 2px var(--bg);
+  }
+
+  .video-frame {
+    position: relative; aspect-ratio: 21/9;
+    background: linear-gradient(135deg, #1a0e2e, #000);
+    overflow: hidden; cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid rgba(253, 246, 236, 0.1);
+  }
+  .video-frame::before {
+    content: 'VTEC';
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 22vw;
+    background: linear-gradient(135deg, var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.18;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .play {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 88px; height: 88px;
+    background: linear-gradient(135deg, var(--magenta), var(--orange));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.4s, box-shadow 0.4s;
+    z-index: 2;
+    box-shadow: 0 8px 30px rgba(232, 56, 164, 0.4);
+  }
+  .video-frame:hover .play {
+    transform: translate(-50%, -50%) scale(1.08);
+    box-shadow: 0 12px 40px rgba(232, 56, 164, 0.55);
+  }
+  .play .triangle {
+    width: 0; height: 0;
+    border-left: 16px solid white;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
+    margin-left: 6px;
+  }
+  .video-meta {
+    position: absolute; z-index: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(253, 246, 236, 0.7);
+  }
+  .video-meta.bl { bottom: 24px; left: 24px; }
+  .video-meta.br { bottom: 24px; right: 24px; }
+  .video-meta.tl {
+    top: 24px; left: 24px;
+    color: var(--milano);
+    display: flex; align-items: center; gap: 8px;
+    font-size: 10px; letter-spacing: 0.3em;
+    font-weight: 600;
+  }
+  .video-meta .live-dot {
+    width: 6px; height: 6px;
+    background: var(--milano); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    position: relative; padding: 80px 32px 32px;
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px;
+    margin-bottom: 48px;
+    max-width: 1280px; margin-left: auto; margin-right: auto;
+  }
+  @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer-grid .brand-block { grid-column: span 5; }
+  .footer-grid .col { grid-column: span 3; }
+  .footer-grid .col.tight { grid-column: span 2; }
+  @media (max-width: 768px) {
+    .footer-grid .brand-block { grid-column: 1 / -1; }
+    .footer-grid .col, .footer-grid .col.tight { grid-column: span 1; }
+  }
+  .footer-grid .brand-block .lockup {
+    display: flex; align-items: center; gap: 16px;
+  }
+  .footer-grid .brand-block .lockup img {
+    width: 80px; height: 80px; object-fit: contain;
+  }
+  .footer-grid .brand-block .lockup .name {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem); line-height: 0.95;
+    text-transform: uppercase;
+  }
+  .footer-grid .brand-block .lockup .name .grad {
+    background: linear-gradient(135deg, var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .footer-grid .brand-block .sub {
+    margin-top: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-ghost);
+  }
+  .footer-grid .col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--magenta); margin-bottom: 16px; font-weight: 600;
+  }
+  .footer-grid .col li {
+    list-style: none; font-size: 14px; color: var(--ink-soft);
+    margin-bottom: 8px; cursor: pointer; transition: color 0.3s;
+  }
+  .footer-grid .col li:hover { color: var(--magenta); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--line); padding-top: 32px;
+    max-width: 1280px; margin: 0 auto;
+    display: flex; justify-content: space-between; gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-ghost);
+  }
+  @media (max-width: 768px) { .footer-bottom { flex-direction: column; } }
+
+  .hero-bg, .hero-content { will-change: transform, opacity; }
+
+  /* ============ GUESTBOOK ============ */
+  section.guestbook-section {
+    background: var(--bg-warm);
+    position: relative;
+  }
+
+  .guestbook-layout {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    margin-top: 48px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .guestbook-layout { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  /* The form */
+  .gb-form {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .gb-form::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--magenta), var(--orange));
+  }
+
+  .gb-form-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+    margin-bottom: 4px;
+  }
+  .gb-form-sub {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    color: var(--magenta);
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .gb-form-sub::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: linear-gradient(90deg, var(--magenta), var(--orange));
+  }
+
+  .gb-field {
+    margin-bottom: 16px;
+  }
+  .gb-field label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+  }
+  .gb-field label .req { color: var(--milano); margin-left: 4px; }
+  .gb-input, .gb-textarea {
+    width: 100%;
+    background: var(--bg-warm);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 12px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    transition: border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
+    resize: none;
+  }
+  .gb-input:focus, .gb-textarea:focus {
+    outline: none;
+    border-color: var(--magenta);
+    background: var(--bg);
+    box-shadow: 0 0 0 3px rgba(232, 56, 164, 0.12);
+  }
+  .gb-textarea { min-height: 110px; line-height: 1.5; }
+  .gb-input::placeholder, .gb-textarea::placeholder {
+    color: var(--ink-ghost);
+  }
+
+  .gb-counter {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em;
+    color: var(--ink-ghost);
+    margin-top: 4px;
+  }
+  .gb-counter.warn { color: var(--milano); }
+
+  .gb-submit {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, var(--magenta), var(--orange));
+    border: none;
+    border-radius: 999px;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+    box-shadow: 0 6px 20px rgba(232, 56, 164, 0.3);
+  }
+  .gb-submit:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(232, 56, 164, 0.4);
+  }
+  .gb-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .gb-status {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.1em;
+    line-height: 1.5;
+    display: none;
+  }
+  .gb-status.show { display: block; }
+  .gb-status.success {
+    background: rgba(245, 158, 58, 0.1);
+    border: 1px solid rgba(245, 158, 58, 0.3);
+    color: #8a4d0e;
+  }
+  .gb-status.error {
+    background: rgba(232, 34, 77, 0.08);
+    border: 1px solid rgba(232, 34, 77, 0.3);
+    color: var(--milano-dark);
+  }
+
+  /* The feed */
+  .gb-feed-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .gb-feed-head .title {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .gb-feed-head .count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--magenta);
+    font-weight: 600;
+  }
+
+  .gb-feed {
+    max-height: 720px;
+    overflow-y: auto;
+    padding-right: 8px;
+  }
+  .gb-feed::-webkit-scrollbar { width: 6px; }
+  .gb-feed::-webkit-scrollbar-track { background: transparent; }
+  .gb-feed::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--magenta), var(--orange));
+    border-radius: 3px;
+  }
+
+  .gb-entry {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line-soft);
+    animation: gbIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .gb-entry:last-child { border-bottom: none; }
+  @keyframes gbIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .gb-entry-head {
+    display: flex; align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .gb-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 14px;
+    color: white;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+  .gb-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .gb-handle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--magenta);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .gb-handle:hover { color: var(--orange); }
+  .gb-time {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-ghost);
+  }
+  .gb-msg {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    padding-left: 48px;
+  }
+  @media (max-width: 600px) {
+    .gb-msg { padding-left: 0; }
+  }
+
+  .gb-empty {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--ink-ghost);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="row">
+    <div class="brand-lockup">
+      <img src="logo.png" alt="Golden Era Integra">
+      <div class="text">
+        <span class="name">Golden Era Integra</span>
+        <span class="tag">Las Vegas, NV</span>
+      </div>
+    </div>
+    <div class="links" id="nav-links">
+      <a href="#origin">Story</a>
+      <a href="#build">Build</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#journal">Journal</a>
+      <a href="#guestbook">Guestbook</a>
+      <a href="#film">Film</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+
+  <div class="hero-meta-tl">
+    <div>N 36°10′30″ W 115°08′11″</div>
+    <div>Las Vegas, Nevada</div>
+    <span class="accent">Chassis No. DC2-1102847</span>
+    <span class="hero-meta-jp">鈴鹿製作所 1995</span>
+  </div>
+
+  <div class="hero-meta-tr">
+    <div>Vol. 01 / Issue 01</div>
+    <div>1995 Acura Integra GS-R</div>
+    <span class="accent">A Documented Build</span>
+    <span class="hero-meta-jp">本田技研工業</span>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="eyebrow"><span class="dot"></span>The Last Great Honda</div>
+      <h1>
+        <span class="line">Golden</span>
+        <span class="line line-grad">Era</span>
+        <span class="line line-outline">Integra.</span>
+      </h1>
+      <p class="sub">
+        A 1995 Acura Integra GS-R in Milano Red. Built in Suzuka, found in Pasadena, driven in Las Vegas. This is the documented restoration of the last car Honda built before the world stopped paying attention.
+      </p>
+      <div class="meta-strip">
+        <span class="chip milano">Milano Red R-81</span>
+        <span class="chip">DC2 Chassis</span>
+        <span class="chip">B18C1 VTEC</span>
+        <span class="chip">8,100 RPM</span>
+      </div>
+    </div>
+
+    <div class="hero-logo">
+      <img src="logo.png" alt="Golden Era Integra logo">
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<section class="marquee">
+  <div class="marquee-track">
+    <div class="group">
+      <span>The Last Great Honda</span><span class="star">✦</span>
+      <span class="jp">本田</span><span class="star">✦</span>
+      <span class="ghost">B18C1 VTEC</span><span class="star">✦</span>
+      <span>Milano Red</span><span class="star">✦</span>
+      <span class="jp">鈴鹿 1995</span><span class="star">✦</span>
+      <span>170 Horsepower</span><span class="star">✦</span>
+      <span class="ghost">8,100 RPM</span><span class="star">✦</span>
+      <span class="jp">走行</span><span class="star">✦</span>
+      <span>Las Vegas</span><span class="star">✦</span>
+    </div>
+    <div class="group">
+      <span>The Last Great Honda</span><span class="star">✦</span>
+      <span class="jp">本田</span><span class="star">✦</span>
+      <span class="ghost">B18C1 VTEC</span><span class="star">✦</span>
+      <span>Milano Red</span><span class="star">✦</span>
+      <span class="jp">鈴鹿 1995</span><span class="star">✦</span>
+      <span>170 Horsepower</span><span class="star">✦</span>
+      <span class="ghost">8,100 RPM</span><span class="star">✦</span>
+      <span class="jp">走行</span><span class="star">✦</span>
+      <span>Las Vegas</span><span class="star">✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 01 — ORIGIN -->
+<section class="chapter" id="origin">
+  <div class="container">
+    <div class="grid-12">
+      <div class="col-side">
+        <div class="sticky">
+          <div class="chapter-num-label">Chapter 01</div>
+          <div class="chapter-num">01</div>
+          <div class="chapter-tag">Origin Story</div>
+          <span class="chapter-tag-jp">起源</span>
+        </div>
+      </div>
+      <div class="col-main">
+        <h2 class="chapter-h">
+          In 1995, Honda built<br>
+          <span class="grad">the perfect</span><br>
+          <span class="outline">front-wheel-drive</span><br>
+          chassis.
+        </h2>
+        <div class="body-grid">
+          <p>
+            The third-generation Integra — internally known as DC2 — represented a high-water mark in Honda's engineering culture. It was light. It was honest. The B18C1 revved to 8,100 RPM with the kind of mechanical clarity that has all but disappeared from modern cars.
+          </p>
+          <p>
+            This particular example sat in a single-car garage in Pasadena for twenty-six years. Two owners. Eighty-seven thousand miles. Original Milano Red paint, original interior, untouched powertrain. The kind of starting point most enthusiasts only read about.
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div class="num">170</div>
+            <div class="lbl">Factory HP</div>
+          </div>
+          <div class="stat">
+            <div class="num">2,579</div>
+            <div class="lbl">Curb Weight (lb)</div>
+          </div>
+          <div class="stat">
+            <div class="num">8,100</div>
+            <div class="lbl">Redline RPM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="star-row top">
+    <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,22 12,17 5,22 7,14 2,9 9,9"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,22 12,17 5,22 7,14 2,9 9,9"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,22 12,17 5,22 7,14 2,9 9,9"/></svg>
+  </div>
+
+  <div class="quote-content">
+    <div class="eyebrow">— A Note On Philosophy</div>
+    <blockquote>"Restoration is not <em>nostalgia.</em> It is the refusal to let something good <em>disappear.</em>"</blockquote>
+    <cite>— Owner's Note, Build Journal Vol. 01</cite>
+  </div>
+
+  <div class="star-row bot">
+    <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,22 12,17 5,22 7,14 2,9 9,9"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,22 12,17 5,22 7,14 2,9 9,9"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,22 12,17 5,22 7,14 2,9 9,9"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,22 12,17 5,22 7,14 2,9 9,9"/></svg>
+    <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,22 12,17 5,22 7,14 2,9 9,9"/></svg>
+  </div>
+</section>
+
+<!-- CHAPTER 02 — BUILD -->
+<section class="chapter" id="build">
+  <div class="container">
+    <div class="grid-12" style="margin-bottom: 64px;">
+      <div class="col-side">
+        <div class="chapter-num-label">Chapter 02</div>
+        <div class="chapter-num">02</div>
+        <div class="chapter-tag">Specification</div>
+        <span class="chapter-tag-jp">仕様</span>
+      </div>
+      <div class="col-main">
+        <h2 class="chapter-h" style="margin-bottom: 32px;">
+          Period-correct.<br>
+          <span class="grad">Driven daily.</span>
+        </h2>
+        <p style="color: var(--ink-soft); max-width: 580px; line-height: 1.8;">
+          Every modification on this car could have plausibly been performed in 2002. No coilovers with Bluetooth controllers. No carbon fiber where carbon fiber doesn't belong. The catalog is short and considered.
+        </p>
+      </div>
+    </div>
+
+    <div class="specs-grid">
+      <div class="spec-cat">
+        <div class="spec-cat-head">
+          <div class="name-block">
+            <div class="name">Engine</div>
+            <div class="kanji">機関</div>
+          </div>
+          <div class="idx">01 / 04</div>
+        </div>
+        <div class="spec-row"><span class="lbl">Powerplant</span><span class="val">B18C1 VTEC</span></div>
+        <div class="spec-row"><span class="lbl">Displacement</span><span class="val">1.8L Inline-4</span></div>
+        <div class="spec-row"><span class="lbl">Output</span><span class="val">170 HP @ 7,600 RPM</span></div>
+        <div class="spec-row"><span class="lbl">Redline</span><span class="val">8,100 RPM</span></div>
+        <div class="spec-row"><span class="lbl">Intake</span><span class="val">Skunk2 Pro Series</span></div>
+        <div class="spec-row"><span class="lbl">Header</span><span class="val">Spoon Sports 4-2-1</span></div>
+      </div>
+
+      <div class="spec-cat">
+        <div class="spec-cat-head">
+          <div class="name-block">
+            <div class="name">Chassis</div>
+            <div class="kanji">車体</div>
+          </div>
+          <div class="idx">02 / 04</div>
+        </div>
+        <div class="spec-row"><span class="lbl">Suspension</span><span class="val">Tein Flex Z Coilovers</span></div>
+        <div class="spec-row"><span class="lbl">Sway Bars</span><span class="val">ASR Subframe Brace</span></div>
+        <div class="spec-row"><span class="lbl">Bushings</span><span class="val">Energy Suspension Poly</span></div>
+        <div class="spec-row"><span class="lbl">Brakes</span><span class="val">Type-R 282mm Front</span></div>
+        <div class="spec-row"><span class="lbl">Pads</span><span class="val">Hawk HP+</span></div>
+        <div class="spec-row"><span class="lbl">Lines</span><span class="val">Goodridge Stainless</span></div>
+      </div>
+
+      <div class="spec-cat">
+        <div class="spec-cat-head">
+          <div class="name-block">
+            <div class="name">Wheels</div>
+            <div class="kanji">車輪</div>
+          </div>
+          <div class="idx">03 / 04</div>
+        </div>
+        <div class="spec-row"><span class="lbl">Wheels</span><span class="val">Mugen MF10 16x7</span></div>
+        <div class="spec-row"><span class="lbl">Offset</span><span class="val">+42 / +35</span></div>
+        <div class="spec-row"><span class="lbl">Tires</span><span class="val">Bridgestone RE-71RS</span></div>
+        <div class="spec-row"><span class="lbl">Size</span><span class="val">205/45/16</span></div>
+      </div>
+
+      <div class="spec-cat">
+        <div class="spec-cat-head">
+          <div class="name-block">
+            <div class="name">Exterior</div>
+            <div class="kanji">外装</div>
+          </div>
+          <div class="idx">04 / 04</div>
+        </div>
+        <div class="spec-row"><span class="lbl">Color</span><span class="val milano-tag">Milano Red (R-81)</span></div>
+        <div class="spec-row"><span class="lbl">Front Lip</span><span class="val">Mugen Gen 2</span></div>
+        <div class="spec-row"><span class="lbl">Rear Spoiler</span><span class="val">OEM Type-R Wing</span></div>
+        <div class="spec-row"><span class="lbl">Headlights</span><span class="val">JDM 1-Piece Glass</span></div>
+        <div class="spec-row"><span class="lbl">Badges</span><span class="val">JDM ITR Conversion</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="chapter gallery-section" id="gallery">
+  <div class="container">
+    <div class="gallery-head">
+      <div>
+        <div class="chapter-num-label">Chapter 03</div>
+        <h2>Gallery.</h2>
+        <span class="chapter-tag-jp" style="margin-top: 12px;">写真集</span>
+      </div>
+      <div class="meta">Shot In Las Vegas / Film + Digital</div>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item g1 tone-1"><div class="num">01</div><div class="idx">001</div><div class="label">Vegas Strip — Blue Hour</div></div>
+      <div class="gallery-item g2 tone-2"><div class="num">02</div><div class="idx">002</div><div class="label">Front 3/4 — Magenta Sunset</div></div>
+      <div class="gallery-item g3 tone-3"><div class="num">03</div><div class="idx">003</div><div class="label">Mugen MF10 Detail</div></div>
+      <div class="gallery-item g4 tone-4"><div class="num">04</div><div class="idx">004</div><div class="label">Badge</div></div>
+      <div class="gallery-item g5 tone-5"><div class="num">05</div><div class="idx">005</div><div class="label">Engine Bay — Red Valve Cover</div></div>
+      <div class="gallery-item g6 tone-6"><div class="num">06</div><div class="idx">006</div><div class="label">Interior — Recaro</div></div>
+      <div class="gallery-item g7 tone-7"><div class="num">07</div><div class="idx">007</div><div class="label">Detail Shot</div></div>
+      <div class="gallery-item g8 tone-8"><div class="num">08</div><div class="idx">008</div><div class="label">Red Rock Canyon</div></div>
+      <div class="gallery-item g9 tone-9"><div class="num">09</div><div class="idx">009</div><div class="label">Front End — JDM</div></div>
+    </div>
+
+    <div class="archive-link">
+      <button>View Full Archive — 142 Frames →</button>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNAL -->
+<section class="chapter" id="journal">
+  <div class="container">
+    <div class="grid-12" style="margin-bottom: 64px;">
+      <div class="col-side">
+        <div class="chapter-num-label">Chapter 04</div>
+        <div class="chapter-num">04</div>
+        <div class="chapter-tag">Build Journal</div>
+        <span class="chapter-tag-jp">記録</span>
+      </div>
+      <div class="col-main">
+        <h2 class="chapter-h">A record,<br><span class="grad">in entries.</span></h2>
+      </div>
+    </div>
+
+    <div class="journal-list">
+      <article class="journal-entry">
+        <div class="date">03.14.2026</div>
+        <div class="tag">Acquisition</div>
+        <div class="body">
+          <h3>Found Her</h3>
+          <p>Two owner California car. 87,000 original miles. Garaged her entire life. Original Milano Red.</p>
+        </div>
+        <div class="read">Read →</div>
+      </article>
+      <article class="journal-entry">
+        <div class="date">04.02.2026</div>
+        <div class="tag">Restoration</div>
+        <div class="body">
+          <h3>The Disassembly</h3>
+          <p>Every panel off. Every bolt cataloged. The kind of patience this car deserves.</p>
+        </div>
+        <div class="read">Read →</div>
+      </article>
+      <article class="journal-entry">
+        <div class="date">06.18.2026</div>
+        <div class="tag">Engine</div>
+        <div class="body">
+          <h3>First Start</h3>
+          <p>Fresh B18C1 fires on the second crank. Idles like it left the factory yesterday.</p>
+        </div>
+        <div class="read">Read →</div>
+      </article>
+      <article class="journal-entry">
+        <div class="date">08.27.2026</div>
+        <div class="tag">Drive</div>
+        <div class="body">
+          <h3>Shakedown — Red Rock</h3>
+          <p>Red Rock Canyon at sunrise. Twenty-nine years old and still the sweetest chassis Honda ever built.</p>
+        </div>
+        <div class="read">Read →</div>
+      </article>
+      <div class="border-cap"></div>
+    </div>
+  </div>
+</section>
+
+<!-- GUESTBOOK -->
+<section class="chapter guestbook-section" id="guestbook">
+  <div class="container">
+    <div class="grid-12" style="margin-bottom: 16px;">
+      <div class="col-side">
+        <div class="chapter-num-label">Chapter 05</div>
+        <div class="chapter-num">05</div>
+        <div class="chapter-tag">Guestbook</div>
+        <span class="chapter-tag-jp">芳名録</span>
+      </div>
+      <div class="col-main">
+        <h2 class="chapter-h">Sign the<br><span class="grad">visitor's log.</span></h2>
+        <p style="color: var(--ink-soft); max-width: 560px; line-height: 1.8;">
+          Drivers, builders, friends, lurkers. If you found this car worth a moment of your time, leave a note. Posts appear instantly — keep it clean.
+        </p>
+      </div>
+    </div>
+
+    <div class="guestbook-layout">
+
+      <!-- FORM -->
+      <div class="gb-form">
+        <div class="gb-form-title">Leave a Message</div>
+        <div class="gb-form-sub">記帳</div>
+
+        <div class="gb-field">
+          <label for="gb-name">Name <span class="req">*</span></label>
+          <input id="gb-name" class="gb-input" type="text" maxlength="40" placeholder="James T." />
+        </div>
+
+        <div class="gb-field">
+          <label for="gb-handle">Instagram Handle</label>
+          <input id="gb-handle" class="gb-input" type="text" maxlength="32" placeholder="@golden.era.integra" />
+        </div>
+
+        <div class="gb-field">
+          <label for="gb-msg">Message <span class="req">*</span></label>
+          <textarea id="gb-msg" class="gb-textarea" maxlength="280" placeholder="Beautiful build. That Milano Red hits different at golden hour."></textarea>
+          <div class="gb-counter" id="gb-counter">0 / 280</div>
+        </div>
+
+        <button class="gb-submit" id="gb-submit">Sign Guestbook →</button>
+
+        <div class="gb-status" id="gb-status"></div>
+      </div>
+
+      <!-- FEED -->
+      <div class="gb-feed-wrap">
+        <div class="gb-feed-head">
+          <div class="title">Recent Entries</div>
+          <div class="count" id="gb-count">0 Entries</div>
+        </div>
+        <div class="gb-feed" id="gb-feed">
+          <div class="gb-empty">— No entries yet. Be the first. —</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FILM -->
+<section class="chapter film-section" id="film">
+  <div class="container">
+    <div class="grid-12" style="margin-bottom: 64px;">
+      <div class="col-side">
+        <div class="chapter-num-label">Chapter 06</div>
+        <div class="chapter-num">06</div>
+        <div class="chapter-tag">In Motion</div>
+        <span class="chapter-tag-jp">走行</span>
+      </div>
+      <div class="col-main">
+        <h2 class="chapter-h">A car is meant<br><span class="outline">to be driven.</span></h2>
+      </div>
+    </div>
+
+    <div class="video-frame">
+      <div class="play"><div class="triangle"></div></div>
+      <div class="video-meta tl"><span class="live-dot"></span>Now Playing</div>
+      <div class="video-meta bl">Vol. 01 — Vegas Strip Night Run</div>
+      <div class="video-meta br">04:18</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="brand-block">
+      <div class="lockup">
+        <img src="logo.png" alt="Golden Era Integra">
+        <div>
+          <div class="name">Golden Era<br><span class="grad">Integra.</span></div>
+          <div class="sub">Las Vegas, Nevada / Vol. 01</div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <h4>Sections</h4>
+      <ul>
+        <li>Origin Story</li>
+        <li>Specification</li>
+        <li>Gallery</li>
+        <li>Build Journal</li>
+        <li>Guestbook</li>
+        <li>In Motion</li>
+      </ul>
+    </div>
+    <div class="col tight">
+      <h4>Follow</h4>
+      <ul>
+        <li>Instagram</li>
+        <li>YouTube</li>
+        <li>Newsletter</li>
+      </ul>
+    </div>
+    <div class="col tight">
+      <h4>Credits</h4>
+      <ul>
+        <li>Site by Vizantir</li>
+        <li>Las Vegas, NV</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© 2026 Golden Era / All Frames Reserved</div>
+    <div>Designed With Restraint. Built With Patience.</div>
+    <div>1995 — Forever</div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+    // Close when a link is tapped
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', false);
+      });
+    });
+  }
+
+  // Hero parallax + fade
+  const heroBg = document.getElementById('heroBg');
+  const heroContent = document.querySelector('.hero-content');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    const max = window.innerHeight;
+    const progress = Math.min(y / max, 1);
+    if (heroBg) heroBg.style.transform = `scale(${1 + progress * 0.06})`;
+    if (heroContent) heroContent.style.opacity = 1 - progress * 1.4;
+  }, { passive: true });
+
+  // Gallery reveal
+  const items = document.querySelectorAll('.gallery-item');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(items).indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('in'), idx * 50);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '-50px' });
+  items.forEach(item => io.observe(item));
+
+  /* ============ GUESTBOOK ============ */
+
+  // Profanity filter — base list of obvious offenders.
+  // Substring matching with leetspeak normalization catches most variants.
+  // For production this should be replaced with a server-side filter using
+  // a maintained library (e.g. obscenity, bad-words, or a moderation API).
+  const PROFANITY = [
+    'fuck','shit','bitch','asshole','dick','pussy','cock','cunt','bastard',
+    'damn','crap','piss','slut','whore','fag','retard','nigger','nigga',
+    'kike','spic','chink','wetback','tranny','dyke','douche','jackass',
+    'motherfucker','bullshit','goddamn','wanker','twat','prick','arse'
+  ];
+
+  // Normalize leetspeak / spacing tricks before matching
+  function normalize(text) {
+    return text
+      .toLowerCase()
+      .replace(/[\s\-_.]/g, '')
+      .replace(/0/g, 'o')
+      .replace(/1/g, 'i')
+      .replace(/3/g, 'e')
+      .replace(/4/g, 'a')
+      .replace(/5/g, 's')
+      .replace(/7/g, 't')
+      .replace(/@/g, 'a')
+      .replace(/\$/g, 's')
+      .replace(/!/g, 'i');
+  }
+
+  function detectProfanity(text) {
+    const normalized = normalize(text);
+    for (const word of PROFANITY) {
+      if (normalized.includes(word)) return word;
+    }
+    return null;
+  }
+
+  // Storage layer — localStorage for now, swap for Supabase fetch() in prod
+  const STORAGE_KEY = 'golden-era-guestbook';
+
+  // Seed entries so the feed isn't empty on first load
+  const SEED_ENTRIES = [
+    {
+      id: 'seed-1',
+      name: 'Marcus K.',
+      handle: '@type_r_supremacy',
+      message: 'The Milano Red is original? You won the lottery, my friend. Beautiful preservation work.',
+      timestamp: Date.now() - 1000 * 60 * 60 * 2 // 2 hours ago
+    },
+    {
+      id: 'seed-2',
+      name: 'Sara V.',
+      handle: '@vegas.car.club',
+      message: 'Saw this at the Red Rock meet. Photos do not do it justice — that paint absolutely glows in person.',
+      timestamp: Date.now() - 1000 * 60 * 60 * 8 // 8 hours ago
+    },
+    {
+      id: 'seed-3',
+      name: 'Tomás R.',
+      handle: '@suzukabuilds',
+      message: 'B18C1 with Spoon header is the right call. Period correct, no LS swap nonsense. Respect.',
+      timestamp: Date.now() - 1000 * 60 * 60 * 24 // 1 day ago
+    },
+    {
+      id: 'seed-4',
+      name: 'Emi N.',
+      handle: '',
+      message: 'My dad had a 95 GS-R when I was a kid. Same color. This brought back so many memories. Thank you for keeping these alive.',
+      timestamp: Date.now() - 1000 * 60 * 60 * 24 * 3 // 3 days ago
+    },
+    {
+      id: 'seed-5',
+      name: 'David L.',
+      handle: '@dc2_archive',
+      message: 'Mugen MF10s on Milano Red is criminal. Save me a seat at the next Vegas meet.',
+      timestamp: Date.now() - 1000 * 60 * 60 * 24 * 5 // 5 days ago
+    }
+  ];
+
+  function loadEntries() {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) return JSON.parse(stored);
+    } catch (e) {}
+    // First visit — seed
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_ENTRIES));
+    return SEED_ENTRIES;
+  }
+
+  function saveEntries(entries) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+    } catch (e) {
+      console.error('Could not save guestbook entries', e);
+    }
+  }
+
+  function timeAgo(ts) {
+    const seconds = Math.floor((Date.now() - ts) / 1000);
+    if (seconds < 60) return 'Just now';
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return `${minutes}m ago`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours}h ago`;
+    const days = Math.floor(hours / 24);
+    if (days < 7) return `${days}d ago`;
+    const weeks = Math.floor(days / 7);
+    if (weeks < 4) return `${weeks}w ago`;
+    const months = Math.floor(days / 30);
+    return `${months}mo ago`;
+  }
+
+  // Generate a gradient avatar from a name
+  function avatarFor(name) {
+    const palettes = [
+      ['#3a4fd9', '#e838a4'],
+      ['#e838a4', '#f59e3a'],
+      ['#3a4fd9', '#f59e3a'],
+      ['#f59e3a', '#e8224d'],
+      ['#b6132c', '#f59e3a'],
+      ['#2a1a3e', '#e838a4']
+    ];
+    const hash = name.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+    const [c1, c2] = palettes[hash % palettes.length];
+    const initial = (name.trim()[0] || '?').toUpperCase();
+    return { gradient: `linear-gradient(135deg, ${c1}, ${c2})`, initial };
+  }
+
+  function escapeHTML(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function normalizeHandle(raw) {
+    if (!raw) return '';
+    let h = raw.trim().replace(/^@+/, '').replace(/[^a-zA-Z0-9._]/g, '');
+    return h ? '@' + h : '';
+  }
+
+  function renderFeed() {
+    const entries = loadEntries().slice().sort((a, b) => b.timestamp - a.timestamp);
+    const feed = document.getElementById('gb-feed');
+    const count = document.getElementById('gb-count');
+
+    count.textContent = `${entries.length} ${entries.length === 1 ? 'Entry' : 'Entries'}`;
+
+    if (entries.length === 0) {
+      feed.innerHTML = '<div class="gb-empty">— No entries yet. Be the first. —</div>';
+      return;
+    }
+
+    feed.innerHTML = entries.map(e => {
+      const avatar = avatarFor(e.name);
+      const handleHTML = e.handle
+        ? `<a class="gb-handle" href="https://instagram.com/${escapeHTML(e.handle.replace('@',''))}" target="_blank" rel="noopener">${escapeHTML(e.handle)}</a>`
+        : '';
+      return `
+        <article class="gb-entry">
+          <div class="gb-entry-head">
+            <div class="gb-avatar" style="background: ${avatar.gradient};">${escapeHTML(avatar.initial)}</div>
+            <div class="gb-name">${escapeHTML(e.name)}</div>
+            ${handleHTML}
+            <div class="gb-time">${timeAgo(e.timestamp)}</div>
+          </div>
+          <div class="gb-msg">${escapeHTML(e.message)}</div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  // Form interactions
+  const nameInput = document.getElementById('gb-name');
+  const handleInput = document.getElementById('gb-handle');
+  const msgInput = document.getElementById('gb-msg');
+  const counter = document.getElementById('gb-counter');
+  const submit = document.getElementById('gb-submit');
+  const status = document.getElementById('gb-status');
+
+  msgInput.addEventListener('input', () => {
+    const len = msgInput.value.length;
+    counter.textContent = `${len} / 280`;
+    counter.classList.toggle('warn', len > 250);
+  });
+
+  function showStatus(message, type) {
+    status.textContent = message;
+    status.className = `gb-status show ${type}`;
+  }
+  function clearStatus() {
+    status.className = 'gb-status';
+    status.textContent = '';
+  }
+
+  submit.addEventListener('click', () => {
+    clearStatus();
+
+    const name = nameInput.value.trim();
+    const handle = normalizeHandle(handleInput.value);
+    const message = msgInput.value.trim();
+
+    if (!name) { showStatus('⚠ Name is required.', 'error'); nameInput.focus(); return; }
+    if (!message) { showStatus('⚠ Message is required.', 'error'); msgInput.focus(); return; }
+    if (message.length < 4) { showStatus('⚠ Message is too short.', 'error'); msgInput.focus(); return; }
+
+    // Profanity check on name AND message
+    const flaggedName = detectProfanity(name);
+    const flaggedMsg = detectProfanity(message);
+    const flaggedHandle = handle ? detectProfanity(handle) : null;
+
+    if (flaggedName || flaggedMsg || flaggedHandle) {
+      showStatus('✕ Your post contains language that isn\'t allowed. Please revise and try again.', 'error');
+      return;
+    }
+
+    // All clear — save it
+    const entries = loadEntries();
+    const newEntry = {
+      id: `entry-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+      name,
+      handle,
+      message,
+      timestamp: Date.now()
+    };
+    entries.push(newEntry);
+    saveEntries(entries);
+    renderFeed();
+
+    // Reset form
+    nameInput.value = '';
+    handleInput.value = '';
+    msgInput.value = '';
+    counter.textContent = '0 / 280';
+    counter.classList.remove('warn');
+
+    showStatus('✓ Thanks for signing — your message is live.', 'success');
+    setTimeout(clearStatus, 4000);
+
+    // Scroll the feed back to top so they see their entry
+    document.getElementById('gb-feed').scrollTop = 0;
+  });
+
+  // Initial render
+  renderFeed();
+</script>
+
+</body>
+</html>
