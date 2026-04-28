@@ -74,28 +74,30 @@ export default function Home() {
             </div>
             <div className="gesi-col-main">
               <GradHeading as="h2" className="!mb-12 text-balance">
-                In 1995, Honda built
+                The first one I
+                {" "}
+                <span className="grad">burned through</span>.
                 <br />
-                <span className="grad">the perfect</span>
-                <br />
-                <span className="outline">front-wheel-drive</span>
-                <br />
-                chassis.
+                The second one I&apos;m
+                {" "}
+                <span className="outline">rebuilding</span>.
               </GradHeading>
               <div className="gesi-body-grid">
                 <p>
-                  The third-generation Integra — internally known as DC2 —
-                  represented a high-water mark in Honda&apos;s engineering
-                  culture. It was light. It was honest. The B18C1 revved to
-                  8,100 RPM with the kind of mechanical clarity that has all
-                  but disappeared from modern cars.
+                  There was a guy in my high school with an Integra. I
+                  don&apos;t remember his name. I remember the car. After
+                  graduation I saved up and won a 1994 LS on eBay, two hours
+                  from where I lived. I drove it home without knowing how to
+                  drive stick and burned the clutch before I made it back into
+                  town.
                 </p>
                 <p>
-                  This particular example sat in a single-car garage in
-                  Pasadena for twenty-six years. Two owners. Eighty-seven
-                  thousand miles. Original Milano Red paint, original interior,
-                  untouched powertrain. The kind of starting point most
-                  enthusiasts only read about.
+                  I bought this one on May 30, 2021. A &apos;95 GS-R from a
+                  guy in town getting stationed elsewhere — Air Force, needed
+                  to sell before he moved. I&apos;ve been working on it ever
+                  since, between my home garage and my buddy&apos;s shop.
+                  He&apos;s a mechanic. I help where I can. Four years in.
+                  Still going.
                 </p>
               </div>
               <div className="gesi-stats" aria-label="Key figures">
