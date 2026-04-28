@@ -1,26 +1,202 @@
+@config "../../tailwind.config.ts";
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Logo-derived palette */
+  --bg: #fdf6ec;
+  --bg-warm: #fde8d4;
+  --bg-deep: #2a1a3e;
+  --ink: #1a0e2e;
+  --ink-soft: rgba(26, 14, 46, 0.72);
+  --ink-faint: rgba(26, 14, 46, 0.5);
+  --ink-ghost: rgba(26, 14, 46, 0.32);
+  --line: rgba(26, 14, 46, 0.14);
+  --line-soft: rgba(26, 14, 46, 0.08);
+
+  /* Sunset gradient stops */
+  --blue: #3a4fd9;
+  --magenta: #e838a4;
+  --pink: #f25d8e;
+  --orange: #f59e3a;
+  --amber: #ffc36e;
+
+  /* The car */
+  --milano: #e8224d;
+  --milano-dark: #b6132c;
+
+  /* Layout */
+  --nav-offset: 5.5rem;
+  --container: 80rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  /* Brand colors → utilities: bg-bg, text-ink, border-line, from-blue, to-milano, etc. */
+  --color-bg: var(--bg);
+  --color-bg-warm: var(--bg-warm);
+  --color-bg-deep: var(--bg-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-ink-ghost: var(--ink-ghost);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-blue: var(--blue);
+  --color-magenta: var(--magenta);
+  --color-pink: var(--pink);
+  --color-orange: var(--orange);
+  --color-amber: var(--amber);
+  --color-milano: var(--milano);
+  --color-milano-dark: var(--milano-dark);
+
+  /* Semantic font stacks: next/font sets --font-body, --font-anton, --font-bebas, --font-mono, --font-jp on <html> */
+  --font-family-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-family-display: var(--font-display);
+  --font-family-condensed: var(--font-bebas), ui-sans-serif, sans-serif;
+  --font-family-mono: var(--font-mono), ui-monospace, SFMono-Regular, menlo, monospace;
+  --font-family-jp: var(--font-jp), "Hiragino Mincho ProN", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    --font-display: var(--font-anton), var(--font-bebas), ui-sans-serif, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-dvh w-full max-w-full overflow-x-hidden text-ink antialiased;
+    font-family: var(--font-family-sans);
+  }
+
+  /* Subtle paper grain (matches reference) */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: multiply;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .grad-text,
+  .grad-text-warm {
+    color: transparent;
+  }
+
+  .grad-text {
+    background: linear-gradient(120deg, var(--blue), var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .grad-text-warm {
+    background: linear-gradient(135deg, var(--magenta) 0%, var(--orange) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .outline-text,
+  .chapter-h .outline,
+  .chapter-h.outline-children .outline,
+  h2.chapter-h .outline {
+    -webkit-text-stroke: 2px var(--ink);
+    color: transparent;
+  }
+
+  h2.chapter-h .grad,
+  .grad {
+    background: linear-gradient(120deg, var(--blue), var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .body-copy {
+    @apply text-ink-soft text-base leading-[1.8];
+  }
+
+  .eyebrow-mono {
+    @apply font-mono text-[10px] font-medium uppercase leading-none tracking-[0.25em] text-ink-ghost;
+  }
+
+  .chapter-num-label {
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .chapter-num {
+    font-family: var(--font-family-display);
+    font-size: 6rem;
+    font-weight: 400;
+    line-height: 0.9;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px var(--ink);
+    color: transparent;
+  }
+
+  .chapter-tag {
+    margin-top: 1rem;
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  .chapter-tag-jp {
+    margin-top: 0.75rem;
+    display: block;
+    font-family: var(--font-family-jp);
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--magenta);
+  }
+
+  h2.chapter-h,
+  .chapter-h {
+    font-family: var(--font-family-display);
+    font-size: clamp(2.5rem, 6.5vw, 5rem);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+
+  .gesi-marquee {
+    display: flex;
+    width: max-content;
+    white-space: nowrap;
+    animation: gesi-marquee 40s linear infinite;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes gesi-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
