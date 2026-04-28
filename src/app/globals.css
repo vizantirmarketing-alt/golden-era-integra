@@ -383,6 +383,12 @@
     text-transform: uppercase;
     font-weight: 400;
   }
+  @media (max-width: 899px) {
+    .gesi-hero h1,
+    .gesi-hero__h1 {
+      line-height: 1;
+    }
+  }
   .gesi-hero h1 .gesi-hero__line,
   .gesi-hero__h1 .gesi-hero__line {
     display: block;
