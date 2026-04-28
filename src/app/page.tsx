@@ -1,30 +1,242 @@
-import { GradHeading, GradLine } from "@/components/GradHeading";
+import { ChapterHeader } from "@/components/ChapterHeader";
+import { GradHeading } from "@/components/GradHeading";
 import { Marquee } from "@/components/Marquee";
+import { Hero } from "@/components/home/Hero";
+import { MotionSection } from "@/components/home/MotionSection";
+import { cn } from "@/lib/cn";
+import Link from "next/link";
 
-/**
- * Full home is Phase 2. The marquee and a compact `GradHeading` sample
- * keep shared components in use for quick visual checks.
- */
+const journalPreview = [
+  {
+    key: "found-her",
+    date: "03.14.2026",
+    tag: "Acquisition",
+    title: "Found Her",
+    body: "Two owner California car. 87,000 original miles. Garaged her entire life. Original Milano Red.",
+  },
+  {
+    key: "disassembly",
+    date: "04.02.2026",
+    tag: "Restoration",
+    title: "The Disassembly",
+    body: "Every panel off. Every bolt cataloged. The kind of patience this car deserves.",
+  },
+] as const;
+
+const galleryTeaser = [
+  { id: 1, idx: "001", label: "Vegas Strip — Blue Hour", tone: "t1" as const },
+  { id: 2, idx: "002", label: "Front 3/4 — Magenta Sunset", tone: "t2" as const },
+  { id: 3, idx: "003", label: "Mugen MF10 Detail", tone: "t3" as const },
+] as const;
+
+const toneClass = { t1: "gesi-g-item--t1", t2: "gesi-g-item--t2", t3: "gesi-g-item--t3" };
+
+function Star() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden>
+      <polygon points="12,2 15,9 22,9 17,14 19,22 12,17 5,22 7,14 2,9 9,9" />
+    </svg>
+  );
+}
+
 export default function Home() {
   return (
-    <div>
+    <>
+      <Hero />
       <Marquee />
-      <div className="mx-auto max-w-[var(--container)] px-4 py-20 sm:px-8 sm:py-32">
-        <p className="eyebrow-mono mb-6">System check</p>
-        <GradHeading
-          as="h1"
-          className="!mb-6 !text-3xl !normal-case [text-transform:none] sm:!text-4xl"
-        >
-          <span className="text-ink">Layout shell, fonts, and tokens are wired.</span>{" "}
-          <GradLine variant="grad" className="!normal-case [text-transform:none]">
-            Phase 2 next.
-          </GradLine>
-        </GradHeading>
-        <p className="body-copy max-w-xl">
-          Navigation and footer are fixed for every route. Replace this content
-          when the home page is ported from the HTML reference.
-        </p>
-      </div>
-    </div>
+      <MotionSection id="origin" className="gesi-chapter text-ink">
+        <div className="gesi-container">
+          <div className="gesi-grid-12">
+            <div className="gesi-col-side">
+              <div className="gesi-sticky">
+                <ChapterHeader
+                  chapterLabel="Chapter 01"
+                  number="01"
+                  label="Origin Story"
+                  kanji="起源"
+                />
+              </div>
+            </div>
+            <div className="gesi-col-main">
+              <GradHeading as="h2" className="!mb-12 text-balance">
+                In 1995, Honda built
+                <br />
+                <span className="grad">the perfect</span>
+                <br />
+                <span className="outline">front-wheel-drive</span>
+                <br />
+                chassis.
+              </GradHeading>
+              <div className="gesi-body-grid">
+                <p>
+                  The third-generation Integra — internally known as DC2 —
+                  represented a high-water mark in Honda&apos;s engineering
+                  culture. It was light. It was honest. The B18C1 revved to
+                  8,100 RPM with the kind of mechanical clarity that has all
+                  but disappeared from modern cars.
+                </p>
+                <p>
+                  This particular example sat in a single-car garage in
+                  Pasadena for twenty-six years. Two owners. Eighty-seven
+                  thousand miles. Original Milano Red paint, original interior,
+                  untouched powertrain. The kind of starting point most
+                  enthusiasts only read about.
+                </p>
+              </div>
+              <div className="gesi-stats" aria-label="Key figures">
+                <div>
+                  <div className="gesi-stat-num">170</div>
+                  <div className="gesi-stat-lbl">Factory HP</div>
+                </div>
+                <div>
+                  <div className="gesi-stat-num">2,579</div>
+                  <div className="gesi-stat-lbl">Curb Weight (lb)</div>
+                </div>
+                <div>
+                  <div className="gesi-stat-num">8,100</div>
+                  <div className="gesi-stat-lbl">Redline RPM</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </MotionSection>
+      <MotionSection className="gesi-quote" aria-label="Design philosophy">
+        <div className="gesi-quote__stars gesi-quote__stars--top" aria-hidden>
+          <Star />
+          <Star />
+          <Star />
+        </div>
+        <div className="gesi-quote__inner">
+          <p className="gesi-quote__eyebrow">— A Note On Philosophy</p>
+          <blockquote>
+            &ldquo;Restoration is not <em>nostalgia.</em> It is the refusal to
+            let something good <em>disappear.</em>&rdquo;
+          </blockquote>
+          <cite>— Owner&apos;s Note, Build Journal Vol. 01</cite>
+        </div>
+        <div className="gesi-quote__stars gesi-quote__stars--bot" aria-hidden>
+          <Star />
+          <Star />
+          <Star />
+          <Star />
+          <Star />
+        </div>
+      </MotionSection>
+      <MotionSection id="build" className="gesi-chapter text-ink">
+        <div className="gesi-container">
+          <div className="gesi-grid-12 mb-16">
+            <div className="gesi-col-side">
+              <ChapterHeader
+                chapterLabel="Chapter 02"
+                number="02"
+                label="Specification"
+                kanji="仕様"
+              />
+            </div>
+            <div className="gesi-col-main">
+              <GradHeading as="h2" className="!mb-8 !text-balance sm:!pr-4">
+                Period-correct.
+                <br />
+                <span className="grad">Driven daily.</span>
+              </GradHeading>
+              <p className="body-copy max-w-[36rem]">
+                Every modification on this car could have plausibly been
+                performed in 2002. No coilovers with Bluetooth controllers. No
+                carbon fiber where carbon fiber doesn&apos;t belong. The catalog
+                is short and considered.
+              </p>
+            </div>
+          </div>
+          <div className="gesi-cta">
+            <Link href="/build">View Full Build →</Link>
+          </div>
+        </div>
+      </MotionSection>
+      <MotionSection
+        id="gallery"
+        className="gesi-chapter gesi-gallery-sec text-ink"
+      >
+        <div className="gesi-container">
+          <div className="gesi-gallery-head">
+            <div>
+              <div className="chapter-num-label">Chapter 03</div>
+              <h2 className="gesi-gallery__title">Gallery.</h2>
+              <span
+                className="chapter-tag-jp mt-3"
+                style={{ display: "block" }}
+                lang="ja"
+              >
+                写真集
+              </span>
+            </div>
+            <p className="gesi-gallery__meta">Shot In Las Vegas / Film + Digital</p>
+          </div>
+          <div className="grid min-h-0 auto-rows-[180px] grid-cols-1 gap-3 sm:auto-rows-min md:min-h-0 md:grid-cols-3">
+            {galleryTeaser.map((g) => (
+              <Link
+                key={g.id}
+                href="/gallery"
+                className={cn(
+                  "gesi-g-item block no-underline transition-shadow duration-300",
+                  "hover:shadow-[0_12px_40px_rgba(232,56,164,0.18)] hover:brightness-[1.02]",
+                  toneClass[g.tone]
+                )}
+                aria-label={`Open gallery — ${g.label}`}
+              >
+                <span className="gesi-g-num" aria-hidden>
+                  {String(g.id).padStart(2, "0")}
+                </span>
+                <span className="gesi-g-idx">{g.idx}</span>
+                <span className="gesi-g-label">{g.label}</span>
+              </Link>
+            ))}
+          </div>
+          <div className="gesi-cta mt-12">
+            <Link href="/gallery">View Full Gallery →</Link>
+          </div>
+        </div>
+      </MotionSection>
+      <MotionSection id="journal" className="gesi-chapter text-ink">
+        <div className="gesi-container">
+          <div className="gesi-grid-12 mb-12">
+            <div className="gesi-col-side">
+              <ChapterHeader
+                chapterLabel="Chapter 04"
+                number="04"
+                label="Build Journal"
+                kanji="記録"
+              />
+            </div>
+            <div className="gesi-col-main">
+              <GradHeading as="h2" className="!mb-0 !text-balance">
+                A record,
+                <br />
+                <span className="grad">in entries.</span>
+              </GradHeading>
+            </div>
+          </div>
+          {journalPreview.map((entry) => (
+            <Link
+              key={entry.key}
+              href="/journal"
+              className="gesi-j-article text-ink"
+            >
+              <div className="gesi-j-date">{entry.date}</div>
+              <div className="gesi-j-tag">{entry.tag}</div>
+              <div className="gesi-j-body">
+                <h3>{entry.title}</h3>
+                <p>{entry.body}</p>
+              </div>
+              <div className="gesi-j-read">Read →</div>
+            </Link>
+          ))}
+          <div className="gesi-j-endcap" aria-hidden />
+          <div className="gesi-cta mt-8">
+            <Link href="/journal">Read All Entries →</Link>
+          </div>
+        </div>
+      </MotionSection>
+    </>
   );
 }
