@@ -1425,6 +1425,190 @@
     text-transform: uppercase;
     color: rgba(253, 246, 236, 0.82);
   }
+
+  /* ——— Film / In Motion ——— */
+  .gesi-film {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .gesi-film::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(58, 79, 217, 0.25), transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(232, 56, 164, 0.18), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .gesi-film > .gesi-container {
+    position: relative;
+    z-index: 1;
+  }
+  .gesi-film .chapter-tag {
+    color: rgba(253, 246, 236, 0.5);
+  }
+  .gesi-film h2.chapter-h .outline {
+    -webkit-text-stroke-color: var(--bg);
+  }
+  .gesi-film .chapter-num {
+    -webkit-text-stroke-color: var(--bg);
+  }
+
+  .gesi-film-frame {
+    position: relative;
+    width: 100%;
+    cursor: default;
+  }
+  .gesi-film-frame--featured {
+    aspect-ratio: 21 / 9;
+  }
+  .gesi-film-frame--card {
+    aspect-ratio: 16 / 9;
+  }
+  .gesi-film-frame__fallback {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1a0e2e, #000);
+  }
+  .gesi-film-frame__fallback::before {
+    content: "VTEC";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family-display);
+    font-size: clamp(4rem, 22vw, 18rem);
+    line-height: 1;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.18;
+  }
+
+  .gesi-film-play {
+    display: flex;
+    width: 5.5rem;
+    height: 5.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--magenta), var(--orange));
+    box-shadow: 0 8px 30px rgba(232, 56, 164, 0.4);
+    transition:
+      transform 0.4s ease,
+      box-shadow 0.4s ease;
+  }
+  @media (min-width: 768px) {
+    .gesi-film-play {
+      width: 5.5rem;
+      height: 5.5rem;
+    }
+  }
+  .gesi-film-frame--card .gesi-film-play {
+    width: 3.5rem;
+    height: 3.5rem;
+    box-shadow: 0 6px 22px rgba(232, 56, 164, 0.35);
+  }
+  .group:hover .gesi-film-play,
+  .group:focus-within .gesi-film-play {
+    transform: scale(1.08);
+    box-shadow: 0 12px 40px rgba(232, 56, 164, 0.55);
+  }
+  .gesi-film-play__triangle {
+    display: block;
+    width: 0;
+    height: 0;
+    margin-left: 0.35rem;
+    border-style: solid;
+    border-width: 0.7rem 0 0.7rem 1rem;
+    border-color: transparent transparent transparent #fff;
+  }
+  .gesi-film-frame--card .gesi-film-play__triangle {
+    margin-left: 0.2rem;
+    border-width: 0.45rem 0 0.45rem 0.65rem;
+  }
+
+  .gesi-film-meta {
+    position: absolute;
+    z-index: 2;
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(253, 246, 236, 0.7);
+    pointer-events: none;
+  }
+  .gesi-film-meta--bl {
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 4rem;
+  }
+  .gesi-film-meta--br {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  .gesi-film-meta--tl {
+    top: 1.5rem;
+    left: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--milano);
+  }
+  .gesi-film-meta--tl .gesi-film-live-dot {
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--milano);
+    animation: gesi-pulse 2s infinite;
+  }
+
+  .gesi-film-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .gesi-film-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    .gesi-film-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .gesi-film-card-cap {
+    margin-top: 0.75rem;
+    font-family: var(--font-family-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(253, 246, 236, 0.45);
+  }
+  .gesi-film-card-cap strong {
+    font-weight: 600;
+    color: rgba(253, 246, 236, 0.72);
+  }
+
+  .gesi-film-empty {
+    border-top: 1px solid rgba(253, 246, 236, 0.12);
+    padding-top: 2rem;
+  }
+  .gesi-film-empty .body-copy {
+    color: rgba(253, 246, 236, 0.65);
+  }
 }
 
 @layer utilities {
