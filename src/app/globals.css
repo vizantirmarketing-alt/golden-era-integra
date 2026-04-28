@@ -311,6 +311,15 @@
     align-items: center;
     gap: 3rem;
   }
+  .gesi-hero__copy {
+    width: 100%;
+  }
+  @media (max-width: 899px) {
+    /* Keep hero text column inset consistent with other page sections. */
+    .gesi-hero__copy {
+      padding-inline: 0.5rem;
+    }
+  }
   /** Single entrance animation on load (CSS only — no scroll / remount loops). */
   .gesi-hero__grid--enter {
     animation: gesi-hero-grid-enter 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;

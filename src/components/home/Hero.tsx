@@ -54,7 +54,7 @@ export async function Hero() {
       </div>
 
       <div className="gesi-hero__grid gesi-hero__grid--enter">
-        <div>
+        <div className="gesi-hero__copy">
           <div className="gesi-hero__eyebrow">
             <span className="gesi-hero__eyebrow-dot" aria-hidden />
             The Last Great Honda
