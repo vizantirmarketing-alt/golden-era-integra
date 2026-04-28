@@ -67,6 +67,16 @@
     font-family: var(--font-family-sans);
   }
 
+  /* Visible focus — meets WCAG 2 focus-not-obscured when paired with interactive chrome */
+  :focus-visible {
+    outline: 2px solid var(--magenta);
+    outline-offset: 3px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
   /* Subtle paper grain (matches reference) */
   body::before {
     content: "";

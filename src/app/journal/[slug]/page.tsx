@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -7,6 +8,7 @@ import { client, urlFor } from "@/sanity/client";
 import { JournalHeroTitle } from "@/lib/journalTitle";
 import { formatJournalDate } from "@/lib/journalDate";
 import { estimateReadingTimeMinutes } from "@/lib/readingTime";
+import { seo } from "@/lib/seo";
 import {
   journalEntryBySlugQuery,
   journalEntryNextQuery,
@@ -17,6 +19,58 @@ import type { JournalEntry, JournalEntryNav } from "@/sanity/types";
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  const entry = await client.fetch<JournalEntry | null>(
+    journalEntryBySlugQuery,
+    { slug },
+    { next: { revalidate: 300 } }
+  );
+
+  if (!entry?.slug?.current) {
+    return { title: seo.notFound.title };
+  }
+
+  const title = entry.title ?? "Journal";
+  const description =
+    entry.excerpt?.trim() ||
+    `Build journal — ${title}. Documented DC2 restoration and drives.`;
+
+  const coverOg =
+    entry.coverImage?.asset &&
+    urlFor(entry.coverImage).width(1200).height(630).quality(85).url();
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      publishedTime: entry.publishedAt ?? undefined,
+      images: coverOg
+        ? [
+            {
+              url: coverOg,
+              width: 1200,
+              height: 630,
+              alt: entry.coverImage?.alt ?? title,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: coverOg ? [coverOg] : undefined,
+    },
+  };
+}
 
 export default async function JournalEntryPage({ params }: PageProps) {
   const { slug } = await params;

@@ -1,9 +1,24 @@
+import type { Metadata } from "next";
 import { ChapterHeader } from "@/components/ChapterHeader";
 import { GradHeading } from "@/components/GradHeading";
 import { client } from "@/sanity/client";
+import { seo } from "@/lib/seo";
 import { specCategoriesQuery } from "@/sanity/queries";
 import type { SpecCategory } from "@/sanity/types";
 import { cn } from "@/lib/cn";
+
+export const metadata: Metadata = {
+  title: seo.build.title,
+  description: seo.build.description,
+  openGraph: {
+    title: `${seo.build.title} · ${seo.siteName}`,
+    description: seo.build.description,
+  },
+  twitter: {
+    title: `${seo.build.title} · ${seo.siteName}`,
+    description: seo.build.description,
+  },
+};
 
 export default async function BuildPage() {
   const categories = await client.fetch<SpecCategory[]>(

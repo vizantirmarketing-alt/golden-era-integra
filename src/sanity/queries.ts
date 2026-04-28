@@ -26,6 +26,20 @@ export const galleryImagesQuery = defineQuery(`
 `);
 
 /** Index list: no body. Sort: newest first, then `_createdAt` tiebreaker. */
+/** Slugs only — sitemap and static path enumeration. */
+export const journalEntrySlugsQuery = defineQuery(`
+*[_type == "journalEntry" && defined(slug.current)].slug.current
+`);
+
+/** Slug + dates for sitemap `lastmod`. */
+export const journalSitemapQuery = defineQuery(`
+*[_type == "journalEntry" && defined(slug.current)] {
+  "slug": slug.current,
+  publishedAt,
+  _updatedAt
+}
+`);
+
 export const journalEntriesListQuery = defineQuery(`
 *[_type == "journalEntry"] | order(publishedAt desc, _createdAt desc) {
   _id,

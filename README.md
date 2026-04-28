@@ -1,61 +1,96 @@
-# Golden Era Integra — Cursor Setup
+# Golden Era Integra
 
-## Files in this bundle
+Premium tribute and build-documentation site for a 1995 Acura Integra GS-R (Milano Red), Las Vegas — Next.js App Router, Sanity CMS, Supabase guestbook, deployed on Vercel.
 
-- `CURSOR_PROMPT.md` — the master prompt for Cursor, structured into 12 phases
-- `golden-era-integra-hybrid.html` — visual reference (drop into `reference/` folder of new project)
-- `logo.png` — brand mark (drop into `public/` folder of new project)
+## Requirements
 
-## How to use this with Cursor
+- **Node.js** 20.x or 22.x LTS
+- npm (or pnpm/yarn if you adapt commands)
 
-### 1. Set up the project folder
+## Installation
 
 ```bash
-mkdir golden-era-integra
+git clone <repository-url>
 cd golden-era-integra
+npm install
 ```
 
-Inside that folder, create a `reference/` directory and drop `golden-era-integra-hybrid.html` into it. Drop `CURSOR_PROMPT.md` at the root. The `logo.png` will go into `public/` after Phase 0 creates the Next.js scaffold.
+Copy environment variables and fill in real values:
 
-### 2. Open in Cursor
-
-Open the folder in Cursor and start a new chat in Composer mode (Cmd+I).
-
-### 3. The opening prompt to give Cursor
-
-Paste this exactly:
-
-```
-Read CURSOR_PROMPT.md in full before doing anything. Then execute Phase 0 only and stop. Do not start Phase 1 until I tell you to.
+```bash
+cp .env.local.example .env.local
 ```
 
-Cursor will read the full spec, scaffold the Next.js project, and stop. Review the changes, run `git add . / git commit -m "..." / git push` manually (3 separate lines as you prefer), then in a new chat say:
+### Environment variables
 
+| Variable | Scope | Purpose |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Public | Canonical site URL for Open Graph, `sitemap.xml`, and `robots.txt` (e.g. `https://your-domain.vercel.app`). No trailing slash. |
+| `NEXT_PUBLIC_SUPABASE_URL` | Public | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public | Supabase anonymous key (guestbook reads from the browser via API routes) |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server only | Service role key — **never** expose to the client; used only in `/api/guestbook` for inserts |
+| `GUESTBOOK_IP_SALT` | Server only | Salt for hashing IPs for rate limiting |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Public | Sanity project ID (`4dgncr6u` for this project) |
+| `NEXT_PUBLIC_SANITY_DATASET` | Public | Dataset name (`production`) |
+| `SANITY_API_TOKEN` | Server / tooling | Token with read access for Next.js fetches (and Studio if needed) |
+
+On Vercel, set the same variables in **Project → Settings → Environment Variables**. `VERCEL_URL` is provided automatically and is used as a fallback when `NEXT_PUBLIC_SITE_URL` is unset.
+
+## Local development
+
+```bash
+npm run dev
 ```
-Phase 0 looks good. Execute Phase 1 only and stop.
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Sanity Studio
+
+Studio lives in the `sanity/` directory at the repo root.
+
+```bash
+npm run sanity
 ```
 
-Repeat for each phase.
+This runs `sanity dev` from that folder. Configure project ID and dataset in `sanity/sanity.config.ts` (must match `NEXT_PUBLIC_SANITY_*` in `.env.local`).
 
-### 4. Why structured this way
+Content types include specification categories, gallery images, journal entries, and film episodes — see `sanity/schemas/`.
 
-The prompt is one master file because the project context — design system, kanji map, color tokens, routing — needs to stay consistent across all 12 phases. But it explicitly tells Cursor to execute one phase at a time and stop, which preserves your normal "focused single-phase prompts" workflow. You commit between every phase. Cursor never runs git for you.
+## Supabase (guestbook)
 
-## Things to do BEFORE starting
+1. Create a project at [supabase.com](https://supabase.com).
+2. In the SQL editor, run the script in `supabase/schema.sql` (table, indexes, RLS policies).
+3. Copy the project URL, anon key, and service role key into `.env.local`.
 
-1. **Verify Node version** — install Node 20.x or 22.x LTS via nvm if you don't have it.
-2. **Sanity** — project ID `4dgncr6u`, dataset `production` (org `o2C5Mz8F9`). Copy `.env.local.example` to `.env.local` and set the `NEXT_PUBLIC_SANITY_*` values to match.
-3. **Create Supabase project** — Phase 8 needs an empty Supabase project. Create one at supabase.com, grab the URL + anon key + service role key, drop them into `.env.local` when Cursor asks. Don't share these with Cursor — Cursor only needs the placeholder names.
-4. **Have the logo handy** — drop `logo.png` into `public/` immediately after Phase 0 finishes.
+Guestbook writes go only through `POST /api/guestbook` using the service role on the server.
 
-## Decisions Cursor will likely ask you about
+## Build
 
-- Tailwind v3 vs v4 (depends on Next.js 16 compatibility at build time — let Cursor decide)
-- Sanity Studio embedded in the same Next.js app vs separate project (recommend separate `sanity/` folder per the prompt — easier to deploy independently)
-- Whether to use Vercel Postgres instead of Supabase (don't — Supabase is in your stack already, switching introduces friction)
+```bash
+npm run lint
+npm run build
+npm run start
+```
 
-## When this is done
+## Deployment (Vercel)
 
-You'll have a deploy-ready Next.js 16 site, fully CMS-driven, with a working guestbook, ready for Vercel. The total scope is roughly 2-4 evenings of focused work depending on how much you tweak between phases.
+1. Push the repository to GitHub/GitLab/Bitbucket.
+2. Import the project in [Vercel](https://vercel.com) and select the Next.js framework preset.
+3. Add all environment variables from the table above (production and preview as needed).
+4. Set `NEXT_PUBLIC_SITE_URL` to your production domain after the first deploy.
 
-Once shipped, the natural next steps are: real photography swap-in, journal content backfill, video uploads, Vegas-area SEO (you've already established the geo-targeting pattern from your other Vizantir work).
+The app expects the App Router entry at `src/app/`. Dynamic OG images are generated by `src/app/opengraph-image.tsx`.
+
+## Performance and accessibility (release checklist)
+
+- Run **Lighthouse** (Chrome DevTools → Lighthouse) on `/` and major routes; target **≥ 95** Performance on mobile and desktop once production URLs and assets are final.
+- Hero imagery: home hero and journal covers use `priority` where appropriate; the brand `logo.png` in `/public` is optimized for web (< 500 KB recommended).
+
+## Project docs
+
+- `CURSOR_PROMPT.md` — phased build specification for this codebase.
+- `reference/golden-era-integra-hybrid.html` — static visual reference for layout and styling.
+
+## License
+
+Private / all rights reserved unless otherwise noted by the owner.

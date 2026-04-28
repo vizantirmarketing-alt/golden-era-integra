@@ -1,10 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ChapterHeader } from "@/components/ChapterHeader";
 import { GradHeading } from "@/components/GradHeading";
 import { client } from "@/sanity/client";
 import { formatJournalDate } from "@/lib/journalDate";
+import { seo } from "@/lib/seo";
 import { journalEntriesListQuery } from "@/sanity/queries";
 import type { JournalEntry } from "@/sanity/types";
+
+export const metadata: Metadata = {
+  title: seo.journal.title,
+  description: seo.journal.description,
+  openGraph: {
+    title: `${seo.journal.title} · ${seo.siteName}`,
+    description: seo.journal.description,
+  },
+  twitter: {
+    title: `${seo.journal.title} · ${seo.siteName}`,
+    description: seo.journal.description,
+  },
+};
 
 export default async function JournalIndexPage() {
   const entries = await client.fetch<JournalEntry[]>(

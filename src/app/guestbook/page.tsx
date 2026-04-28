@@ -1,6 +1,21 @@
+import type { Metadata } from "next";
 import { GuestbookClient } from "@/components/guestbook/GuestbookClient";
 import { ChapterHeader } from "@/components/ChapterHeader";
 import { GradHeading } from "@/components/GradHeading";
+import { seo } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: seo.guestbook.title,
+  description: seo.guestbook.description,
+  openGraph: {
+    title: `${seo.guestbook.title} · ${seo.siteName}`,
+    description: seo.guestbook.description,
+  },
+  twitter: {
+    title: `${seo.guestbook.title} · ${seo.siteName}`,
+    description: seo.guestbook.description,
+  },
+};
 
 export default function GuestbookPage() {
   return (

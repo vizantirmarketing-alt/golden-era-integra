@@ -1,10 +1,25 @@
+import type { Metadata } from "next";
 import { ChapterHeader } from "@/components/ChapterHeader";
 import { GradHeading } from "@/components/GradHeading";
 import { Marquee } from "@/components/Marquee";
 import { Hero } from "@/components/home/Hero";
 import { MotionSection } from "@/components/home/MotionSection";
 import { cn } from "@/lib/cn";
+import { seo } from "@/lib/seo";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: { absolute: seo.home.titleAbsolute },
+  description: seo.home.description,
+  openGraph: {
+    title: seo.home.titleAbsolute,
+    description: seo.home.description,
+  },
+  twitter: {
+    title: seo.home.titleAbsolute,
+    description: seo.home.description,
+  },
+};
 
 const journalPreview = [
   {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
@@ -23,21 +23,7 @@ function getDisplayTitle(image: GalleryImage, idx: number) {
 
 export function GalleryGrid({ images }: GalleryGridProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (activeIndex === null) {
-      return;
-    }
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setActiveIndex(null);
-      }
-    };
-
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [activeIndex]);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   const prepared = useMemo(
     () =>
@@ -52,6 +38,42 @@ export function GalleryGrid({ images }: GalleryGridProps) {
       }),
     [images]
   );
+
+  useEffect(() => {
+    if (activeIndex === null) {
+      return;
+    }
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    queueMicrotask(() => closeRef.current?.focus());
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveIndex(null);
+        return;
+      }
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        setActiveIndex((i) =>
+          i === null ? null : Math.max(0, i - 1)
+        );
+        return;
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        setActiveIndex((i) =>
+          i === null ? null : Math.min(prepared.length - 1, i + 1)
+        );
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [activeIndex, prepared.length]);
 
   const active = activeIndex === null ? null : prepared[activeIndex];
 
@@ -111,7 +133,11 @@ export function GalleryGrid({ images }: GalleryGridProps) {
             onClick={() => setActiveIndex(null)}
             role="dialog"
             aria-modal="true"
-            aria-label="Gallery lightbox"
+            aria-label={
+              active && activeIndex !== null
+                ? `Image ${String(activeIndex + 1).padStart(2, "0")}: ${active.title}`
+                : "Gallery lightbox"
+            }
           >
             <motion.div
               className="gesi-lightbox-panel"
@@ -122,6 +148,7 @@ export function GalleryGrid({ images }: GalleryGridProps) {
               onClick={(event) => event.stopPropagation()}
             >
               <button
+                ref={closeRef}
                 type="button"
                 className="gesi-lightbox-close"
                 onClick={() => setActiveIndex(null)}

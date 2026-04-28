@@ -1,10 +1,25 @@
+import type { Metadata } from "next";
 import { ChapterHeader } from "@/components/ChapterHeader";
 import { ClickToPlayVideo } from "@/components/film/ClickToPlayVideo";
 import { GradHeading } from "@/components/GradHeading";
 import { embedSrcForVideo, parseVideoUrl, youtubePosterUrl } from "@/lib/videoEmbed";
+import { seo } from "@/lib/seo";
 import { client, urlFor } from "@/sanity/client";
 import { filmEpisodesQuery } from "@/sanity/queries";
 import type { FilmEpisode } from "@/sanity/types";
+
+export const metadata: Metadata = {
+  title: seo.film.title,
+  description: seo.film.description,
+  openGraph: {
+    title: `${seo.film.title} · ${seo.siteName}`,
+    description: seo.film.description,
+  },
+  twitter: {
+    title: `${seo.film.title} · ${seo.siteName}`,
+    description: seo.film.description,
+  },
+};
 
 function volLabel(episodeNumber: number | undefined): string {
   if (episodeNumber == null || Number.isNaN(episodeNumber)) {

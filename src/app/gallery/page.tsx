@@ -1,9 +1,24 @@
+import type { Metadata } from "next";
 import { ChapterHeader } from "@/components/ChapterHeader";
 import { GradHeading } from "@/components/GradHeading";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { client } from "@/sanity/client";
+import { seo } from "@/lib/seo";
 import { galleryImagesQuery } from "@/sanity/queries";
 import type { GalleryImage } from "@/sanity/types";
+
+export const metadata: Metadata = {
+  title: seo.gallery.title,
+  description: seo.gallery.description,
+  openGraph: {
+    title: `${seo.gallery.title} · ${seo.siteName}`,
+    description: seo.gallery.description,
+  },
+  twitter: {
+    title: `${seo.gallery.title} · ${seo.siteName}`,
+    description: seo.gallery.description,
+  },
+};
 
 export default async function GalleryPage() {
   const images = await client.fetch<GalleryImage[]>(

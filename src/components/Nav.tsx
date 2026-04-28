@@ -3,7 +3,7 @@
 import { cn } from "@/lib/cn";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useId, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 const links = [
   { href: "/#origin", label: "Story" },
@@ -18,8 +18,28 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const id = useId();
   const panelId = `nav-menu-${id}`;
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
 
   const close = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  useEffect(() => {
+    if (open) {
+      firstLinkRef.current?.focus();
+    }
+  }, [open]);
 
   return (
     <nav
@@ -65,9 +85,10 @@ export function Nav() {
             "md:translate-y-0 md:opacity-100 md:pointer-events-auto"
           )}
         >
-          {links.map(({ href, label }) => (
+          {links.map(({ href, label }, index) => (
             <Link
               key={href}
+              ref={index === 0 ? firstLinkRef : undefined}
               href={href}
               className="group relative border-b border-line-soft px-4 py-3.5 font-mono text-ink no-underline transition-colors last:max-md:border-b-0 max-md:text-xs md:border-0 md:px-0 md:py-0 md:text-[11px] tracking-[0.2em] uppercase sm:px-6"
               onClick={close}
@@ -88,6 +109,7 @@ export function Nav() {
           aria-expanded={open}
           aria-controls={panelId}
           aria-label={open ? "Close menu" : "Open menu"}
+          aria-haspopup="true"
         >
           <span
             className={cn(
