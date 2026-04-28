@@ -211,7 +211,7 @@
   @media (min-width: 768px) {
     .gesi-hero {
       justify-content: flex-start;
-      padding: 15rem 2rem 4rem;
+      padding: 12rem 2rem 4rem;
     }
   }
 
@@ -307,6 +307,13 @@
       gap: 4rem;
     }
   }
+  @media (min-width: 1024px) {
+    .gesi-hero__grid {
+      max-width: 92rem;
+      grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+      gap: 3rem;
+    }
+  }
 
   .gesi-hero__eyebrow {
     font-family: var(--font-family-mono);
@@ -389,6 +396,7 @@
   .gesi-hero__logo {
     position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
@@ -412,13 +420,83 @@
     animation: gesi-rotate 20s linear infinite;
   }
   .gesi-hero__logo-img {
-    max-width: 32.5rem;
+    max-width: 38rem;
     width: 100%;
     aspect-ratio: 1;
     object-fit: contain;
     filter: drop-shadow(0 30px 60px rgba(232, 56, 164, 0.25))
       drop-shadow(0 10px 30px rgba(58, 79, 217, 0.15));
     animation: gesi-float 6s ease-in-out infinite;
+  }
+  .gesi-hero__carousel {
+    display: flex;
+    width: 100%;
+    max-width: 38rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .gesi-hero__carousel-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .gesi-hero__carousel-slide {
+    display: none;
+    aspect-ratio: 1;
+    width: 100%;
+  }
+  .gesi-hero__carousel-slide.is-active {
+    display: block;
+  }
+  .gesi-hero__carousel-indicator {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .gesi-hero__carousel-controls {
+    position: relative;
+    z-index: 2;
+  }
+  .gesi-hero__carousel-status {
+    font-family: var(--font-family-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .gesi-hero__carousel-count {
+    color: var(--magenta);
+  }
+  .gesi-hero__carousel-label {
+    color: var(--ink);
+  }
+  .gesi-hero__carousel-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .gesi-hero__carousel-dot {
+    min-height: 2rem;
+    min-width: 2rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.6);
+    font-family: var(--font-family-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  }
+  .gesi-hero__carousel-dot:hover,
+  .gesi-hero__carousel-dot:focus-visible,
+  .gesi-hero__carousel-dot.is-active {
+    border-color: rgba(232, 56, 164, 0.55);
+    background: rgba(232, 56, 164, 0.08);
+    color: var(--magenta);
   }
   @media (max-width: 768px) {
     .gesi-hero__logo::before {

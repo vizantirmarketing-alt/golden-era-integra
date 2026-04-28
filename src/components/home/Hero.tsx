@@ -1,6 +1,38 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import Image from "next/image";
+import { HeroCarousel, type HeroSlide } from "./HeroCarousel";
 
-export function Hero() {
+function isHeroSlide(value: unknown): value is HeroSlide {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+  const rec = value as Record<string, unknown>;
+  return (
+    typeof rec.src === "string" &&
+    typeof rec.label === "string" &&
+    typeof rec.alt === "string" &&
+    rec.src.startsWith("/hero/")
+  );
+}
+
+async function getHeroSlides(): Promise<HeroSlide[]> {
+  try {
+    const manifestPath = join(process.cwd(), "public", "hero", "manifest.json");
+    const content = await readFile(manifestPath, "utf8");
+    const parsed = JSON.parse(content);
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+    return parsed.filter(isHeroSlide);
+  } catch {
+    return [];
+  }
+}
+
+export async function Hero() {
+  const slides = await getHeroSlides();
+
   return (
     <section
       className="gesi-hero -mt-[var(--nav-offset)] min-h-dvh"
@@ -53,15 +85,19 @@ export function Hero() {
           </div>
         </div>
         <div className="gesi-hero__logo">
-          <Image
-            src="/logo.png"
-            alt="Golden Era Integra logo"
-            width={520}
-            height={520}
-            className="gesi-hero__logo-img h-auto w-full"
-            priority
-            sizes="(max-width: 899px) min(92vw, 520px), (max-width: 1279px) 45vw, 520px"
-          />
+          {slides.length > 0 ? (
+            <HeroCarousel slides={slides} />
+          ) : (
+            <Image
+              src="/logo.png"
+              alt="Golden Era Integra logo"
+              width={520}
+              height={520}
+              className="gesi-hero__logo-img h-auto w-full"
+              priority
+              sizes="(max-width: 899px) min(92vw, 520px), (max-width: 1279px) 45vw, 520px"
+            />
+          )}
         </div>
       </div>
     </section>

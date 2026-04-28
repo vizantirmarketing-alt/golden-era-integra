@@ -1,0 +1,27 @@
+[
+  {
+    "src": "/hero/01-front.jpg",
+    "label": "Front",
+    "alt": "1995 Acura Integra GS-R, front view"
+  },
+  {
+    "src": "/hero/02-steering-wheel.jpg",
+    "label": "Cockpit",
+    "alt": "Steering wheel and dash detail"
+  },
+  {
+    "src": "/hero/03-engine-bay.jpg",
+    "label": "Engine Bay",
+    "alt": "B18C1 VTEC engine bay"
+  },
+  {
+    "src": "/hero/04-side-profile.jpg",
+    "label": "Side Profile",
+    "alt": "Integra side profile"
+  },
+  {
+    "src": "/hero/05-rear.jpg",
+    "label": "Rear",
+    "alt": "Rear three-quarter angle"
+  }
+]
