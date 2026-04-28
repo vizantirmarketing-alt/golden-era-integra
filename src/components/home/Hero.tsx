@@ -8,7 +8,7 @@ const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 export function Hero() {
   return (
     <section
-      className="gesi-hero -mt-[var(--nav-offset)] min-h-dvh pt-[var(--nav-offset)]"
+      className="gesi-hero -mt-[var(--nav-offset)] min-h-dvh"
       aria-label="Hero"
     >
       <div className="gesi-hero__bg" aria-hidden />
