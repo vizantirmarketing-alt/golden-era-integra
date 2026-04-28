@@ -386,7 +386,7 @@
   @media (max-width: 899px) {
     .gesi-hero h1,
     .gesi-hero__h1 {
-      line-height: 1;
+      line-height: 0.92;
     }
   }
   .gesi-hero h1 .gesi-hero__line,
