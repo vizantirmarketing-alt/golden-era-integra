@@ -192,6 +192,7 @@
     display: flex;
     width: max-content;
     white-space: nowrap;
+    will-change: transform;
     animation: gesi-marquee 40s linear infinite;
   }
 
@@ -288,6 +289,17 @@
     margin: 0 auto;
     align-items: center;
     gap: 3rem;
+  }
+  /** Single entrance animation on load (CSS only — no scroll / remount loops). */
+  .gesi-hero__grid--enter {
+    animation: gesi-hero-grid-enter 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gesi-hero__grid--enter {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
   }
   @media (min-width: 900px) {
     .gesi-hero__grid {
@@ -408,6 +420,15 @@
       drop-shadow(0 10px 30px rgba(58, 79, 217, 0.15));
     animation: gesi-float 6s ease-in-out infinite;
   }
+  @media (max-width: 768px) {
+    .gesi-hero__logo::before {
+      animation: none;
+      filter: blur(28px);
+    }
+    .gesi-hero__logo-img {
+      animation: none;
+    }
+  }
 
   @keyframes gesi-pulse {
     0% {
@@ -427,6 +448,16 @@
     }
     50% {
       transform: translateY(-12px) rotate(-1deg);
+    }
+  }
+  @keyframes gesi-hero-grid-enter {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
   @keyframes gesi-rotate {

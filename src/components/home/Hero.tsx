@@ -1,9 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
-
-const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export function Hero() {
   return (
@@ -26,12 +21,7 @@ export function Hero() {
         <span className="gesi-hero__meta-jp">本田技研工業</span>
       </div>
 
-      <motion.div
-        className="gesi-hero__grid"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, delay: 0.2, ease }}
-      >
+      <div className="gesi-hero__grid gesi-hero__grid--enter">
         <div>
           <div className="gesi-hero__eyebrow">
             <span className="gesi-hero__eyebrow-dot" aria-hidden />
@@ -70,10 +60,10 @@ export function Hero() {
             height={520}
             className="gesi-hero__logo-img h-auto w-full"
             priority
-            sizes="(max-width: 900px) 100vw, 50vw"
+            sizes="(max-width: 899px) min(92vw, 520px), (max-width: 1279px) 45vw, 520px"
           />
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
