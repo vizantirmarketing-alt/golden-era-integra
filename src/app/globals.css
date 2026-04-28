@@ -208,6 +208,12 @@
        @layer components, so nav clearance lives here instead. */
     padding: var(--nav-offset) 1.5rem 4rem;
   }
+  @media (max-width: 899px) {
+    .gesi-hero {
+      /* Reserve a dedicated top region for both metadata corners on mobile. */
+      padding-top: calc(var(--nav-offset) + 7.5rem);
+    }
+  }
   @media (min-width: 768px) {
     .gesi-hero {
       justify-content: flex-start;
@@ -238,6 +244,15 @@
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--ink-faint);
+  }
+  @media (max-width: 899px) {
+    .gesi-hero__meta {
+      top: calc(var(--nav-offset) + 0.85rem);
+      max-width: 45%;
+      font-size: 8px;
+      line-height: 1.5;
+      letter-spacing: 0.15em;
+    }
   }
   @media (min-width: 768px) {
     .gesi-hero__meta {
@@ -278,6 +293,12 @@
     letter-spacing: 0.2em;
     color: var(--magenta);
     text-transform: none;
+  }
+  @media (max-width: 899px) {
+    .gesi-hero__meta-jp {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+    }
   }
 
   .gesi-hero__grid {
@@ -399,6 +420,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    isolation: isolate;
   }
   .gesi-hero__logo::before {
     content: "";
@@ -418,6 +440,7 @@
     );
     filter: blur(40px);
     animation: gesi-rotate 20s linear infinite;
+    will-change: transform;
   }
   .gesi-hero__logo-img {
     max-width: 38rem;
@@ -449,6 +472,9 @@
     height: 100%;
     opacity: 0;
     transition: opacity 300ms ease-in-out;
+    will-change: opacity;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
   }
   .gesi-hero__carousel-slide.is-active {
     z-index: 1;

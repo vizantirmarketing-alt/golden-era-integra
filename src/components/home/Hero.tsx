@@ -40,13 +40,13 @@ export async function Hero() {
     >
       <div className="gesi-hero__bg" aria-hidden />
 
-      <div className="gesi-hero__meta gesi-hero__meta--tl max-md:[top:4.5rem] max-md:max-w-[40%] max-md:[font-size:8px] max-md:leading-[1.5] max-md:[letter-spacing:0.15em]">
+      <div className="gesi-hero__meta gesi-hero__meta--tl">
         <div>N 36°10′30″ W 115°08′11″</div>
         <div>Las Vegas, Nevada</div>
         <span className="gesi-hero__accent">Chassis No. DC2-1102847</span>
         <span className="gesi-hero__meta-jp">鈴鹿製作所 1995</span>
       </div>
-      <div className="gesi-hero__meta gesi-hero__meta--tr max-md:[top:4.5rem] max-md:max-w-[40%] max-md:[font-size:8px] max-md:leading-[1.5] max-md:[letter-spacing:0.15em]">
+      <div className="gesi-hero__meta gesi-hero__meta--tr">
         <div>Vol. 01 / Issue 01</div>
         <div>1995 Acura Integra GS-R</div>
         <span className="gesi-hero__accent">A Documented Build</span>
