@@ -442,12 +442,22 @@
     border-radius: 10px;
   }
   .gesi-hero__carousel-slide {
-    display: none;
-    aspect-ratio: 1;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
   }
   .gesi-hero__carousel-slide.is-active {
-    display: block;
+    z-index: 1;
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gesi-hero__carousel-slide {
+      transition: none;
+    }
   }
   .gesi-hero__carousel-indicator {
     display: flex;
