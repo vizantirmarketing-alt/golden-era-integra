@@ -211,7 +211,7 @@
   @media (max-width: 899px) {
     .gesi-hero {
       /* Reserve a dedicated top region for both metadata corners on mobile. */
-      padding-top: calc(var(--nav-offset) + 7.5rem);
+      padding: calc(var(--nav-offset) + 7.5rem) 1.5rem 4rem;
     }
   }
   @media (min-width: 768px) {
@@ -310,6 +310,14 @@
     margin: 0 auto;
     align-items: center;
     gap: 3rem;
+  }
+  @media (max-width: 899px) {
+    /* Hard clamp to viewport gutters on mobile (1.5rem each side). */
+    .gesi-hero__grid {
+      width: calc(100vw - 3rem);
+      max-width: calc(100vw - 3rem);
+      margin-inline: auto;
+    }
   }
   .gesi-hero__copy {
     width: 100%;
