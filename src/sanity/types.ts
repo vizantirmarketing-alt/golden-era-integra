@@ -66,14 +66,23 @@ export type JournalTag =
 export type JournalEntry = {
   _id: string;
   _type: "journalEntry";
+  _createdAt?: string;
   title?: string;
   slug?: { current: string };
   tag?: JournalTag;
   excerpt?: string;
   publishedAt?: string;
   coverImage?: SanityImageField;
+  /** Portable Text: blocks, images, callout, codeBlock (see Studio schemas). */
   body?: PortableTextBlock[] | null;
 };
+
+/** Neighbor row for prev/next navigation (GROQ `journalEntryPrevQuery` / `Next`). */
+export type JournalEntryNav = {
+  _id?: string;
+  title?: string;
+  slug?: { current?: string };
+} | null;
 
 export type FilmEpisode = {
   _id: string;

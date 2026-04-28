@@ -25,8 +25,9 @@ export const galleryImagesQuery = defineQuery(`
 }
 `);
 
-export const journalEntriesQuery = defineQuery(`
-*[_type == "journalEntry"] | order(publishedAt desc) {
+/** Index list: no body. Sort: newest first, then `_createdAt` tiebreaker. */
+export const journalEntriesListQuery = defineQuery(`
+*[_type == "journalEntry"] | order(publishedAt desc, _createdAt desc) {
   _id,
   _type,
   title,
@@ -34,8 +35,7 @@ export const journalEntriesQuery = defineQuery(`
   tag,
   excerpt,
   publishedAt,
-  coverImage { asset, alt, hotspot, crop },
-  body
+  _createdAt
 }
 `);
 
@@ -48,8 +48,42 @@ export const journalEntryBySlugQuery = defineQuery(`
   tag,
   excerpt,
   publishedAt,
+  _createdAt,
   coverImage { asset, alt, hotspot, crop },
   body
+}
+`);
+
+/**
+ * Older entry (listed below current on /journal): lower `publishedAt` sort key,
+ * `_createdAt` tiebreaker. `$sortAt` = `coalesce(publishedAt, _createdAt)` for the current doc.
+ */
+export const journalEntryPrevQuery = defineQuery(`
+*[_type == "journalEntry" && slug.current != $slug && (
+  dateTime(coalesce(publishedAt, _createdAt)) < dateTime($sortAt)
+  || (
+    dateTime(coalesce(publishedAt, _createdAt)) == dateTime($sortAt)
+    && _createdAt < $docCreatedAt
+  )
+)] | order(dateTime(coalesce(publishedAt, _createdAt)) desc, _createdAt desc)[0] {
+  _id,
+  title,
+  slug
+}
+`);
+
+/** Newer entry (listed above current): higher sort key, closest first. */
+export const journalEntryNextQuery = defineQuery(`
+*[_type == "journalEntry" && slug.current != $slug && (
+  dateTime(coalesce(publishedAt, _createdAt)) > dateTime($sortAt)
+  || (
+    dateTime(coalesce(publishedAt, _createdAt)) == dateTime($sortAt)
+    && _createdAt > $docCreatedAt
+  )
+)] | order(dateTime(coalesce(publishedAt, _createdAt)) asc, _createdAt asc)[0] {
+  _id,
+  title,
+  slug
 }
 `);
 
