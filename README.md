@@ -44,7 +44,7 @@ The prompt is one master file because the project context — design system, kan
 ## Things to do BEFORE starting
 
 1. **Verify Node version** — install Node 20.x or 22.x LTS via nvm if you don't have it.
-2. **Create Sanity dataset** — the prompt tells Cursor to create a new dataset called `golden-era` under your existing project ID `w1dd2xhw`. You can do this manually in the Sanity dashboard before Phase 3, or let Cursor handle it via CLI when it gets there.
+2. **Sanity** — project ID `4dgncr6u`, dataset `production` (org `o2C5Mz8F9`). Copy `.env.local.example` to `.env.local` and set the `NEXT_PUBLIC_SANITY_*` values to match.
 3. **Create Supabase project** — Phase 8 needs an empty Supabase project. Create one at supabase.com, grab the URL + anon key + service role key, drop them into `.env.local` when Cursor asks. Don't share these with Cursor — Cursor only needs the placeholder names.
 4. **Have the logo handy** — drop `logo.png` into `public/` immediately after Phase 0 finishes.
 

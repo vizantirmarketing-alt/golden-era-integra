@@ -21,7 +21,7 @@ The site is a Vizantir Design Studio portfolio piece doubling as a personal show
 - **Language:** TypeScript (strict mode)
 - **Styling:** Tailwind CSS (v4 if Next 16 supports it cleanly, otherwise v3)
 - **Animation:** Framer Motion
-- **CMS:** Sanity (existing project ID is `w1dd2xhw` — set up as new dataset for this project)
+- **CMS:** Sanity (project ID `4dgncr6u` — `production` dataset, org `o2C5Mz8F9`)
 - **Database:** Supabase (Postgres) — guestbook only for now
 - **Deployment:** Vercel
 - **Fonts:** Anton (display), Bebas Neue (condensed), Inter (body), JetBrains Mono (mono), Noto Serif JP (kanji) — load via `next/font/google`
@@ -149,8 +149,8 @@ app/
    NEXT_PUBLIC_SUPABASE_URL=
    NEXT_PUBLIC_SUPABASE_ANON_KEY=
    SUPABASE_SERVICE_ROLE_KEY=
-   NEXT_PUBLIC_SANITY_PROJECT_ID=w1dd2xhw
-   NEXT_PUBLIC_SANITY_DATASET=golden-era
+   NEXT_PUBLIC_SANITY_PROJECT_ID=4dgncr6u
+   NEXT_PUBLIC_SANITY_DATASET=production
    SANITY_API_TOKEN=
    ```
 6. Add `logo.png` to `/public/logo.png` (the user will drop this in).
@@ -203,7 +203,7 @@ Use Framer Motion for: hero fade-in (1.2s ease cubic-bezier 0.22, 1, 0.36, 1), s
 **Goal:** Sanity Studio scaffolded with schemas for all dynamic content.
 
 1. Create `sanity/` folder at project root with Sanity v3 Studio config.
-2. Use existing project ID `w1dd2xhw`, create new dataset called `golden-era` (production).
+2. Use project ID `4dgncr6u`, `production` dataset (org `o2C5Mz8F9`).
 3. Schemas to define in `sanity/schemas/`:
 
    **`specCategory.ts`** — for the `/build` page
