@@ -2,26 +2,27 @@
 export const seo = {
   siteName: "Golden Era Integra",
   defaultDescription:
-    "A 1995 Acura Integra GS-R in Milano Red — Las Vegas, Nevada. Premium build documentation and journal.",
+    "A 1995 Acura Integra GS-R in Milano Red — Las Vegas, Nevada. Premium build documentation and photography.",
   home: {
     titleAbsolute: "Golden Era Integra — Las Vegas, Nevada",
     description:
-      "A documented restoration of a 1995 Acura Integra GS-R in Milano Red. Suzuka-built, Vegas-driven — specifications, gallery, journal, and film.",
+      "A documented restoration of a 1995 Acura Integra GS-R in Milano Red. Suzuka-built, Vegas-driven — specifications, gallery, guestbook, and film.",
   },
   build: {
     title: "Specification",
     description:
       "Period-correct DC2 build specifications — engine, chassis, wheels, exterior — documented like a factory sheet set.",
   },
+  buildStory: {
+    titleAbsolute: "Build Story · Golden Era Integra",
+    title: "Build Story",
+    description:
+      "Four years of sourcing genuine Honda parts, restoring glass, and rebuilding the B18C — the full build story of a 1995 Acura Integra GS-R.",
+  },
   gallery: {
     title: "Gallery",
     description:
       "Photography from Las Vegas and the open road — film and digital frames from the Golden Era Integra archive.",
-  },
-  journal: {
-    title: "Build Journal",
-    description:
-      "Long-form entries on acquisition, restoration, and driving — the recorded history of this DC2.",
   },
   film: {
     title: "In Motion",

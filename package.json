@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "sanity": "cd sanity && npx sanity dev"
+    "sanity": "cd sanity && npx sanity dev",
+    "import-gallery": "tsx scripts/import-gallery.ts",
+    "backfill-phase": "tsx scripts/backfill-phase.ts"
   },
   "dependencies": {
     "@portabletext/react": "^6.0.3",
@@ -34,6 +36,7 @@
     "eslint-config-next": "16.2.4",
     "sanity": "^5.22.0",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

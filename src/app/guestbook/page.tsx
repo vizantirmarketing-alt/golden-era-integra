@@ -26,8 +26,8 @@ export default function GuestbookPage() {
             <div className="gesi-col-side">
               <div className="gesi-sticky">
                 <ChapterHeader
-                  chapterLabel="Chapter 05"
-                  number="05"
+                  chapterLabel="Chapter 04"
+                  number="04"
                   label="Guestbook"
                   kanji="芳名録"
                 />

@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { ChapterHeader } from "@/components/ChapterHeader";
 import { GradHeading } from "@/components/GradHeading";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
+import { GalleryPhaseDivider } from "@/components/gallery/GalleryPhaseDivider";
 import { client } from "@/sanity/client";
+import {
+  earliestCapturedYear,
+  groupGalleryImagesByPhase,
+} from "@/lib/gallery-phases";
 import { seo } from "@/lib/seo";
 import { galleryImagesQuery } from "@/sanity/queries";
 import type { GalleryImage } from "@/sanity/types";
@@ -28,6 +33,7 @@ export default async function GalleryPage() {
   );
 
   const list = images ?? [];
+  const phaseGroups = groupGalleryImagesByPhase(list);
 
   return (
     <div className="gesi-chapter gesi-gallery-page text-ink">
@@ -45,13 +51,13 @@ export default async function GalleryPage() {
           </div>
           <div className="gesi-col-main">
             <GradHeading as="h1" className="!mb-8 !text-balance sm:!pr-4">
-              Captured in motion.
+              THE
               <br />
-              <span className="grad">Las Vegas light.</span>
+              <span className="grad">ARCHIVE.</span>
             </GradHeading>
             <p className="body-copy max-w-[36rem]">
-              A rolling archive of this DC2 in its natural habitat: parking decks,
-              canyons, city glow, and early desert mornings.
+              Four years of work, in chronological order. Before, during, and
+              after.
             </p>
           </div>
         </div>
@@ -64,7 +70,18 @@ export default async function GalleryPage() {
             </p>
           </div>
         ) : (
-          <GalleryGrid images={list} />
+          <>
+            {phaseGroups.map(({ phase, images }, idx) => (
+              <div key={phase} className="gesi-gallery-phase-block">
+                <GalleryPhaseDivider
+                  chapterNumber={idx + 2}
+                  phase={phase}
+                  year={earliestCapturedYear(images)}
+                />
+                <GalleryGrid images={images} />
+              </div>
+            ))}
+          </>
         )}
       </div>
     </div>

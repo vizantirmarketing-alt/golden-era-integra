@@ -8,8 +8,8 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 const links = [
   { href: "/#origin", label: "Story" },
   { href: "/build", label: "Build" },
+  { href: "/build-story", label: "Build Story" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/journal", label: "Journal" },
   { href: "/guestbook", label: "Guestbook" },
   { href: "/film", label: "Film" },
 ] as const;
@@ -78,7 +78,7 @@ export function Nav() {
           id={panelId}
           className={cn(
             "absolute top-full right-0 left-0 z-10 flex max-h-[min(100vh,480px)] flex-col gap-0 overflow-y-auto border-b border-line bg-bg shadow-[0_12px_40px_rgba(26,14,46,0.08)] transition-[opacity,transform] duration-300",
-            "md:static md:ml-auto md:max-h-none md:flex md:w-auto md:max-w-none md:flex-row md:items-center md:justify-end md:gap-8 md:overflow-visible md:border-0 md:bg-transparent md:shadow-none",
+            "md:static md:ml-auto md:max-h-none md:flex md:w-auto md:max-w-none md:flex-row md:items-center md:justify-end md:gap-6 lg:gap-8 md:overflow-visible md:border-0 md:bg-transparent md:shadow-none",
             open
               ? "max-md:visible translate-y-0 max-md:opacity-100"
               : "-translate-y-3 max-md:pointer-events-none max-md:invisible max-md:select-none max-md:opacity-0",
@@ -90,7 +90,7 @@ export function Nav() {
               key={href}
               ref={index === 0 ? firstLinkRef : undefined}
               href={href}
-              className="group relative border-b border-line-soft px-4 py-3.5 font-mono text-ink no-underline transition-colors last:max-md:border-b-0 max-md:text-xs md:border-0 md:px-0 md:py-0 md:text-[11px] tracking-[0.2em] uppercase sm:px-6"
+              className="group relative border-b border-line-soft px-4 py-3.5 font-mono text-ink no-underline transition-colors last:max-md:border-b-0 max-md:text-xs md:border-0 md:px-0 md:py-0 md:text-[10px] lg:text-[11px] md:tracking-[0.16em] lg:tracking-[0.2em] uppercase sm:px-6"
               onClick={close}
             >
               {label}

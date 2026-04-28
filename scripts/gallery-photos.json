@@ -1,0 +1,79 @@
+[
+  {
+    "filename": "driver-side-profile.jpg",
+    "caption": "The day I brought it home. Replica TE37s, replica Mugen wing, faded clearcoat. This is the starting point.",
+    "alt": "1995 Acura Integra GS-R in faded Milano Red parked in driveway, rear three-quarter view, with bronze replica TE37 wheels and a black replica Mugen rear wing.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2021-06-01",
+    "order": 10,
+    "gridSpan": "g1",
+    "phase": "before"
+  },
+  {
+    "filename": "passenger-side-profile.jpg",
+    "caption": "2021. Replica wheels, replica wing, factory paint. I was figuring out what the car would become.",
+    "alt": "Rear three-quarter view of 1995 Acura Integra GS-R in Milano Red parked in driveway, with bronze replica TE37 wheels and black replica Mugen rear spoiler.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2021-06-01",
+    "order": 20,
+    "gridSpan": "g3",
+    "phase": "before"
+  },
+  {
+    "filename": "rear-profile.jpg",
+    "caption": "Original rear bumper, dealer plate still on. The wing is a replica Mugen — stayed on for a while before priorities sorted themselves out.",
+    "alt": "Rear view of stock 1995 Acura Integra GS-R in original Milano Red, showing factory bumper with scuffs, dealer license plate frame, and a black replica Mugen rear spoiler.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2021-06-01",
+    "order": 30,
+    "gridSpan": "g3",
+    "phase": "before"
+  },
+  {
+    "filename": "engine-bay-stock.jpg",
+    "caption": "B18C as I bought it. Stock top end, basic cone filter, factory bay. Compare to where it ended up.",
+    "alt": "Stock B18C engine bay of a 1995 Acura Integra GS-R, with original red Honda VTEC valve cover, factory wiring, basic aftermarket red cone air filter, and unrestored Milano Red engine bay paint.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2021-06-01",
+    "order": 40,
+    "gridSpan": "g5",
+    "phase": "before"
+  },
+  {
+    "filename": "steering-wheel-stock.jpg",
+    "caption": "Original Acura wheel and cluster. Both replaced later — JDM wheel reupholstered with red stitching, ID4Motion digital cluster behind it.",
+    "alt": "Stock interior of 1995 Acura Integra GS-R showing factory black Acura airbag steering wheel, analog gauge cluster, dashboard, and shift boot with red stitching.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2021-06-01",
+    "order": 50,
+    "gridSpan": "g7",
+    "phase": "before"
+  },
+  {
+    "filename": "rear-seats-original.jpg",
+    "caption": "Original GS-R leather rear seats, torn at the seam. Reupholstered later with red stitching to match the fronts.",
+    "alt": "Original black leather rear bench seat of a 1995 Acura Integra GS-R, showing wear and a torn seam on the driver's side cushion.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2021-06-01",
+    "order": 60,
+    "gridSpan": "g4",
+    "phase": "before"
+  },
+  {
+    "filename": "trunk.jpg",
+    "caption": "Empty trunk, factory carpet, OEM parcel shelf. Exposed wiring from a previous owner's stereo install — pulled out later when the car went glass-out for paint.",
+    "alt": "Open trunk of 1995 Acura Integra GS-R viewed from the rear, showing factory black carpet, OEM parcel shelf, and loose wiring from a previous stereo installation, with rear seats and dashboard visible through the cabin.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2021-06-01",
+    "order": 70,
+    "gridSpan": "g6",
+    "phase": "before"
+  }
+]

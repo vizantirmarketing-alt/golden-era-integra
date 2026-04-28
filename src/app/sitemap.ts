@@ -1,23 +1,8 @@
 import type { MetadataRoute } from "next";
-import { client } from "@/sanity/client";
 import { getSiteUrl } from "@/lib/site";
-import { journalSitemapQuery } from "@/sanity/queries";
-
-type JournalSitemapRow = {
-  slug: string;
-  publishedAt?: string | null;
-  _updatedAt?: string | null;
-};
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = getSiteUrl();
-
-  const journalRows = await client.fetch<JournalSitemapRow[]>(
-    journalSitemapQuery,
-    {},
-    { next: { revalidate: 3600 } }
-  );
-
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -34,13 +19,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${base}/gallery`,
+      url: `${base}/build-story`,
       lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
+      changeFrequency: "monthly",
+      priority: 0.88,
     },
     {
-      url: `${base}/journal`,
+      url: `${base}/gallery`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
@@ -59,18 +44,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  const journalRoutes: MetadataRoute.Sitemap = (journalRows ?? []).map(
-    (row) => ({
-      url: `${base}/journal/${encodeURIComponent(row.slug)}`,
-      lastModified: row.publishedAt
-        ? new Date(row.publishedAt)
-        : row._updatedAt
-          ? new Date(row._updatedAt)
-          : now,
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    })
-  );
-
-  return [...staticRoutes, ...journalRoutes];
+  return staticRoutes;
 }

@@ -41,6 +41,23 @@ export default defineType({
     defineField({ name: "capturedAt", type: "date" }),
     defineField({ name: "order", type: "number", initialValue: 0 }),
     defineField({
+      name: "phase",
+      title: "Build phase",
+      type: "string",
+      options: {
+        list: [
+          { title: "Before", value: "before" },
+          { title: "Disassembly", value: "disassembly" },
+          { title: "Paint & Body", value: "paint" },
+          { title: "Engine Build", value: "engine" },
+          { title: "Assembly", value: "assembly" },
+          { title: "Finished", value: "finished" },
+        ],
+        layout: "dropdown",
+      },
+      initialValue: "before",
+    }),
+    defineField({
       name: "gridSpan",
       type: "string",
       options: { list: [...gridOptions] },

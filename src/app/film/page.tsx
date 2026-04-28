@@ -60,8 +60,8 @@ export default async function FilmPage() {
           <div className="gesi-col-side">
             <div className="gesi-sticky">
               <ChapterHeader
-                chapterLabel="Chapter 06"
-                number="06"
+                chapterLabel="Chapter 05"
+                number="05"
                 label="In Motion"
                 kanji="走行"
               />

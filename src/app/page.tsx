@@ -21,23 +21,6 @@ export const metadata: Metadata = {
   },
 };
 
-const journalPreview = [
-  {
-    key: "found-her",
-    date: "03.14.2026",
-    tag: "Acquisition",
-    title: "Found Her",
-    body: "Two owner California car. 87,000 original miles. Garaged her entire life. Original Milano Red.",
-  },
-  {
-    key: "disassembly",
-    date: "04.02.2026",
-    tag: "Restoration",
-    title: "The Disassembly",
-    body: "Every panel off. Every bolt cataloged. The kind of patience this car deserves.",
-  },
-] as const;
-
 const galleryTeaser = [
   { id: 1, idx: "001", label: "Vegas Strip — Blue Hour", tone: "t1" as const },
   { id: 2, idx: "002", label: "Front 3/4 — Magenta Sunset", tone: "t2" as const },
@@ -147,7 +130,7 @@ export default function Home() {
             &ldquo;Restoration is not <em>nostalgia.</em> It is the refusal to
             let something good <em>disappear.</em>&rdquo;
           </blockquote>
-          <cite>— Owner&apos;s Note, Build Journal Vol. 01</cite>
+          <cite>— Owner&apos;s Note, Vol. 01</cite>
         </div>
         <div className="gesi-quote__stars gesi-quote__stars--bot" aria-hidden>
           <Star />
@@ -170,20 +153,30 @@ export default function Home() {
             </div>
             <div className="gesi-col-main">
               <GradHeading as="h2" className="!mb-8 !text-balance sm:!pr-4">
-                Period-correct.
-                <br />
-                <span className="grad">Driven daily.</span>
+                Hunted, not <span className="grad">bought</span>.
               </GradHeading>
-              <p className="body-copy max-w-[36rem]">
-                Every modification on this car could have plausibly been
-                performed in 2002. No coilovers with Bluetooth controllers. No
-                carbon fiber where carbon fiber doesn&apos;t belong. The catalog
-                is short and considered.
-              </p>
+              <div className="max-w-[36rem] space-y-4">
+                <p className="body-copy">
+                  When I bought the car in 2021, I had a vision. I wanted to
+                  restore it with as much Honda genuine as I could find. Not
+                  because anyone was checking. I just wanted it done right.
+                </p>
+                <p className="body-copy">
+                  The car is a &apos;95 GS-R, but I wanted the 98-spec front
+                  and rear bumper, Type R spoiler, Type T side skirts, quad
+                  headlights. Every piece had to be Honda or right. If it
+                  wasn&apos;t, I waited.
+                </p>
+                <p className="body-copy">
+                  Four years of hunting. Junkyards. New old stock from Japan.
+                  An Acura dealer that had a brand-new 98 front bumper sitting
+                  on a shelf. Whatever it took.
+                </p>
+              </div>
             </div>
           </div>
           <div className="gesi-cta">
-            <Link href="/build">View Full Build →</Link>
+            <Link href="/build-story">Read the full story →</Link>
           </div>
         </div>
       </MotionSection>
@@ -228,46 +221,6 @@ export default function Home() {
           </div>
           <div className="gesi-cta mt-12">
             <Link href="/gallery">View Full Gallery →</Link>
-          </div>
-        </div>
-      </MotionSection>
-      <MotionSection id="journal" className="gesi-chapter text-ink">
-        <div className="gesi-container">
-          <div className="gesi-grid-12 mb-12">
-            <div className="gesi-col-side">
-              <ChapterHeader
-                chapterLabel="Chapter 04"
-                number="04"
-                label="Build Journal"
-                kanji="記録"
-              />
-            </div>
-            <div className="gesi-col-main">
-              <GradHeading as="h2" className="!mb-0 !text-balance">
-                A record,
-                <br />
-                <span className="grad">in entries.</span>
-              </GradHeading>
-            </div>
-          </div>
-          {journalPreview.map((entry) => (
-            <Link
-              key={entry.key}
-              href="/journal"
-              className="gesi-j-article text-ink"
-            >
-              <div className="gesi-j-date">{entry.date}</div>
-              <div className="gesi-j-tag">{entry.tag}</div>
-              <div className="gesi-j-body">
-                <h3>{entry.title}</h3>
-                <p>{entry.body}</p>
-              </div>
-              <div className="gesi-j-read">Read →</div>
-            </Link>
-          ))}
-          <div className="gesi-j-endcap" aria-hidden />
-          <div className="gesi-cta mt-8">
-            <Link href="/journal">Read All Entries →</Link>
           </div>
         </div>
       </MotionSection>

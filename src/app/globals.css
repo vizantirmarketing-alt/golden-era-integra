@@ -1381,6 +1381,48 @@
     padding-top: 2rem;
   }
 
+  /* Sub-chapter headers between build phases (smaller than page hero / main chapter). */
+  .gesi-gallery-phase-divider {
+    margin-bottom: 2rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .gesi-gallery-phase-block:first-child .gesi-gallery-phase-divider {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+  .gesi-gallery-phase-block + .gesi-gallery-phase-block {
+    margin-top: 1.5rem;
+  }
+  .gesi-gallery-phase-divider .chapter-num-label {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+  }
+  .gesi-gallery-phase-divider .chapter-num {
+    font-size: clamp(2.25rem, 5vw, 3.25rem);
+    line-height: 0.92;
+    -webkit-text-stroke: 1px var(--ink);
+  }
+  .gesi-gallery-phase-divider .chapter-tag {
+    margin-top: 0.65rem;
+    font-size: 10px;
+  }
+  .gesi-gallery-phase-year {
+    margin-top: 0.35rem;
+    font-family: var(--font-family-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .gesi-gallery-phase-divider .chapter-tag-jp {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    letter-spacing: 0.18em;
+  }
+
   .gesi-gallery-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
