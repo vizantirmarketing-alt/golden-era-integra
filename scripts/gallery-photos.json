@@ -273,5 +273,93 @@
     "order": 300,
     "gridSpan": "g6",
     "phase": "body-prep"
+  },
+  {
+    "filename": "fitting-1.jpg",
+    "caption": "Driver fender, JDM side marker hole cut. USDM cars didn't have them — JDM did, so I added them.",
+    "alt": "Driver-side front fender of 1995 Acura Integra GS-R in gray primer test-fitted to the body, with the original Milano Red paint visible behind and a blue Honda VTEC valve cover in the engine bay.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-05-01",
+    "order": 310,
+    "gridSpan": "g4",
+    "phase": "fitting"
+  },
+  {
+    "filename": "fitting-2.jpg",
+    "caption": "98-spec front bumper test-fit. Verifying the conversion lines up with the new fender and hood gaps.",
+    "alt": "Front three-quarter view of 1995 Acura Integra GS-R with 98-spec front bumper conversion test-fitted in satin black, quad headlights installed, and the driver fender in primer alongside.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-05-01",
+    "order": 320,
+    "gridSpan": "g6",
+    "phase": "fitting"
+  },
+  {
+    "filename": "fitting-3.jpg",
+    "caption": "Headlight and turn signal alignment checked. Quad conversion has to sit right or the whole face looks off.",
+    "alt": "Close-up of 98-spec front bumper conversion on 1995 Acura Integra GS-R in satin black, showing both quad headlights, the embossed Integra script, and the amber turn signal.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-05-01",
+    "order": 330,
+    "gridSpan": "g3",
+    "phase": "fitting"
+  },
+  {
+    "filename": "passenger-side-marker-fitting.jpg",
+    "caption": "Old bumper off. Stripping the front end down to test-fit the 98-spec.",
+    "alt": "Front of 1995 Acura Integra GS-R with bumper removed for fitment, showing the radiator support, intercooler, and original headlight assemblies on either side, with the blue Honda VTEC valve cover visible above.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-05-01",
+    "order": 340,
+    "gridSpan": "g5",
+    "phase": "fitting"
+  },
+  {
+    "filename": "driver-side-marker-fitting.jpg",
+    "caption": "Passenger fender, same treatment. Side marker hole cut, fender block-sanded smooth.",
+    "alt": "Passenger-side front fender of 1995 Acura Integra GS-R in gray primer test-fitted to the body, with the original Milano Red paint behind and a yellow microfiber towel in the engine bay.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-05-01",
+    "order": 350,
+    "gridSpan": "g4",
+    "phase": "fitting"
+  },
+  {
+    "filename": "rear-bumper-fitment-1.jpg",
+    "caption": "OEM rear bumper test-fit. Marker holes circled in yellow — verifying panel lines before paint.",
+    "alt": "OEM rear bumper of 1995 Acura Integra GS-R in silver primer test-fitted to the rear of the car, with marker delete locations circled in yellow paint pen and the trunk opening exposed above.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-05-01",
+    "order": 360,
+    "gridSpan": "g5",
+    "phase": "fitting"
+  },
+  {
+    "filename": "rear-bumper-fitment-2.jpg",
+    "caption": "Straight-on test fit. Checking the bumper sits flush across the body line and the trunk gap.",
+    "alt": "Rear view of 1995 Acura Integra GS-R with OEM rear bumper test-fitted in silver primer, showing the license plate bracket, embossed Integra script, and exhaust cutout below the trunk lid in white primer.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-05-01",
+    "order": 370,
+    "gridSpan": "g4",
+    "phase": "fitting"
+  },
+  {
+    "filename": "rear-bumper-fitment-3.jpg",
+    "caption": "Driver-corner test fit. Confirming the bumper meets the quarter cleanly before color.",
+    "alt": "Driver-side rear corner of 1995 Acura Integra GS-R with OEM rear bumper test-fitted in silver primer, showing the body line gap, exposed taillight opening above, and a person's foot in frame at left.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-05-01",
+    "order": 380,
+    "gridSpan": "g3",
+    "phase": "fitting"
   }
 ]

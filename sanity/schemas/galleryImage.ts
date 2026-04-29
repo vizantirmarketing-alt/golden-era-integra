@@ -49,6 +49,7 @@ export default defineType({
           { title: "Before", value: "before" },
           { title: "Disassembly", value: "disassembly" },
           { title: "Body Prep", value: "body-prep" },
+          { title: "Fitting", value: "fitting" },
           { title: "Paint & Body", value: "paint" },
           { title: "Engine Build", value: "engine" },
           { title: "Assembly", value: "assembly" },

@@ -4,6 +4,7 @@ export const GALLERY_PHASE_ORDER: readonly GalleryPhase[] = [
   "before",
   "disassembly",
   "body-prep",
+  "fitting",
   "paint",
   "engine",
   "assembly",

@@ -30,6 +30,7 @@ export type GalleryPhase =
   | "before"
   | "disassembly"
   | "body-prep"
+  | "fitting"
   | "paint"
   | "engine"
   | "assembly"

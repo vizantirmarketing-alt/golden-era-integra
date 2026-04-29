@@ -35,6 +35,7 @@ type GalleryPhase =
   | "before"
   | "disassembly"
   | "body-prep"
+  | "fitting"
   | "paint"
   | "engine"
   | "assembly"
@@ -71,6 +72,7 @@ const PHASE_VALUES: readonly GalleryPhase[] = [
   "before",
   "disassembly",
   "body-prep",
+  "fitting",
   "paint",
   "engine",
   "assembly",
@@ -159,6 +161,73 @@ function getClient(): SanityClient {
   });
 }
 
+/** Max 5 attempts per operation; waits 1s, 2s, 4s, 8s after failures 1–4 (a fifth 16s wait would require a 6th attempt). */
+const RETRY_MAX_ATTEMPTS = 5;
+const RETRY_BACKOFF_MS = [1000, 2000, 4000, 8000] as const;
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+function getErrorDetails(error: unknown): { statusCode?: number; code?: string; message: string } {
+  if (error && typeof error === "object") {
+    const o = error as Record<string, unknown>;
+    const statusCode = typeof o.statusCode === "number" ? o.statusCode : undefined;
+    const code = typeof o.code === "string" ? o.code : undefined;
+    const message = typeof o.message === "string" ? o.message : String(error);
+    return { statusCode, code, message };
+  }
+  return { message: String(error) };
+}
+
+function isRetryableError(error: unknown): boolean {
+  const { statusCode, code, message } = getErrorDetails(error);
+  if (statusCode !== undefined) {
+    if (statusCode >= 400 && statusCode < 500) {
+      return false;
+    }
+    if ([502, 503, 504].includes(statusCode)) {
+      return true;
+    }
+  }
+  if (code === "ECONNRESET" || code === "ETIMEDOUT" || code === "ENOTFOUND") {
+    return true;
+  }
+  const m = message.toLowerCase();
+  if (m.includes("fetch failed") || m.includes("network")) {
+    return true;
+  }
+  return false;
+}
+
+/** Retries transient Sanity / network failures with exponential backoff. Does not retry other 4xx/5xx (only 502–503–504 and network cases above). */
+async function withRetry<T>(operation: () => Promise<T>, label: string): Promise<T> {
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= RETRY_MAX_ATTEMPTS; attempt++) {
+    try {
+      return await operation();
+    } catch (error) {
+      lastError = error;
+      const { statusCode, code, message } = getErrorDetails(error);
+      const detail =
+        statusCode !== undefined ? `status ${statusCode}` : code !== undefined ? `code ${code}` : message;
+
+      if (attempt === RETRY_MAX_ATTEMPTS || !isRetryableError(error)) {
+        throw error;
+      }
+
+      const waitMs = RETRY_BACKOFF_MS[attempt - 1]!;
+      console.log(
+        `[retry] ${label} attempt ${attempt}/${RETRY_MAX_ATTEMPTS} failed (${detail}). Waiting ${waitMs}ms…`,
+      );
+      await sleep(waitMs);
+    }
+  }
+  throw lastError;
+}
+
 function readManifest(): GalleryPhotoEntry[] {
   const raw = fs.readFileSync(manifestPath, "utf8");
   const data = JSON.parse(raw) as unknown;
@@ -228,28 +297,35 @@ async function main(): Promise<void> {
       continue;
     }
 
-    const body = fs.createReadStream(filePath);
-    const asset = await client.assets.upload("image", body, {
-      filename: path.basename(photoFile),
-    });
+    const asset = await withRetry(
+      () =>
+        client.assets.upload("image", fs.createReadStream(filePath), {
+          filename: path.basename(photoFile),
+        }),
+      photoFile,
+    );
 
     const docId = idFromFilename(photoFile);
-    await client.createOrReplace({
-      _id: docId,
-      _type: "galleryImage",
-      image: {
-        _type: "image",
-        asset: { _type: "reference", _ref: asset._id },
-        alt: entry.alt,
-      },
-      caption: entry.caption ?? "",
-      location: entry.location ?? "",
-      shotOn: entry.shotOn,
-      capturedAt: entry.capturedAt,
-      order: entry.order ?? i,
-      gridSpan: entry.gridSpan,
-      phase: isPhase(entry.phase) ? entry.phase : "before",
-    });
+    await withRetry(
+      () =>
+        client.createOrReplace({
+          _id: docId,
+          _type: "galleryImage",
+          image: {
+            _type: "image",
+            asset: { _type: "reference", _ref: asset._id },
+            alt: entry.alt,
+          },
+          caption: entry.caption ?? "",
+          location: entry.location ?? "",
+          shotOn: entry.shotOn,
+          capturedAt: entry.capturedAt,
+          order: entry.order ?? i,
+          gridSpan: entry.gridSpan,
+          phase: isPhase(entry.phase) ? entry.phase : "before",
+        }),
+      photoFile,
+    );
 
     console.log(`${label}: createOrReplace galleryImage ${docId} with asset ${asset._id}`);
   }
