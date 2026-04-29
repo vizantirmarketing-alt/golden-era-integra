@@ -361,5 +361,115 @@
     "order": 380,
     "gridSpan": "g3",
     "phase": "fitting"
+  },
+  {
+    "filename": "body-paint-1.jpg",
+    "caption": "Body shell in the booth. R-81 going on, glass-out, every panel exposed.",
+    "alt": "Body shell of 1995 Acura Integra GS-R in a paint booth being sprayed Milano Red R-81, with masking plastic still in place over the windows and openings.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-06-01",
+    "order": 400,
+    "gridSpan": "g6",
+    "phase": "paint"
+  },
+  {
+    "filename": "body-paint-2.jpg",
+    "caption": "First time in the sun. Fresh R-81 against bare metal where the side marker still needs to go.",
+    "alt": "1995 Acura Integra GS-R outdoors in fresh Milano Red R-81 paint, with bare metal still visible at the side marker location on the front fender.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-06-01",
+    "order": 410,
+    "gridSpan": "g4",
+    "phase": "paint"
+  },
+  {
+    "filename": "door-jams.jpg",
+    "caption": "Door jambs and B-pillar painted. Inside gets the same color as outside.",
+    "alt": "Interior door jamb and B-pillar of 1995 Acura Integra GS-R freshly painted Milano Red R-81, with masking still in place.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-06-01",
+    "order": 420,
+    "gridSpan": "g3",
+    "phase": "paint"
+  },
+  {
+    "filename": "engine-bay.jpg",
+    "caption": "Engine bay sprayed R-81. Firewall to fenders, all one color.",
+    "alt": "Engine bay of 1995 Acura Integra GS-R freshly painted Milano Red R-81 from firewall to inner fenders, with foil and tape protecting masked components.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-06-01",
+    "order": 430,
+    "gridSpan": "g5",
+    "phase": "paint"
+  },
+  {
+    "filename": "everything-taking-apart.jpg",
+    "caption": "Every painted piece laid out. Front bumper, GS-R side skirts, Type R spoiler, mirror caps, headlight bezels, door handles — all R-81.",
+    "alt": "All painted exterior pieces of 1995 Acura Integra GS-R laid out together in fresh Milano Red R-81, including the front bumper, GS-R side skirts, Type R rear spoiler, mirror caps, headlight bezels, and door handles.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-06-01",
+    "order": 440,
+    "gridSpan": "g7",
+    "phase": "paint"
+  },
+  {
+    "filename": "fenders-hood-doors.jpg",
+    "caption": "Doors, fenders, hood. All painted, all drying.",
+    "alt": "Both doors, both fenders, and the hood of 1995 Acura Integra GS-R freshly painted Milano Red R-81, drying inside the paint booth.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-06-01",
+    "order": 450,
+    "gridSpan": "g6",
+    "phase": "paint"
+  },
+  {
+    "filename": "front-bumper.jpg",
+    "caption": "98-spec front bumper, fresh R-81. The face of the car.",
+    "alt": "98-spec front bumper for 1995 Acura Integra GS-R freshly painted Milano Red R-81, drying on a stand.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-06-01",
+    "order": 460,
+    "gridSpan": "g4",
+    "phase": "paint"
+  },
+  {
+    "filename": "hood-1.jpg",
+    "caption": "First Molding carbon kevlar hood. R-81 over the panel, carbon weave masked through the vents.",
+    "alt": "First Molding carbon kevlar hood for 1995 Acura Integra GS-R freshly painted Milano Red R-81, with the carbon kevlar weave still visible through masked vents.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-06-01",
+    "order": 470,
+    "gridSpan": "g4",
+    "phase": "paint"
+  },
+  {
+    "filename": "hood-2.jpg",
+    "caption": "OEM hood underside, fresh R-81. Honda detailed what you don't see — figured I would too.",
+    "alt": "Underside of OEM hood for 1995 Acura Integra GS-R freshly painted Milano Red R-81.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-06-01",
+    "order": 480,
+    "gridSpan": "g3",
+    "phase": "paint"
+  },
+  {
+    "filename": "oem-hood.jpg",
+    "caption": "OEM hood, fresh paint flowing. The hood I save for special occasions.",
+    "alt": "OEM hood for 1995 Acura Integra GS-R with wet Milano Red R-81 paint freshly sprayed and flowing across the top surface.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-06-01",
+    "order": 490,
+    "gridSpan": "g4",
+    "phase": "paint"
   }
 ]
