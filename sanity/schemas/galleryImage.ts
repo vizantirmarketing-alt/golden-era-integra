@@ -48,6 +48,7 @@ export default defineType({
         list: [
           { title: "Before", value: "before" },
           { title: "Disassembly", value: "disassembly" },
+          { title: "Body Prep", value: "body-prep" },
           { title: "Paint & Body", value: "paint" },
           { title: "Engine Build", value: "engine" },
           { title: "Assembly", value: "assembly" },

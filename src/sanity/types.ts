@@ -29,6 +29,7 @@ export type GridSpan = "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "
 export type GalleryPhase =
   | "before"
   | "disassembly"
+  | "body-prep"
   | "paint"
   | "engine"
   | "assembly"

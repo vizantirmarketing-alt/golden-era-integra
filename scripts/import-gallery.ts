@@ -1,8 +1,9 @@
 /**
  * Bulk-import gallery images into Sanity as `galleryImage` documents.
- * Requires: SANITY_AUTH_TOKEN (write token). Optional overrides:
- * SANITY_PROJECT_ID, SANITY_DATASET (defaults match sanity/sanity.config.ts).
+ * Loads `.env.local` from repo root when present. Write token: `SANITY_AUTH_TOKEN` or
+ * `SANITY_API_TOKEN`. Optional: SANITY_PROJECT_ID, SANITY_DATASET (defaults match sanity/sanity.config.ts).
  */
+import { getSanityWriteToken } from "./load-env-local";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { createRequire } from "node:module";
@@ -20,7 +21,7 @@ type SanityClient = {
       options: { filename: string },
     ) => Promise<{ _id: string }>;
   };
-  create: (doc: Record<string, unknown>) => Promise<unknown>;
+  createOrReplace: (doc: Record<string, unknown>) => Promise<unknown>;
 };
 
 const requireSanity = createRequire(path.join(repoRoot, "package.json"));
@@ -33,15 +34,22 @@ type ShotOn = "Film 35mm" | "Digital" | "Medium Format";
 type GalleryPhase =
   | "before"
   | "disassembly"
+  | "body-prep"
   | "paint"
   | "engine"
   | "assembly"
   | "finished";
 
 type GalleryPhotoEntry = {
-  /** Filename inside gallery-uploads/ (e.g. my-shot.jpg). Alias: `filename`. */
+  /** Filename inside gallery-uploads/ (or under a subfolder). Alias: `filename`. */
   file?: string;
   filename?: string;
+  /**
+   * Subfolder under `gallery-uploads/` (e.g. `before`, `paint`, or a custom path).
+   * When set, the file is read from `gallery-uploads/{folder}/{filename}` and overrides
+   * the phase-based default path.
+   */
+  folder?: string;
   alt: string;
   caption?: string;
   location?: string;
@@ -50,7 +58,7 @@ type GalleryPhotoEntry = {
   capturedAt?: string;
   order?: number;
   gridSpan?: GridSpan;
-  /** Build phase; omitted entries default to `"before"`. */
+  /** Build phase; omitted entries default to `"before"`. Also used as default subfolder when `folder` is omitted. */
   phase?: GalleryPhase;
 };
 
@@ -62,6 +70,7 @@ const GRID_SPAN_VALUES: readonly GridSpan[] = ["g1", "g2", "g3", "g4", "g5", "g6
 const PHASE_VALUES: readonly GalleryPhase[] = [
   "before",
   "disassembly",
+  "body-prep",
   "paint",
   "engine",
   "assembly",
@@ -86,10 +95,55 @@ function entryFilename(entry: GalleryPhotoEntry): string | undefined {
   return undefined;
 }
 
+/** Deterministic document `_id` from image basename (stable across re-imports). */
+const idFromFilename = (filename: string) =>
+  "gallery-" +
+  path
+    .basename(filename)
+    .replace(/\.[^.]+$/, "")
+    .replace(/[^a-z0-9-]/gi, "-")
+    .toLowerCase();
+
+/** Non-empty trimmed `folder`, or undefined if absent / blank. */
+function entryFolder(entry: GalleryPhotoEntry): string | undefined {
+  if (typeof entry.folder !== "string") {
+    return undefined;
+  }
+  const t = entry.folder.trim();
+  return t.length > 0 ? t : undefined;
+}
+
+/**
+ * Where to read the file from under `gallery-uploads/`:
+ * 1. `folder` → `gallery-uploads/{folder}/{filename}`
+ * 2. else valid `phase` → `gallery-uploads/{phase}/{filename}`
+ * 3. else → `gallery-uploads/{filename}`
+ */
+function resolveGallerySourceFile(
+  entry: GalleryPhotoEntry,
+  photoFile: string,
+  uploadsRoot: string,
+): { absolute: string; displayRelative: string } {
+  const folder = entryFolder(entry);
+  let segments: string[];
+  if (folder !== undefined) {
+    segments = [folder, photoFile];
+  } else if (isPhase(entry.phase)) {
+    segments = [entry.phase!, photoFile];
+  } else {
+    segments = [photoFile];
+  }
+  const absolute = path.join(uploadsRoot, ...segments);
+  const displayRelative = path.join("gallery-uploads", ...segments).replace(/\\/g, "/");
+  return { absolute, displayRelative };
+}
+
 function getClient(): SanityClient {
-  const token = process.env.SANITY_AUTH_TOKEN;
+  const token = getSanityWriteToken();
   if (!token) {
-    console.error("Missing SANITY_AUTH_TOKEN (Sanity write token).");
+    console.error(
+      "Missing Sanity write token: set SANITY_AUTH_TOKEN or SANITY_API_TOKEN (e.g. in .env.local at repo root).",
+    );
     process.exit(1);
   }
   const projectId =
@@ -150,11 +204,28 @@ async function main(): Promise<void> {
       console.error(`${label}: invalid phase "${String(entry.phase)}". Use one of: ${PHASE_VALUES.join(", ")}`);
       process.exit(1);
     }
+    if (entry.folder !== undefined) {
+      if (typeof entry.folder !== "string") {
+        console.error(`${label}: "folder" must be a string when provided. Skipping entry.`);
+        continue;
+      }
+      const trimmedFolder = entry.folder.trim();
+      if (trimmedFolder.length === 0) {
+        console.error(`${label}: "folder" must be non-empty when provided. Skipping entry.`);
+        continue;
+      }
+      if (trimmedFolder.includes("..")) {
+        console.error(`${label}: "folder" must not contain "..". Skipping entry.`);
+        continue;
+      }
+    }
 
-    const filePath = path.join(uploadsDir, photoFile);
+    const { absolute: filePath, displayRelative } = resolveGallerySourceFile(entry, photoFile, uploadsDir);
     if (!fs.existsSync(filePath)) {
-      console.error(`${label}: file not found: ${filePath}`);
-      process.exit(1);
+      console.error(
+        `${label}: file not found at resolved path.\n  Tried: ${filePath}\n  (manifest-relative: ${displayRelative})`,
+      );
+      continue;
     }
 
     const body = fs.createReadStream(filePath);
@@ -162,7 +233,9 @@ async function main(): Promise<void> {
       filename: path.basename(photoFile),
     });
 
-    await client.create({
+    const docId = idFromFilename(photoFile);
+    await client.createOrReplace({
+      _id: docId,
       _type: "galleryImage",
       image: {
         _type: "image",
@@ -178,7 +251,7 @@ async function main(): Promise<void> {
       phase: isPhase(entry.phase) ? entry.phase : "before",
     });
 
-    console.log(`${label}: created galleryImage with asset ${asset._id}`);
+    console.log(`${label}: createOrReplace galleryImage ${docId} with asset ${asset._id}`);
   }
 
   console.log("Import finished.");

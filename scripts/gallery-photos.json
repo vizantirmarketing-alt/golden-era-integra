@@ -75,5 +75,203 @@
     "order": 70,
     "gridSpan": "g6",
     "phase": "before"
+  },
+  {
+    "filename": "door-cards-remove.jpg",
+    "caption": "Door cards off. The factory water-shield foil and original wiring exactly as Honda put it together in 1995.",
+    "alt": "Driver-side door of a 1995 Acura Integra GS-R with the interior door panel removed, showing the metal door frame, OEM water-shield foil, factory wiring harness, lock and window mechanisms, and an aftermarket speaker.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2022-08-01",
+    "order": 100,
+    "gridSpan": "g1",
+    "phase": "disassembly"
+  },
+  {
+    "filename": "engine-disassembly-1.jpg",
+    "caption": "B18C coming apart. Crank and rotating assembly still in, everything else stripped.",
+    "alt": "Partially disassembled Honda B18C engine on a stand, showing the bare aluminum block with crankshaft and main bearing caps still installed, surrounded by tools and parts on a garage floor.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2022-08-01",
+    "order": 110,
+    "gridSpan": "g3",
+    "phase": "disassembly"
+  },
+  {
+    "filename": "engine-disassembly-2.jpg",
+    "caption": "Bare block. Sent to CSS for machine work after this — overbore for the Traum 81.5mm forged pistons.",
+    "alt": "Bare Honda B18C engine block with all four cylinder bores exposed and crankcase visible, photographed from above on a workbench, with the B18C casting code stamped on the side.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2022-08-01",
+    "order": 120,
+    "gridSpan": "g5",
+    "phase": "disassembly"
+  },
+  {
+    "filename": "fenders-off.jpg",
+    "caption": "Front fender off. Easier access to the engine bay and a clean look at the inner structure before bodywork.",
+    "alt": "Front passenger-side wheel well of a 1995 Acura Integra GS-R with the outer fender removed, exposing the inner fender liner, suspension components, and engine bay wiring.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2022-08-01",
+    "order": 130,
+    "gridSpan": "g7",
+    "phase": "disassembly"
+  },
+  {
+    "filename": "front-seats.jpg",
+    "caption": "GS-R fronts pulled. Worn but the bones were good — sent out to be reupholstered with red stitching.",
+    "alt": "Original black leather front seats from a 1995 Acura Integra GS-R, removed from the car and placed side by side on a garage floor, showing visible wear, creasing, and a tear on the passenger seat.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2022-08-01",
+    "order": 140,
+    "gridSpan": "g4",
+    "phase": "disassembly"
+  },
+  {
+    "filename": "rear-seats.jpg",
+    "caption": "Rear bench out. Same trip to the upholsterer as the fronts.",
+    "alt": "Original black leather rear bench seat of a 1995 Acura Integra GS-R, removed from the car and placed on a concrete floor, showing wear and a torn cushion seam.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2022-08-01",
+    "order": 150,
+    "gridSpan": "g4",
+    "phase": "disassembly"
+  },
+  {
+    "filename": "shifter-boot.jpg",
+    "caption": "Shifter rod boot, cracked clean through. Replaced — small part, but this is what 30 years looks like.",
+    "alt": "Close-up of a cracked rubber shifter linkage boot at the floor pan of a 1995 Acura Integra GS-R, with the metal shift rod passing through the deteriorated grommet.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2022-08-01",
+    "order": 160,
+    "gridSpan": "g4",
+    "phase": "disassembly"
+  },
+  {
+    "filename": "doors-molding-delete.jpg",
+    "caption": "Side moldings shaved, body filler feathered out. Deleting every factory line that didn't belong before color goes on.",
+    "alt": "Driver-side rear quarter of 1995 Acura Integra GS-R during body prep, with side moldings removed, body filler smoothed across the panel, and masking tape protecting the rear glass.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-04-01",
+    "order": 200,
+    "gridSpan": "g4",
+    "phase": "body-prep"
+  },
+  {
+    "filename": "engine-bay-prep.jpg",
+    "caption": "Engine bay masked, cowl pulled, every opening foiled. Glass-out, panels off — bay gets the same R-81 as the body.",
+    "alt": "Engine bay of a 1995 Acura Integra GS-R fully prepped for paint, with the front end stripped, masking and aluminum foil protecting openings, and a person reaching in to finalize prep.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-04-01",
+    "order": 210,
+    "gridSpan": "g6",
+    "phase": "body-prep"
+  },
+  {
+    "filename": "hood-prep-1.jpg",
+    "caption": "First Molding carbon kevlar hood, vents masked, ready for primer. The everyday hood gets prepped first.",
+    "alt": "First Molding carbon kevlar hood for 1995 Acura Integra GS-R on a paint booth stand, sanded to a uniform matte finish with vents masked off in yellow tape.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-04-01",
+    "order": 220,
+    "gridSpan": "g3",
+    "phase": "body-prep"
+  },
+  {
+    "filename": "hood-prep-2.jpg",
+    "caption": "OEM hood underside, primed and sanded. Honda paid attention to what you don't see — figured I would too.",
+    "alt": "Underside of OEM hood for 1995 Acura Integra GS-R primed flat black on a paint booth stand, with masking tape across the inner reinforcement.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-04-01",
+    "order": 230,
+    "gridSpan": "g3",
+    "phase": "body-prep"
+  },
+  {
+    "filename": "oem-hood-prep-1.jpg",
+    "caption": "Mockup. Quad headlight conversion fitted, OEM hood gapped, fenders blocked. Checking lines before paint.",
+    "alt": "Front three-quarter view of 1995 Acura Integra GS-R during body prep, with the 98-spec quad headlight conversion test-fitted, OEM hood in primer, and the engine bay still in factory paint.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-04-01",
+    "order": 240,
+    "gridSpan": "g4",
+    "phase": "body-prep"
+  },
+  {
+    "filename": "oem-hood-prep-2.jpg",
+    "caption": "Front quarter blocked and feathered. Fresh body filler next to original Milano Red — you can see how much red has changed in 30 years.",
+    "alt": "Close-up of driver-side front fender on 1995 Acura Integra GS-R, showing primer and body filler feathered into faded original Milano Red paint, with a temporary registration permit visible through the windshield.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-04-01",
+    "order": 250,
+    "gridSpan": "g3",
+    "phase": "body-prep"
+  },
+  {
+    "filename": "process-1.jpg",
+    "caption": "Two days a week between his shop and my garage for four years. Built it together.",
+    "alt": "Mechanic working under the front end of a 1995 Acura Integra GS-R during body prep, with the engine bay stripped, hood removed, masking and aluminum foil protecting the windshield and openings.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-04-01",
+    "order": 260,
+    "gridSpan": "g7",
+    "phase": "body-prep"
+  },
+  {
+    "filename": "rear-hatch-removal-1.jpg",
+    "caption": "I bought a whole rear hatch from a junkyard just so my glass guy could carefully cut the back window out with the weather strip intact.",
+    "alt": "Rear hatch glass being lifted off a 1995 Acura Integra GS-R during glass-out preparation for paint, with two people supporting the glass and the body shell exposed below.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-04-01",
+    "order": 270,
+    "gridSpan": "g5",
+    "phase": "body-prep"
+  },
+  {
+    "filename": "rear-hatch-removal-2.jpg",
+    "caption": "Glass off, hatch frame exposed. Original weather strip preserved on the donor — that was the whole point.",
+    "alt": "Rear three-quarter view of 1995 Acura Integra GS-R with rear hatch glass removed, showing the exposed hatch frame in primer and faded factory paint, with the trunk lid in fresh white primer above.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-04-01",
+    "order": 280,
+    "gridSpan": "g4",
+    "phase": "body-prep"
+  },
+  {
+    "filename": "rear-valance.jpg",
+    "caption": "Type T rear valance and OEM bumper, primed and ready. Subtle from the side, sharper from behind.",
+    "alt": "Type T rear valance and OEM rear bumper for 1995 Acura Integra GS-R in white primer, stacked together inside a paint booth.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-04-01",
+    "order": 290,
+    "gridSpan": "g3",
+    "phase": "body-prep"
+  },
+  {
+    "filename": "side-skirts.jpg",
+    "caption": "Type T side skirts in primer, drying. Last of the JDM body kit before final paint match.",
+    "alt": "Pair of Type T side skirts for 1995 Acura Integra GS-R hanging on paint stands in white primer, ready for final paint application.",
+    "location": "Las Vegas, NV",
+    "shotOn": "Digital",
+    "capturedAt": "2023-04-01",
+    "order": 300,
+    "gridSpan": "g6",
+    "phase": "body-prep"
   }
 ]

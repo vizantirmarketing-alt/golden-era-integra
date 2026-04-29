@@ -41,7 +41,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-gallery-uploads/*.jpg
-gallery-uploads/*.jpeg
-gallery-uploads/*.png
-gallery-uploads/*.heic
+gallery-uploads/**/*.jpg
+gallery-uploads/**/*.jpeg
+gallery-uploads/**/*.png
+gallery-uploads/**/*.heic
+gallery-uploads/**/*.HEIC
+gallery-uploads/**/*.JPG

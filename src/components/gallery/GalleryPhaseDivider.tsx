@@ -4,6 +4,7 @@ import type { GalleryPhase } from "@/sanity/types";
 const PHASE_EDITORIAL_LABEL: Record<GalleryPhase, string> = {
   before: "BEFORE",
   disassembly: "DISASSEMBLY",
+  "body-prep": "BODY PREP",
   paint: "PAINT & BODY",
   engine: "ENGINE BUILD",
   assembly: "ASSEMBLY",
@@ -13,6 +14,7 @@ const PHASE_EDITORIAL_LABEL: Record<GalleryPhase, string> = {
 const PHASE_KANJI: Record<GalleryPhase, string> = {
   before: "以前",
   disassembly: "分解",
+  "body-prep": "下地",
   paint: "塗装",
   engine: "エンジン",
   assembly: "組立",
