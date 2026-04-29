@@ -158,13 +158,11 @@ export function GalleryGrid({ images }: GalleryGridProps) {
               </button>
               <div className="gesi-lightbox-media">
                 {active.src ? (
-                  <Image
+                  // eslint-disable-next-line @next/next/no-img-element -- intrinsic dimensions + contain need a plain img; grid still uses next/image
+                  <img
                     src={active.src}
                     alt={active.image.image?.alt || active.title}
-                    fill
-                    sizes="90vw"
                     className="gesi-lightbox-image"
-                    priority
                   />
                 ) : (
                   <div className="gesi-gallery-fallback">No image</div>

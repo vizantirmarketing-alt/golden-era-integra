@@ -1463,11 +1463,8 @@
     opacity: 1;
   }
 
-  .gesi-gallery-image,
-  .gesi-lightbox-image {
-    object-fit: cover;
-  }
   .gesi-gallery-image {
+    object-fit: cover;
     transition: transform 0.35s ease;
   }
   .gesi-gallery-item:hover .gesi-gallery-image {
@@ -1590,8 +1587,13 @@
   }
   .gesi-lightbox-panel {
     position: relative;
+    display: flex;
     width: min(1100px, 96vw);
+    max-height: calc(100vh - 2rem);
+    flex-direction: column;
+    min-height: 0;
     overflow: hidden;
+    padding-top: 3.5rem;
     border: 1px solid rgba(253, 246, 236, 0.2);
     border-radius: 8px;
     background: rgba(18, 8, 31, 0.96);
@@ -1615,10 +1617,28 @@
   }
   .gesi-lightbox-media {
     position: relative;
+    box-sizing: border-box;
+    display: flex;
     width: 100%;
-    aspect-ratio: 16 / 10;
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: calc(100vh - 200px);
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .gesi-lightbox-image {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
   }
   .gesi-lightbox-meta {
+    flex-shrink: 0;
     border-top: 1px solid rgba(253, 246, 236, 0.12);
     padding: 1.25rem;
   }
