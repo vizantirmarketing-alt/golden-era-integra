@@ -11,7 +11,8 @@
     "import-gallery": "tsx scripts/import-gallery.ts",
     "import-heritage": "tsx scripts/import-heritage.ts",
     "import-sessions": "tsx scripts/import-sessions.ts",
-    "cleanup-gallery": "tsx scripts/cleanup-gallery.ts"
+    "cleanup-gallery": "tsx scripts/cleanup-gallery.ts",
+    "update-gallery-gridspan": "tsx scripts/update-gallery-gridspan.ts"
   },
   "dependencies": {
     "@portabletext/react": "^6.0.3",
