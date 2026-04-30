@@ -1505,7 +1505,7 @@
     font-weight: 600;
   }
 
-  /* ——— /gallery: full archive grid (no lightbox) ——— */
+  /* ——— /archive: full archive grid (no lightbox) ——— */
   .gesi-gallery-page {
     background: var(--bg-warm);
   }

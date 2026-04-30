@@ -1,5 +1,0 @@
-import { ChapterRouteSkeleton } from "@/components/skeletons/PageSkeletons";
-
-export default function Loading() {
-  return <ChapterRouteSkeleton />;
-}

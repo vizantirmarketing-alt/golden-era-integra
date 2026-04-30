@@ -4,11 +4,9 @@ import Link from "next/link";
 
 const sections = [
   { href: "/#origin", label: "Origin Story" },
-  { href: "/build", label: "Specification" },
-  { href: "/build-story", label: "Build Story" },
-  { href: "/gallery", label: "Gallery" },
+  { href: "/build", label: "The Build" },
+  { href: "/archive", label: "Archive" },
   { href: "/guestbook", label: "Guestbook" },
-  { href: "/film", label: "In Motion" },
 ] as const;
 
 const follow: ReadonlyArray<{

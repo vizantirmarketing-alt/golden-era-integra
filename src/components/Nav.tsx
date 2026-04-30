@@ -7,12 +7,10 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 const links = [
   { href: "/#origin", label: "Story" },
-  { href: "/build", label: "Build" },
-  { href: "/build-story", label: "Build Story" },
-  { href: "/gallery", label: "Gallery" },
+  { href: "/build", label: "The Build" },
+  { href: "/archive", label: "The Archive" },
   { href: "/sessions", label: "Sessions" },
   { href: "/guestbook", label: "Guestbook" },
-  { href: "/film", label: "Film" },
 ] as const;
 
 export function Nav() {

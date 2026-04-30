@@ -14,14 +14,14 @@ import { galleryImagesQuery } from "@/sanity/queries";
 import type { GalleryImage } from "@/sanity/types";
 
 export const metadata: Metadata = {
-  title: seo.gallery.title,
+  title: "The Archive",
   description: seo.gallery.description,
   openGraph: {
-    title: `${seo.gallery.title} · ${seo.siteName}`,
+    title: `The Archive · ${seo.siteName}`,
     description: seo.gallery.description,
   },
   twitter: {
-    title: `${seo.gallery.title} · ${seo.siteName}`,
+    title: `The Archive · ${seo.siteName}`,
     description: seo.gallery.description,
   },
 };
@@ -45,8 +45,8 @@ export default async function GalleryPage() {
               <ChapterHeader
                 chapterLabel="Chapter 03"
                 number="03"
-                label="Gallery"
-                kanji="写真集"
+                label="The Archive"
+                kanji="記録"
               />
             </div>
           </div>
@@ -54,7 +54,7 @@ export default async function GalleryPage() {
             <GradHeading as="h1" className="!mb-8 !text-balance sm:!pr-4">
               THE
               <br />
-              <span className="grad">ARCHIVE.</span>
+              <span className="grad">THE ARCHIVE.</span>
             </GradHeading>
             <p className="body-copy max-w-[36rem]">
               Four years of work, in chronological order. Before, during, and

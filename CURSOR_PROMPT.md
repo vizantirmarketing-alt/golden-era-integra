@@ -189,7 +189,7 @@ Sections, in order:
 3. Chapter 01 — Origin Story (起源) — sticky sidebar + 2-column body copy + 3-stat row (170 HP / 2,579 lb / 8,100 RPM with gradient numbers).
 4. Quote section — full-bleed sunset gradient with grain overlay, large display quote with italic outline-text emphasis, white star decorations top and bottom.
 5. Chapter 02 (preview) — Specification (仕様) intro + "View Full Build →" CTA linking to `/build`.
-6. Chapter 03 (preview) — Gallery (写真集) intro + 3-image teaser grid + "View Full Gallery →" linking to `/gallery`.
+6. Chapter 03 (preview) — Archive (記録) intro + 3-image teaser grid + "View Full Archive →" linking to `/archive`.
 7. Chapter 04 (preview) — Journal (記録) intro + 2 most recent entries + "Read All Entries →" linking to `/journal`.
 
 Use Framer Motion for: hero fade-in (1.2s ease cubic-bezier 0.22, 1, 0.36, 1), scroll-triggered reveals on chapter sections.
@@ -212,7 +212,7 @@ Use Framer Motion for: hero fade-in (1.2s ease cubic-bezier 0.22, 1, 0.36, 1), s
    - order (number)
    - items (array of `{ label: string, value: string, isMilano?: boolean }`)
 
-   **`galleryImage.ts`** — for `/gallery`
+   **`galleryImage.ts`** — for `/archive`
    - image (image with alt text + hotspot)
    - caption (string)
    - location (string, optional)
@@ -264,7 +264,7 @@ Use Framer Motion for: hero fade-in (1.2s ease cubic-bezier 0.22, 1, 0.36, 1), s
 
 ---
 
-### PHASE 5 — `/gallery` Page
+### PHASE 5 — `/archive` Page
 
 **Goal:** Full photo grid pulling from Sanity.
 

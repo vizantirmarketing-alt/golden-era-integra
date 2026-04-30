@@ -177,7 +177,7 @@ export default function Home() {
             </div>
           </div>
           <div className="gesi-cta">
-            <Link href="/build-story">Read the full story →</Link>
+            <Link href="/build">Read the full story →</Link>
           </div>
         </div>
       </MotionSection>
@@ -190,13 +190,13 @@ export default function Home() {
           <div className="gesi-gallery-head">
             <div>
               <div className="chapter-num-label">Chapter 03</div>
-              <h2 className="gesi-gallery__title">Gallery.</h2>
+              <h2 className="gesi-gallery__title">The Archive.</h2>
               <span
                 className="chapter-tag-jp mt-3"
                 style={{ display: "block" }}
                 lang="ja"
               >
-                写真集
+                記録
               </span>
             </div>
             <p className="gesi-gallery__meta">Shot In Las Vegas / Film + Digital</p>
@@ -205,13 +205,13 @@ export default function Home() {
             {galleryTeaser.map((g) => (
               <Link
                 key={g.id}
-                href="/gallery"
+                href="/archive"
                 className={cn(
                   "gesi-g-item block no-underline transition-shadow duration-300",
                   "hover:shadow-[0_12px_40px_rgba(232,56,164,0.18)] hover:brightness-[1.02]",
                   toneClass[g.tone]
                 )}
-                aria-label={`Open gallery — ${g.label}`}
+                aria-label={`Open archive — ${g.label}`}
               >
                 <span className="gesi-g-num" aria-hidden>
                   {String(g.id).padStart(2, "0")}
@@ -222,7 +222,7 @@ export default function Home() {
             ))}
           </div>
           <div className="gesi-cta mt-12">
-            <Link href="/gallery">View Full Gallery →</Link>
+            <Link href="/archive">View Full Archive →</Link>
           </div>
         </div>
       </MotionSection>
