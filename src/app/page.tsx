@@ -5,7 +5,7 @@ import { Marquee } from "@/components/Marquee";
 import HeritageSection from "@/components/home/HeritageSection";
 import { Hero } from "@/components/home/Hero";
 import { MotionSection } from "@/components/home/MotionSection";
-import { cn } from "@/lib/cn";
+import SessionsTeaserSection from "@/components/home/SessionsTeaserSection";
 import { seo } from "@/lib/seo";
 import Link from "next/link";
 
@@ -21,14 +21,6 @@ export const metadata: Metadata = {
     description: seo.home.description,
   },
 };
-
-const galleryTeaser = [
-  { id: 1, idx: "001", label: "Vegas Strip — Blue Hour", tone: "t1" as const },
-  { id: 2, idx: "002", label: "Front 3/4 — Magenta Sunset", tone: "t2" as const },
-  { id: 3, idx: "003", label: "Mugen MF10 Detail", tone: "t3" as const },
-] as const;
-
-const toneClass = { t1: "gesi-g-item--t1", t2: "gesi-g-item--t2", t3: "gesi-g-item--t3" };
 
 function Star() {
   return (
@@ -182,49 +174,8 @@ export default function Home() {
         </div>
       </MotionSection>
       <HeritageSection />
-      <MotionSection
-        id="gallery"
-        className="gesi-chapter gesi-gallery-sec text-ink"
-      >
-        <div className="gesi-container">
-          <div className="gesi-gallery-head">
-            <div>
-              <div className="chapter-num-label">Chapter 03</div>
-              <h2 className="gesi-gallery__title">The Archive.</h2>
-              <span
-                className="chapter-tag-jp mt-3"
-                style={{ display: "block" }}
-                lang="ja"
-              >
-                記録
-              </span>
-            </div>
-            <p className="gesi-gallery__meta">Shot In Las Vegas / Film + Digital</p>
-          </div>
-          <div className="grid min-h-0 auto-rows-[180px] grid-cols-1 gap-3 sm:auto-rows-min md:min-h-0 md:grid-cols-3">
-            {galleryTeaser.map((g) => (
-              <Link
-                key={g.id}
-                href="/archive"
-                className={cn(
-                  "gesi-g-item block no-underline transition-shadow duration-300",
-                  "hover:shadow-[0_12px_40px_rgba(232,56,164,0.18)] hover:brightness-[1.02]",
-                  toneClass[g.tone]
-                )}
-                aria-label={`Open archive — ${g.label}`}
-              >
-                <span className="gesi-g-num" aria-hidden>
-                  {String(g.id).padStart(2, "0")}
-                </span>
-                <span className="gesi-g-idx">{g.idx}</span>
-                <span className="gesi-g-label">{g.label}</span>
-              </Link>
-            ))}
-          </div>
-          <div className="gesi-cta mt-12">
-            <Link href="/archive">View Full Archive →</Link>
-          </div>
-        </div>
+      <MotionSection id="sessions" className="gesi-chapter gesi-gallery-sec text-ink">
+        <SessionsTeaserSection />
       </MotionSection>
     </>
   );
