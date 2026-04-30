@@ -55,6 +55,12 @@ export function Footer() {
                   <br className="sm:hidden" />
                   <span className="grad">Integra.</span>
                 </p>
+                <span
+                  className="mt-2 block text-[12px] font-normal tracking-[0.06em] text-[color-mix(in_srgb,var(--ink)_40%,transparent)] [font-family:var(--font-family-jp)]"
+                  lang="ja"
+                >
+                  黄金時代のインテグラ
+                </span>
                 <p className="mt-4 font-mono text-ink-ghost text-[11px] tracking-[0.3em] uppercase">
                   Las Vegas, Nevada / Vol. 01
                 </p>

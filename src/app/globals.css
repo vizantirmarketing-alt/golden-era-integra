@@ -410,6 +410,16 @@
     color: transparent;
   }
 
+  .gesi-hero__title-jp {
+    margin-top: 10px;
+    font-family: var(--font-family-jp);
+    font-size: clamp(0.875rem, 3.85vw, 2.75rem);
+    font-weight: 300;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+    color: color-mix(in srgb, var(--ink) 55%, transparent);
+  }
+
   .gesi-hero__sub {
     margin-top: 32px;
     max-width: 30rem;

@@ -64,6 +64,9 @@ export async function Hero() {
             <span className="gesi-hero__line gesi-hero__line--grad">Era</span>
             <span className="gesi-hero__line gesi-hero__line--outline">Integra.</span>
           </h1>
+          <p className="gesi-hero__title-jp" lang="ja">
+            黄金時代のインテグラ
+          </p>
           <p className="gesi-hero__sub">
             A 1995 Acura Integra GS-R in Milano Red. Built in Suzuka, found in
             Pasadena, driven in Las Vegas. This is the documented restoration of
