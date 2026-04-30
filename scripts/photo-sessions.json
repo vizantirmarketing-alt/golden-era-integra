@@ -1,12 +1,12 @@
 [
   {
-    "slug": "gas-station-night",
-    "title": "Gas Station Night",
-    "kanji": "夜",
-    "kanjiRomaji": "Yoru",
+    "slug": "night-run",
+    "title": "Night Run",
+    "kanji": "走り",
+    "kanjiRomaji": "Hashiri",
     "location": "Las Vegas, NV",
     "order": 1,
-    "folder": "gas-station-night",
+    "folder": "night-run",
     "photos": [
       "front-driver-side-shot.jpg",
       "front-top-shot.jpg",
@@ -18,13 +18,13 @@
     ]
   },
   {
-    "slug": "town-square-day",
-    "title": "Town Square Day",
+    "slug": "town-square",
+    "title": "Town Square",
     "kanji": "昼",
     "kanjiRomaji": "Hiru",
     "location": "Las Vegas, NV",
     "order": 2,
-    "folder": "town-square-day",
+    "folder": "town-square",
     "photos": [
       "ts-front-shot.jpg",
       "ts-hood-shot.jpg",
@@ -47,6 +47,25 @@
       "dts-side-shot.jpg",
       "dts-front-2-shot.jpg",
       "dts-back-shot.jpg"
+    ]
+  },
+  {
+    "slug": "after-hours",
+    "title": "After Hours",
+    "kanji": "深夜",
+    "kanjiRomaji": "Shinya",
+    "location": "Las Vegas, NV",
+    "order": 4,
+    "folder": "after-hours",
+    "photos": [
+      "7-11.jpg",
+      "chevron2.jpg",
+      "chevron5.jpg",
+      "chevron3.jpg",
+      "chevron6.jpg",
+      "chevron4.jpg",
+      "chevron7.jpg",
+      "chevron1.jpg"
     ]
   }
 ]
