@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function GuestbookPage() {
   return (
-    <div className="relative bg-bg-warm text-ink">
+    <div className="relative bg-bg text-ink">
       <div className="gesi-chapter pb-24">
         <div className="gesi-container">
           <div className="gesi-grid-12 mb-4">

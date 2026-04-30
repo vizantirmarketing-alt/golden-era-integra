@@ -37,7 +37,7 @@ export default async function GalleryPage() {
   const phaseGroups = groupGalleryImagesByPhase(list);
 
   return (
-    <div className="gesi-chapter gesi-gallery-page text-ink">
+    <div className="gesi-chapter text-ink">
       <div className="gesi-container">
         <div className="gesi-grid-12 mb-16">
           <div className="gesi-col-side">

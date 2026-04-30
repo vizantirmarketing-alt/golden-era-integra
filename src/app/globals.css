@@ -1576,10 +1576,6 @@
   }
 
   /* ——— /archive: full archive grid (no lightbox) ——— */
-  .gesi-gallery-page {
-    background: var(--bg-warm);
-  }
-
   .gesi-gallery-empty {
     border-top: 1px solid var(--line);
     padding-top: 2rem;
