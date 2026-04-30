@@ -877,10 +877,8 @@
 
   .gei-heritage__title {
     font-family: var(--font-family-display);
-    font-size: clamp(48px, 8vw, 120px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 0.9;
+    font-size: clamp(2.5rem, 6.5vw, 5rem);
+    line-height: 0.95;
     margin: 0;
     text-transform: uppercase;
     color: transparent;
