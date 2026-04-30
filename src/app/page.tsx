@@ -76,23 +76,6 @@ export default function Home() {
                   Still going.
                 </p>
               </div>
-              <div className="mx-auto max-w-[36rem] py-14 text-center">
-                <div
-                  className="mx-auto mb-8 h-px w-28 bg-gradient-to-r from-blue via-magenta to-orange"
-                  aria-hidden
-                />
-                <p className="text-[1.05rem] leading-[1.65] text-ink-soft italic">
-                  My buddy and I have been friends for almost thirty years.
-                  We&apos;ve spent the last four working on this car. Two days a
-                  week, sun or rain. It costs more money, time, and effort than
-                  I&apos;d ever admit out loud. But that&apos;s not really the
-                  point.
-                  <br />
-                  <span className="font-medium not-italic text-ink">
-                    The point is we got to spend the time together.
-                  </span>
-                </p>
-              </div>
               <div className="gesi-stats" aria-label="Key figures">
                 <div>
                   <div className="gesi-stat-num">170</div>
