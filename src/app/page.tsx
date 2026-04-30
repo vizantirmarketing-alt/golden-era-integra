@@ -60,20 +60,19 @@ export default function Home() {
               </GradHeading>
               <div className="gesi-body-grid">
                 <p>
-                  There was a guy in my high school with an Integra. I
+                  There was this guy in high school who had an Integra. I
                   don&apos;t remember his name. I remember the car. After
-                  graduation I saved up and won a 1994 LS on eBay, two hours
-                  from where I lived. I drove it home without knowing how to
-                  drive stick and burned the clutch before I made it back into
+                  graduation I saved up, found a &apos;94 LS on eBay two hours
+                  away. Drove out to get it. Didn&apos;t actually know how to
+                  drive stick — burned the clutch before I made it back into
                   town.
                 </p>
                 <p>
-                  I bought this one on May 30, 2021. A &apos;95 GS-R from a
-                  guy in town getting stationed elsewhere — Air Force, needed
-                  to sell before he moved. I&apos;ve been working on it ever
-                  since, between my home garage and my buddy&apos;s shop.
-                  He&apos;s a mechanic. I help where I can. Four years in.
-                  Still going.
+                  This one I got May 30, 2021. &apos;95 GS-R, bought it off an
+                  Air Force guy in town who was getting stationed somewhere
+                  else. Been working on it ever since, back and forth between
+                  my garage and my buddy&apos;s shop. He&apos;s a mechanic. I
+                  help where I can. Four years in. Still going.
                 </p>
               </div>
               <div className="gesi-stats" aria-label="Key figures">
