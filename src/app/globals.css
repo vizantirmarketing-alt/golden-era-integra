@@ -207,18 +207,28 @@
     overflow: hidden;
     /* Top was previously pt-[var(--nav-offset)] on the section; utilities override
        @layer components, so nav clearance lives here instead. */
-    padding: var(--nav-offset) 1.5rem 4rem;
+    padding: var(--nav-offset) 1.5rem 5rem;
   }
   @media (max-width: 899px) {
     .gesi-hero {
       /* Reserve a dedicated top region for both metadata corners on mobile. */
-      padding: calc(var(--nav-offset) + 7.5rem) 2rem 4rem;
+      padding: calc(var(--nav-offset) + 7.5rem) 2rem 5.5rem;
     }
   }
   @media (min-width: 768px) {
     .gesi-hero {
       justify-content: flex-start;
-      padding: 12rem 2rem 4rem;
+      padding-top: 12rem;
+      padding-bottom: 5rem;
+      padding-left: 2rem;
+      /* ~32–48px breathing room to viewport */
+      padding-right: clamp(2rem, 2.5vw, 3rem);
+    }
+  }
+  @media (min-width: 900px) {
+    .gesi-hero {
+      /* Photo column bleeds to viewport left; corner meta stays inset via absolute left/right */
+      padding-left: 0;
     }
   }
 
@@ -293,9 +303,11 @@
     -webkit-text-fill-color: transparent;
     font-weight: 600;
   }
+
+  /* Bottom corner frame markers (section-wide, not tied to text column) */
   .gesi-hero__meta-jp {
-    margin-top: 10px;
-    display: block;
+    position: absolute;
+    z-index: 5;
     font-family: var(--font-family-jp);
     font-size: 14px;
     font-weight: 500;
@@ -303,10 +315,38 @@
     color: var(--magenta);
     text-transform: none;
   }
+  .gesi-hero__meta-jp--bl {
+    bottom: 1.75rem;
+    left: 1.5rem;
+    text-align: left;
+  }
+  .gesi-hero__meta-jp--br {
+    bottom: 1.75rem;
+    right: 1.5rem;
+    text-align: right;
+  }
   @media (max-width: 899px) {
     .gesi-hero__meta-jp {
       font-size: 12px;
       letter-spacing: 0.16em;
+    }
+    .gesi-hero__meta-jp--bl {
+      left: 2rem;
+    }
+    .gesi-hero__meta-jp--br {
+      right: 2rem;
+    }
+  }
+  @media (min-width: 768px) {
+    .gesi-hero__meta-jp--bl {
+      left: 2rem;
+    }
+    .gesi-hero__meta-jp--br {
+      right: 2rem;
+    }
+    .gesi-hero__meta-jp--bl,
+    .gesi-hero__meta-jp--br {
+      bottom: 2rem;
     }
   }
 
@@ -331,6 +371,26 @@
   .gesi-hero__copy {
     width: 100%;
   }
+  @media (min-width: 900px) {
+    .gesi-hero__copy {
+      box-sizing: border-box;
+      display: flex;
+      height: 100%;
+      min-height: 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      align-self: stretch;
+      width: 100%;
+      max-width: 100%;
+      text-align: right;
+      /* Wordmark / kanji / chips — breathing room off the section edge */
+      padding-inline-end: clamp(2rem, 2.5vw, 3rem);
+    }
+    .gesi-hero__chips {
+      justify-content: flex-end;
+    }
+  }
   /** Single entrance animation on load (CSS only — no scroll / remount loops). */
   .gesi-hero__grid--enter {
     animation: gesi-hero-grid-enter 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
@@ -344,14 +404,21 @@
   }
   @media (min-width: 900px) {
     .gesi-hero__grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      /* ~60% photo / ~40% copy (desktop only; mobile stays single column) */
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 3rem;
+      align-items: stretch;
+      min-height: calc(100dvh - var(--nav-offset) - 10rem);
+      /* Hug viewport left so photo can bleed; stay inside max-width + right padding */
+      margin-left: 0;
+      margin-right: auto;
+      width: 100%;
     }
   }
   @media (min-width: 1024px) {
     .gesi-hero__grid {
       max-width: 92rem;
-      grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
       gap: 3rem;
     }
   }
@@ -450,134 +517,36 @@
     border-color: var(--milano);
   }
 
-  .gesi-hero__logo {
+  .gesi-hero__media {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    isolation: isolate;
-  }
-  .gesi-hero__logo::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: -20%;
-    border-radius: 50%;
-    background: conic-gradient(
-      from 0deg,
-      transparent 0deg,
-      rgba(232, 56, 164, 0.1) 60deg,
-      transparent 120deg,
-      rgba(245, 158, 58, 0.1) 180deg,
-      transparent 240deg,
-      rgba(58, 79, 217, 0.1) 300deg,
-      transparent 360deg
-    );
-    filter: blur(40px);
-    animation: gesi-rotate 20s linear infinite;
-    will-change: transform;
-  }
-  .gesi-hero__logo-img {
-    max-width: 38rem;
     width: 100%;
-    aspect-ratio: 1;
-    object-fit: contain;
-    filter: drop-shadow(0 30px 60px rgba(232, 56, 164, 0.25))
-      drop-shadow(0 10px 30px rgba(58, 79, 217, 0.15));
-    animation: gesi-float 6s ease-in-out infinite;
-  }
-  .gesi-hero__carousel {
-    display: flex;
-    width: 100%;
-    max-width: 38rem;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  .gesi-hero__carousel-frame {
-    position: relative;
+    min-height: 220px;
     overflow: hidden;
     border-radius: 10px;
+    border: 1px solid var(--line-soft);
+    background: color-mix(in srgb, var(--ink) 6%, transparent);
   }
-  .gesi-hero__carousel-slide {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 300ms ease-in-out;
-    will-change: opacity;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-  }
-  .gesi-hero__carousel-slide.is-active {
-    z-index: 1;
-    opacity: 1;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .gesi-hero__carousel-slide {
-      transition: none;
+  @media (max-width: 899px) {
+    .gesi-hero__media {
+      aspect-ratio: 3 / 4;
+      max-height: min(58vh, 520px);
+      min-height: 0;
     }
   }
-  .gesi-hero__carousel-indicator {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.55rem;
-  }
-  .gesi-hero__carousel-controls {
-    position: relative;
-    z-index: 2;
-  }
-  .gesi-hero__carousel-status {
-    font-family: var(--font-family-mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink);
-  }
-  .gesi-hero__carousel-count {
-    color: var(--magenta);
-  }
-  .gesi-hero__carousel-label {
-    color: var(--ink);
-  }
-  .gesi-hero__carousel-controls {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-  }
-  .gesi-hero__carousel-dot {
-    min-height: 2rem;
-    min-width: 2rem;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.6);
-    font-family: var(--font-family-mono);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-  }
-  .gesi-hero__carousel-dot:hover,
-  .gesi-hero__carousel-dot:focus-visible,
-  .gesi-hero__carousel-dot.is-active {
-    border-color: rgba(232, 56, 164, 0.55);
-    background: rgba(232, 56, 164, 0.08);
-    color: var(--magenta);
-  }
-  @media (max-width: 768px) {
-    .gesi-hero__logo::before {
-      animation: none;
-      filter: blur(28px);
+  @media (min-width: 900px) {
+    .gesi-hero__media {
+      min-height: 0;
+      height: 100%;
+      /* Flush to viewport left; keep rounding on inner edge only */
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
     }
-    .gesi-hero__logo-img {
-      animation: none;
-    }
+  }
+  .gesi-hero__media img {
+    object-fit: cover;
+    object-position: center;
   }
 
   @keyframes gesi-pulse {
@@ -591,15 +560,6 @@
       box-shadow: 0 0 0 0 rgba(232, 34, 77, 0);
     }
   }
-  @keyframes gesi-float {
-    0%,
-    100% {
-      transform: translateY(0) rotate(0deg);
-    }
-    50% {
-      transform: translateY(-12px) rotate(-1deg);
-    }
-  }
   @keyframes gesi-hero-grid-enter {
     from {
       opacity: 0;
@@ -610,12 +570,6 @@
       transform: translateY(0);
     }
   }
-  @keyframes gesi-rotate {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
   /* ——— Home: shared chapter grid ——— */
   .gesi-chapter {
     position: relative;

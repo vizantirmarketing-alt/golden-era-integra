@@ -1,38 +1,6 @@
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 import Image from "next/image";
-import { HeroCarousel, type HeroSlide } from "./HeroCarousel";
 
-function isHeroSlide(value: unknown): value is HeroSlide {
-  if (!value || typeof value !== "object") {
-    return false;
-  }
-  const rec = value as Record<string, unknown>;
-  return (
-    typeof rec.src === "string" &&
-    typeof rec.label === "string" &&
-    typeof rec.alt === "string" &&
-    rec.src.startsWith("/hero/")
-  );
-}
-
-async function getHeroSlides(): Promise<HeroSlide[]> {
-  try {
-    const manifestPath = join(process.cwd(), "public", "hero", "manifest.json");
-    const content = await readFile(manifestPath, "utf8");
-    const parsed = JSON.parse(content);
-    if (!Array.isArray(parsed)) {
-      return [];
-    }
-    return parsed.filter(isHeroSlide);
-  } catch {
-    return [];
-  }
-}
-
-export async function Hero() {
-  const slides = await getHeroSlides();
-
+export function Hero() {
   return (
     <section
       className="gesi-hero -mt-[var(--nav-offset)] min-h-dvh"
@@ -44,16 +12,31 @@ export async function Hero() {
         <div>N 36°10′30″ W 115°08′11″</div>
         <div>Las Vegas, Nevada</div>
         <span className="gesi-hero__accent">Chassis No. DC2-1102847</span>
-        <span className="gesi-hero__meta-jp">鈴鹿製作所 1995</span>
       </div>
       <div className="gesi-hero__meta gesi-hero__meta--tr">
         <div>Vol. 01 / Issue 01</div>
         <div>1995 Acura Integra GS-R</div>
         <span className="gesi-hero__accent">A Documented Build</span>
-        <span className="gesi-hero__meta-jp">本田技研工業</span>
+      </div>
+
+      <div className="gesi-hero__meta-jp gesi-hero__meta-jp--bl" lang="ja">
+        鈴鹿製作所 1995
+      </div>
+      <div className="gesi-hero__meta-jp gesi-hero__meta-jp--br" lang="ja">
+        本田技研工業
       </div>
 
       <div className="gesi-hero__grid gesi-hero__grid--enter">
+        <div className="gesi-hero__media">
+          <Image
+            src="/hero/engine-bay.jpg"
+            alt="1995 Acura Integra GS-R engine bay"
+            fill
+            className="object-cover"
+            priority
+            sizes="(max-width: 899px) 100vw, 50vw"
+          />
+        </div>
         <div className="gesi-hero__copy">
           <div className="gesi-hero__eyebrow">
             <span className="gesi-hero__eyebrow-dot" aria-hidden />
@@ -81,21 +64,6 @@ export async function Hero() {
               8,100 RPM
             </span>
           </div>
-        </div>
-        <div className="gesi-hero__logo">
-          {slides.length > 0 ? (
-            <HeroCarousel slides={slides} />
-          ) : (
-            <Image
-              src="/logo.png"
-              alt="Golden Era Integra logo"
-              width={520}
-              height={520}
-              className="gesi-hero__logo-img h-auto w-full"
-              priority
-              sizes="(max-width: 899px) min(92vw, 520px), (max-width: 1279px) 45vw, 520px"
-            />
-          )}
         </div>
       </div>
     </section>
