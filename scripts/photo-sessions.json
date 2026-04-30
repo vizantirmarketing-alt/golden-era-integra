@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "gas-station-night",
+    "title": "Gas Station Night",
+    "kanji": "夜",
+    "kanjiRomaji": "Yoru",
+    "location": "Las Vegas, NV",
+    "order": 1,
+    "folder": "gas-station-night",
+    "photos": [
+      "front-driver-side-shot.jpg",
+      "front-top-shot.jpg",
+      "front-close-shot.jpg",
+      "hood-close-up-shot.jpg",
+      "hood-open-shot.jpg",
+      "engine-close-up-shot.jpg",
+      "rear-top-shot.jpg"
+    ]
+  }
+]

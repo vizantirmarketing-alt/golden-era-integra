@@ -41,6 +41,36 @@ export const heritageShotsQuery = defineQuery(`
 }
 `);
 
+export const photoSessionsQuery = defineQuery(`
+*[_type == "photoSession"] | order(order asc) {
+  _id,
+  title,
+  "slug": slug.current,
+  kanji,
+  kanjiRomaji,
+  location,
+  capturedAt,
+  intro,
+  order,
+  "coverImage": photos[0]
+}
+`);
+
+export const photoSessionBySlugQuery = defineQuery(`
+*[_type == "photoSession" && slug.current == $slug][0] {
+  _id,
+  title,
+  "slug": slug.current,
+  kanji,
+  kanjiRomaji,
+  location,
+  capturedAt,
+  intro,
+  order,
+  photos
+}
+`);
+
 export const filmEpisodesQuery = defineQuery(`
 *[_type == "filmEpisode"] | order(episodeNumber desc) {
   _id,

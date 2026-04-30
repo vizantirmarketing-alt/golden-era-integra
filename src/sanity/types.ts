@@ -78,6 +78,22 @@ export type HeritageShot = {
   order?: number;
 };
 
+/** `photoSession` — see `sanity/schemas/photoSession.ts`. */
+export type PhotoSession = {
+  _id: string;
+  _type?: "photoSession";
+  title?: string;
+  slug?: { _type?: "slug"; current?: string };
+  kanji?: string;
+  kanjiRomaji?: string;
+  location?: string;
+  /** ISO date string from Sanity `date` field */
+  capturedAt?: string;
+  intro?: string;
+  order?: number;
+  photos?: SanityImageField[] | null;
+};
+
 export type JournalTag =
   | "Acquisition"
   | "Restoration"

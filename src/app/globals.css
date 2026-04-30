@@ -2204,6 +2204,230 @@
   .gesi-film-empty .body-copy {
     color: rgba(253, 246, 236, 0.65);
   }
+
+  /* Sessions index page */
+  .gei-sessions-page {
+    padding: 96px 0;
+  }
+
+  .gei-sessions-page__header {
+    padding: 0 24px;
+    margin-bottom: 64px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gei-sessions-page__chapter {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--ink) 50%, transparent);
+    margin: 0 0 8px 0;
+  }
+
+  .gei-sessions-page__title {
+    font-family: var(--font-family-display);
+    font-size: clamp(2.5rem, 6.5vw, 5rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    color: transparent;
+    background: linear-gradient(120deg, var(--blue), var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin: 0;
+  }
+
+  .gei-sessions-page__kanji {
+    font-size: 24px;
+    letter-spacing: 0.08em;
+    color: color-mix(in srgb, var(--ink) 50%, transparent);
+    margin: 16px 0 0 0;
+  }
+
+  .gei-sessions-page__list {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gei-sessions-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s ease;
+  }
+
+  .gei-sessions-card:hover {
+    opacity: 0.85;
+  }
+
+  .gei-sessions-card__media {
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16px;
+    aspect-ratio: 4 / 3;
+    background: color-mix(in srgb, var(--ink) 4%, transparent);
+    overflow: hidden;
+  }
+
+  .gei-sessions-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .gei-sessions-card__meta {
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .gei-sessions-card__kanji {
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    color: color-mix(in srgb, var(--ink) 70%, transparent);
+    margin: 0 0 8px 0;
+  }
+
+  .gei-sessions-card__romaji {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--ink) 40%, transparent);
+  }
+
+  .gei-sessions-card__title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .gei-sessions-card__location {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--ink) 40%, transparent);
+    margin: 0;
+  }
+
+  /* Individual session page */
+  .gei-session {
+    padding: 64px 0 96px 0;
+  }
+
+  .gei-session__header {
+    padding: 0 24px;
+    margin-bottom: 48px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .gei-session__back {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--ink) 50%, transparent);
+    text-decoration: none;
+    margin-bottom: 32px;
+    text-align: left;
+    width: 100%;
+  }
+
+  .gei-session__back:hover {
+    color: var(--ink);
+  }
+
+  .gei-session__kanji {
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    color: color-mix(in srgb, var(--ink) 70%, transparent);
+    margin: 0 0 12px 0;
+  }
+
+  .gei-session__romaji {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--ink) 40%, transparent);
+  }
+
+  .gei-session__title {
+    font-family: var(--font-family-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .gei-session__meta {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--ink) 40%, transparent);
+    margin: 0 0 24px 0;
+  }
+
+  .gei-session__intro {
+    font-size: 18px;
+    line-height: 1.5;
+    font-style: italic;
+    max-width: 60ch;
+    margin: 0 auto;
+    color: var(--ink);
+  }
+
+  .gei-session__photos {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gei-session__photo {
+    margin: 0;
+  }
+
+  .gei-session__photo-media {
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    aspect-ratio: 4 / 3;
+    background: color-mix(in srgb, var(--ink) 4%, transparent);
+    overflow: hidden;
+  }
+
+  .gei-session__photo-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .gei-sessions-page {
+      padding: 64px 0;
+    }
+    .gei-sessions-page__list {
+      gap: 48px;
+    }
+    .gei-session__photos {
+      gap: 48px;
+    }
+  }
 }
 
 @layer utilities {

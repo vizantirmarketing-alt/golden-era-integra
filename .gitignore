@@ -54,3 +54,10 @@ lineage-uploads/**/*.png
 lineage-uploads/**/*.heic
 lineage-uploads/**/*.HEIC
 lineage-uploads/**/*.JPG
+
+session-uploads/**/*.jpg
+session-uploads/**/*.jpeg
+session-uploads/**/*.png
+session-uploads/**/*.heic
+session-uploads/**/*.HEIC
+session-uploads/**/*.JPG
