@@ -47,3 +47,10 @@ gallery-uploads/**/*.png
 gallery-uploads/**/*.heic
 gallery-uploads/**/*.HEIC
 gallery-uploads/**/*.JPG
+
+lineage-uploads/**/*.jpg
+lineage-uploads/**/*.jpeg
+lineage-uploads/**/*.png
+lineage-uploads/**/*.heic
+lineage-uploads/**/*.HEIC
+lineage-uploads/**/*.JPG

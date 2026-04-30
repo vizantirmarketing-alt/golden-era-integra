@@ -26,6 +26,21 @@ export const galleryImagesQuery = defineQuery(`
 }
 `);
 
+export const heritageShotsQuery = defineQuery(`
+*[_type == "heritageShot"] | order(order asc) {
+  _id,
+  _type,
+  image { asset, alt, hotspot, crop },
+  caption,
+  kanji,
+  kanjiRomaji,
+  subjects,
+  location,
+  capturedAt,
+  order
+}
+`);
+
 export const filmEpisodesQuery = defineQuery(`
 *[_type == "filmEpisode"] | order(episodeNumber desc) {
   _id,

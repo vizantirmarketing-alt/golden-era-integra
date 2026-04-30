@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ChapterHeader } from "@/components/ChapterHeader";
 import { GradHeading } from "@/components/GradHeading";
 import { Marquee } from "@/components/Marquee";
+import HeritageSection from "@/components/home/HeritageSection";
 import { Hero } from "@/components/home/Hero";
 import { MotionSection } from "@/components/home/MotionSection";
 import { cn } from "@/lib/cn";
@@ -180,6 +181,7 @@ export default function Home() {
           </div>
         </div>
       </MotionSection>
+      <HeritageSection />
       <MotionSection
         id="gallery"
         className="gesi-chapter gesi-gallery-sec text-ink"

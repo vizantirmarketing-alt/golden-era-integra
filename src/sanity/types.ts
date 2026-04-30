@@ -63,6 +63,21 @@ export type GalleryImage = {
   gridSpan?: GridSpan;
 };
 
+/** `heritageShot` — see `sanity/schemas/heritageShot.ts`. */
+export type HeritageShot = {
+  _id: string;
+  _type?: "heritageShot";
+  image?: SanityImageField;
+  caption?: string;
+  kanji?: string;
+  kanjiRomaji?: string;
+  subjects?: string;
+  location?: string;
+  /** ISO date string from Sanity `date` field */
+  capturedAt?: string;
+  order?: number;
+};
+
 export type JournalTag =
   | "Acquisition"
   | "Restoration"

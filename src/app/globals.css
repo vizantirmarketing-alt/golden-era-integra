@@ -854,6 +854,131 @@
     }
   }
 
+  /* ——— Home: Heritage ——— */
+  .gei-heritage {
+    padding: 96px 0;
+  }
+
+  .gei-heritage__header {
+    padding: 0 24px;
+    margin-bottom: 64px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gei-heritage__chapter {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--ink) 50%, transparent);
+    margin: 0 0 8px 0;
+  }
+
+  .gei-heritage__title {
+    font-family: var(--font-family-display);
+    font-size: clamp(48px, 8vw, 120px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    margin: 0;
+    text-transform: uppercase;
+    color: transparent;
+    background: linear-gradient(120deg, var(--blue), var(--magenta), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .gei-heritage__kanji {
+    font-family: var(--font-family-jp);
+    font-size: 24px;
+    letter-spacing: 0.08em;
+    color: color-mix(in srgb, var(--ink) 50%, transparent);
+    margin: 16px 0 0 0;
+  }
+
+  .gei-heritage__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  .gei-heritage__row {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .gei-heritage__media {
+    width: 100%;
+    background: color-mix(in srgb, var(--ink) 4%, transparent);
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+
+  .gei-heritage__media img {
+    max-height: 90vh;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .gei-heritage__caption-block {
+    padding: 0 24px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .gei-heritage__row-kanji {
+    font-family: var(--font-family-jp);
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    color: color-mix(in srgb, var(--ink) 70%, transparent);
+    margin: 0 0 12px 0;
+  }
+
+  .gei-heritage__row-romaji {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--ink) 40%, transparent);
+  }
+
+  .gei-heritage__row-caption {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 12px 0;
+    font-style: italic;
+  }
+
+  .gei-heritage__row-meta {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--ink) 40%, transparent);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .gei-heritage {
+      padding: 64px 0;
+    }
+    .gei-heritage__rows {
+      gap: 48px;
+    }
+    .gei-heritage__header {
+      margin-bottom: 48px;
+    }
+    .gei-heritage__row-caption {
+      font-size: 16px;
+    }
+  }
+
   .gesi-g-item {
     position: relative;
     height: 180px;

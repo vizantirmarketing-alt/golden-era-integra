@@ -1,0 +1,32 @@
+[
+  {
+    "filename": "gsr-acura-solo.jpg",
+    "caption": "Brought it back to where the badge still lives. Same logo, three decades later.",
+    "kanji": "系譜",
+    "kanjiRomaji": "Keifu",
+    "subjects": "1995 GS-R",
+    "location": "Acura dealership, Las Vegas",
+    "capturedAt": "2025-04-29",
+    "order": 1
+  },
+  {
+    "filename": "95gsr-25integra.jpg",
+    "caption": "Thirty years between them. The nameplate came back in red.",
+    "kanji": "系譜",
+    "kanjiRomaji": "Keifu",
+    "subjects": "1995 GS-R · 2025 Integra",
+    "location": "Acura dealership, Las Vegas",
+    "capturedAt": "2025-04-29",
+    "order": 2
+  },
+  {
+    "filename": "gsr-nsx.jpg",
+    "caption": "Pulled in next to the halo car. Felt like the right kind of company.",
+    "kanji": "仲間",
+    "kanjiRomaji": "Nakama",
+    "subjects": "1995 GS-R · NSX",
+    "location": "Acura service bay",
+    "capturedAt": "2025-04-29",
+    "order": 3
+  }
+]
