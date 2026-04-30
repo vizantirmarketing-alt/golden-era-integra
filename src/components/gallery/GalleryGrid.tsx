@@ -28,7 +28,7 @@ export function GalleryGrid({ images }: GalleryGridProps) {
   const prepared = useMemo(
     () =>
       images.map((image, index) => {
-        const src = image.image ? urlFor(image.image).width(1800).quality(82).url() : "";
+        const src = image.image ? urlFor(image.image).width(2400).quality(82).url() : "";
         return {
           image,
           index,
@@ -158,11 +158,13 @@ export function GalleryGrid({ images }: GalleryGridProps) {
               </button>
               <div className="gesi-lightbox-media">
                 {active.src ? (
-                  // eslint-disable-next-line @next/next/no-img-element -- intrinsic dimensions + contain need a plain img; grid still uses next/image
-                  <img
+                  <Image
                     src={active.src}
                     alt={active.image.image?.alt || active.title}
+                    fill
+                    sizes="90vw"
                     className="gesi-lightbox-image"
+                    priority
                   />
                 ) : (
                   <div className="gesi-gallery-fallback">No image</div>
