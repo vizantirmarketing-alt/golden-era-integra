@@ -38,31 +38,33 @@ export function Hero() {
           />
         </div>
         <div className="gesi-hero__copy">
-          <div className="gesi-hero__eyebrow">
-            <span className="gesi-hero__eyebrow-dot" aria-hidden />
-            The Last Great Honda
-          </div>
-          <h1 className="gesi-hero__h1 text-ink">
-            <span className="gesi-hero__line">Golden</span>
-            <span className="gesi-hero__line gesi-hero__line--grad">Era</span>
-            <span className="gesi-hero__line gesi-hero__line--outline">Integra.</span>
-          </h1>
-          <p className="gesi-hero__title-jp" lang="ja">
-            黄金時代のインテグラ
-          </p>
-          <div className="gesi-hero__chips" role="list">
-            <span className="gesi-chip gesi-chip--milano" role="listitem">
-              Milano Red R-81
-            </span>
-            <span className="gesi-chip" role="listitem">
-              DC2 Chassis
-            </span>
-            <span className="gesi-chip" role="listitem">
-              B18C1 VTEC
-            </span>
-            <span className="gesi-chip" role="listitem">
-              8,100 RPM
-            </span>
+          <div className="gesi-hero__copy-inner">
+            <div className="gesi-hero__eyebrow">
+              <span className="gesi-hero__eyebrow-dot" aria-hidden />
+              The Last Great Honda
+            </div>
+            <h1 className="gesi-hero__h1 text-ink">
+              <span className="gesi-hero__line">Golden</span>
+              <span className="gesi-hero__line gesi-hero__line--grad">Era</span>
+              <span className="gesi-hero__line gesi-hero__line--outline">Integra.</span>
+            </h1>
+            <p className="gesi-hero__title-jp" lang="ja">
+              黄金時代のインテグラ
+            </p>
+            <div className="gesi-hero__chips" role="list">
+              <span className="gesi-chip gesi-chip--milano" role="listitem">
+                Milano Red R-81
+              </span>
+              <span className="gesi-chip" role="listitem">
+                DC2 Chassis
+              </span>
+              <span className="gesi-chip" role="listitem">
+                B18C1 VTEC
+              </span>
+              <span className="gesi-chip" role="listitem">
+                8,100 RPM
+              </span>
+            </div>
           </div>
         </div>
       </div>
