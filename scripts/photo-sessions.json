@@ -67,5 +67,54 @@
       "chevron7.jpg",
       "chevron1.jpg"
     ]
+  },
+  {
+    "id": "session-everyday",
+    "title": "Everyday",
+    "slug": "everyday",
+    "kanji": "日常",
+    "kanjiRomaji": "Nichijō",
+    "location": "Las Vegas, NV",
+    "intro": "The car at gas stations, in parking lots, in front of murals. Not staged — just the way it lives.",
+    "order": 5,
+    "folder": "everyday",
+    "photos": [
+      "aloha.jpg",
+      "the-crossing.jpg",
+      "wynn.jpg",
+      "gas-up-1.jpg",
+      "gas-up-2.jpg"
+    ]
+  },
+  {
+    "id": "session-car-meet",
+    "title": "The Car Meet",
+    "slug": "car-meet",
+    "kanji": "集合",
+    "kanjiRomaji": "Shūgō",
+    "location": "Las Vegas, NV",
+    "intro": "Hood up next to a white ITR and a CRX. Saturday morning, the right kind of crowd.",
+    "order": 6,
+    "folder": "car-meet",
+    "photos": [
+      "the-car-meet-1.jpg",
+      "the-car-meet-2.jpg"
+    ]
+  },
+  {
+    "id": "session-service-day",
+    "title": "Service Day",
+    "slug": "service-day",
+    "kanji": "整備",
+    "kanjiRomaji": "Seibi",
+    "location": "Las Vegas, NV",
+    "intro": "On the lift between a red Prelude and a service bay full of work. The car as a working object, not a museum piece.",
+    "order": 7,
+    "folder": "service-day",
+    "photos": [
+      "on-the-lift.jpg",
+      "the-shop-front.jpg",
+      "the-shop-rear.jpg"
+    ]
   }
 ]
