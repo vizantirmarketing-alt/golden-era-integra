@@ -16,5 +16,22 @@
       "engine-close-up-shot.jpg",
       "rear-top-shot.jpg"
     ]
+  },
+  {
+    "slug": "town-square-day",
+    "title": "Town Square Day",
+    "kanji": "昼",
+    "kanjiRomaji": "Hiru",
+    "location": "Las Vegas, NV",
+    "order": 2,
+    "folder": "town-square-day",
+    "photos": [
+      "ts-front-shot.jpg",
+      "ts-hood-shot.jpg",
+      "ts-front-bumper-shot.jpg",
+      "ts-passenger-side-shot.jpg",
+      "ts-rear-top-shot.jpg",
+      "ts-rear-shot.jpg"
+    ]
   }
 ]
