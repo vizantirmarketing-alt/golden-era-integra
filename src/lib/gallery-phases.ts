@@ -1,5 +1,17 @@
 import type { GalleryImage, GalleryPhase } from "@/sanity/types";
 
+/** Kanji + romaji labels for gallery phase nav and UI (single source of truth). */
+export const PHASE_LABELS: Record<GalleryPhase, { kanji: string; romaji: string }> = {
+  before: { kanji: "以前", romaji: "Before" },
+  disassembly: { kanji: "分解", romaji: "Disassembly" },
+  "body-prep": { kanji: "下地", romaji: "Body Prep" },
+  fitting: { kanji: "仮合せ", romaji: "Fitting" },
+  paint: { kanji: "塗装", romaji: "Paint" },
+  engine: { kanji: "エンジン", romaji: "Engine" },
+  assembly: { kanji: "組立", romaji: "Assembly" },
+  finished: { kanji: "完成", romaji: "Finished" },
+};
+
 export const GALLERY_PHASE_ORDER: readonly GalleryPhase[] = [
   "before",
   "disassembly",

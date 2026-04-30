@@ -60,6 +60,7 @@
   html {
     --font-display: var(--font-anton), var(--font-bebas), ui-sans-serif, sans-serif;
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
   }
 
   body {
@@ -1486,6 +1487,11 @@
     border: 1px solid var(--line-soft);
     background: #0d0814;
   }
+  .gesi-grid__cell[data-span="g1"] .gesi-grid__media,
+  .gesi-grid__cell[data-span="g2"] .gesi-grid__media,
+  .gesi-grid__cell[data-span="g3"] .gesi-grid__media {
+    aspect-ratio: 1 / 1;
+  }
 
   .gesi-grid__media-fallback {
     display: flex;
@@ -1506,6 +1512,77 @@
     line-height: 1.5;
     max-width: 60ch;
     color: color-mix(in srgb, var(--ink) 60%, transparent);
+  }
+
+  .gesi-grid__meta {
+    margin-top: 6px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--ink) 40%, transparent);
+    max-width: 60ch;
+  }
+
+  .gesi-phasenav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(12px);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+    padding: 16px 0;
+    margin-bottom: 32px;
+  }
+
+  .gesi-phasenav__list {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    padding: 0 24px;
+    margin: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .gesi-phasenav__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gesi-phasenav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    text-decoration: none;
+    color: var(--ink);
+    white-space: nowrap;
+    transition: opacity 0.15s ease;
+  }
+
+  .gesi-phasenav__link:hover {
+    opacity: 0.6;
+  }
+
+  .gesi-phasenav__kanji {
+    font-size: 18px;
+    letter-spacing: 0.05em;
+  }
+
+  .gesi-phasenav__romaji {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--ink) 50%, transparent);
+  }
+
+  @media (max-width: 768px) {
+    .gesi-phasenav__list {
+      gap: 24px;
+      padding: 0 16px;
+    }
+    .gesi-phasenav__kanji {
+      font-size: 16px;
+    }
   }
 
   /* ——— Guestbook ——— (reference: golden-era-integra-hybrid.html guestbook section) */

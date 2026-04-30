@@ -7,6 +7,7 @@ import { client } from "@/sanity/client";
 import {
   earliestCapturedYear,
   groupGalleryImagesByPhase,
+  PHASE_LABELS,
 } from "@/lib/gallery-phases";
 import { seo } from "@/lib/seo";
 import { galleryImagesQuery } from "@/sanity/queries";
@@ -71,8 +72,24 @@ export default async function GalleryPage() {
           </div>
         ) : (
           <>
+            <nav className="gesi-phasenav" aria-label="Gallery phases">
+              <ul className="gesi-phasenav__list">
+                {phaseGroups.map(({ phase }) => (
+                  <li key={phase} className="gesi-phasenav__item">
+                    <a href={`#phase-${phase}`} className="gesi-phasenav__link">
+                      <span className="gesi-phasenav__kanji">{PHASE_LABELS[phase].kanji}</span>
+                      <span className="gesi-phasenav__romaji">{PHASE_LABELS[phase].romaji}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
             {phaseGroups.map(({ phase, images }, idx) => (
-              <div key={phase} className="gesi-gallery-phase-block">
+              <div
+                key={phase}
+                id={`phase-${phase}`}
+                className="gesi-gallery-phase-block"
+              >
                 <GalleryPhaseDivider
                   chapterNumber={idx + 2}
                   phase={phase}

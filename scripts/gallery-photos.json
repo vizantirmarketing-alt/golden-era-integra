@@ -40,7 +40,7 @@
     "shotOn": "Digital",
     "capturedAt": "2021-06-01",
     "order": 40,
-    "gridSpan": "g5",
+    "gridSpan": "g4",
     "phase": "before"
   },
   {
@@ -51,7 +51,7 @@
     "shotOn": "Digital",
     "capturedAt": "2021-06-01",
     "order": 50,
-    "gridSpan": "g7",
+    "gridSpan": "g3",
     "phase": "before"
   },
   {
@@ -73,7 +73,7 @@
     "shotOn": "Digital",
     "capturedAt": "2021-06-01",
     "order": 70,
-    "gridSpan": "g6",
+    "gridSpan": "g4",
     "phase": "before"
   },
   {
@@ -106,7 +106,7 @@
     "shotOn": "Digital",
     "capturedAt": "2022-08-01",
     "order": 120,
-    "gridSpan": "g5",
+    "gridSpan": "g4",
     "phase": "disassembly"
   },
   {
@@ -117,7 +117,7 @@
     "shotOn": "Digital",
     "capturedAt": "2022-08-01",
     "order": 130,
-    "gridSpan": "g7",
+    "gridSpan": "g3",
     "phase": "disassembly"
   },
   {
@@ -227,7 +227,7 @@
     "shotOn": "Digital",
     "capturedAt": "2023-04-01",
     "order": 260,
-    "gridSpan": "g7",
+    "gridSpan": "g4",
     "phase": "body-prep"
   },
   {
@@ -238,7 +238,7 @@
     "shotOn": "Digital",
     "capturedAt": "2023-04-01",
     "order": 270,
-    "gridSpan": "g5",
+    "gridSpan": "g4",
     "phase": "body-prep"
   },
   {
@@ -271,7 +271,7 @@
     "shotOn": "Digital",
     "capturedAt": "2023-04-01",
     "order": 300,
-    "gridSpan": "g6",
+    "gridSpan": "g3",
     "phase": "body-prep"
   },
   {
@@ -315,7 +315,7 @@
     "shotOn": "Digital",
     "capturedAt": "2023-05-01",
     "order": 340,
-    "gridSpan": "g5",
+    "gridSpan": "g4",
     "phase": "fitting"
   },
   {
@@ -337,7 +337,7 @@
     "shotOn": "Digital",
     "capturedAt": "2023-05-01",
     "order": 360,
-    "gridSpan": "g5",
+    "gridSpan": "g4",
     "phase": "fitting"
   },
   {
@@ -403,7 +403,7 @@
     "shotOn": "Digital",
     "capturedAt": "2023-06-01",
     "order": 430,
-    "gridSpan": "g5",
+    "gridSpan": "g4",
     "phase": "paint"
   },
   {
@@ -414,7 +414,7 @@
     "shotOn": "Digital",
     "capturedAt": "2023-06-01",
     "order": 440,
-    "gridSpan": "g7",
+    "gridSpan": "g4",
     "phase": "paint"
   },
   {
@@ -425,7 +425,7 @@
     "shotOn": "Digital",
     "capturedAt": "2023-06-01",
     "order": 450,
-    "gridSpan": "g6",
+    "gridSpan": "g4",
     "phase": "paint"
   },
   {

@@ -40,6 +40,22 @@ export function GalleryGrid({ images }: GalleryGridProps) {
           {item.caption ? (
             <figcaption className="gesi-grid__caption">{item.caption}</figcaption>
           ) : null}
+          {(item.shotOn || item.capturedAt || item.location) && (
+            <div className="gesi-grid__meta">
+              {[
+                item.shotOn,
+                item.capturedAt
+                  ? new Date(item.capturedAt).toLocaleDateString("en-US", {
+                      month: "short",
+                      year: "numeric",
+                    })
+                  : null,
+                item.location,
+              ]
+                .filter(Boolean)
+                .join(" · ")}
+            </div>
+          )}
         </figure>
       ))}
     </div>
