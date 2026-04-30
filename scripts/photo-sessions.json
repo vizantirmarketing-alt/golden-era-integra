@@ -33,5 +33,20 @@
       "ts-rear-top-shot.jpg",
       "ts-rear-shot.jpg"
     ]
+  },
+  {
+    "slug": "downtown-summerlin",
+    "title": "Downtown Summerlin",
+    "kanji": "街",
+    "kanjiRomaji": "Machi",
+    "location": "Las Vegas, NV",
+    "order": 3,
+    "folder": "downtown-summerlin",
+    "photos": [
+      "dts-front-1-shot.jpg",
+      "dts-side-shot.jpg",
+      "dts-front-2-shot.jpg",
+      "dts-back-shot.jpg"
+    ]
   }
 ]
