@@ -35,21 +35,19 @@ export default function Home() {
     <>
       <Hero />
       <Marquee />
-      <MotionSection id="origin" className="gesi-chapter text-ink">
+      <MotionSection id="story" className="gesi-chapter text-ink">
         <div className="gesi-container">
-          <div className="gesi-grid-12">
+          <div className="gesi-grid-12 mb-16">
             <div className="gesi-col-side">
-              <div className="gesi-sticky">
-                <ChapterHeader
-                  chapterLabel="Chapter 01"
-                  number="01"
-                  label="Origin Story"
-                  kanji="起源"
-                />
-              </div>
+              <ChapterHeader
+                chapterLabel="Chapter 01"
+                number="01"
+                label="Origin Story"
+                kanji="起源"
+              />
             </div>
             <div className="gesi-col-main">
-              <GradHeading as="h2" className="!mb-12 text-balance">
+              <GradHeading as="h2" className="!mb-8 !text-balance sm:!pr-4">
                 The first one I
                 {" "}
                 <span className="grad">burned through</span>.
@@ -58,38 +56,17 @@ export default function Home() {
                 {" "}
                 <span className="outline">rebuilding</span>.
               </GradHeading>
-              <div className="gesi-body-grid">
-                <p>
-                  There was this guy in high school who had an Integra. I
-                  don&apos;t remember his name. I remember the car. After
-                  graduation I saved up, found a &apos;94 LS on eBay two hours
-                  away. Drove out to get it. Didn&apos;t actually know how to
-                  drive stick — burned the clutch before I made it back into
-                  town.
+              <div className="max-w-[36rem] space-y-4">
+                <p className="body-copy">
+                  Bought during COVID, mostly to have something to do on
+                  weekends with my buddy. One thing led to another. Four years
+                  later, still here.
                 </p>
-                <p>
-                  This one I got May 30, 2021. &apos;95 GS-R, bought it off an
-                  Air Force guy in town who was getting stationed somewhere
-                  else. Been working on it ever since, back and forth between
-                  my garage and my buddy&apos;s shop. He&apos;s a mechanic. I
-                  help where I can. Four years in. Still going.
-                </p>
-              </div>
-              <div className="gesi-stats" aria-label="Key figures">
-                <div>
-                  <div className="gesi-stat-num">170</div>
-                  <div className="gesi-stat-lbl">Factory HP</div>
-                </div>
-                <div>
-                  <div className="gesi-stat-num">2,579</div>
-                  <div className="gesi-stat-lbl">Curb Weight (lb)</div>
-                </div>
-                <div>
-                  <div className="gesi-stat-num">8,100</div>
-                  <div className="gesi-stat-lbl">Redline RPM</div>
-                </div>
               </div>
             </div>
+          </div>
+          <div className="gesi-cta">
+            <Link href="/story">Read the full story →</Link>
           </div>
         </div>
       </MotionSection>

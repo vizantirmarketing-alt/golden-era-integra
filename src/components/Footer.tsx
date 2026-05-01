@@ -3,9 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const sections = [
-  { href: "/#origin", label: "Origin Story" },
+  { href: "/story", label: "Story" },
   { href: "/build", label: "The Build" },
-  { href: "/archive", label: "Archive" },
+  { href: "/archive", label: "The Archive" },
+  { href: "/sessions", label: "Sessions" },
 ] as const;
 
 const follow: ReadonlyArray<{

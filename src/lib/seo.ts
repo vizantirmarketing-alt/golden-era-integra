@@ -19,6 +19,11 @@ export const seo = {
     description:
       "Four years of sourcing genuine Honda parts, restoring glass, and rebuilding the B18C — the full build story of a 1995 Acura Integra GS-R.",
   },
+  story: {
+    titleAbsolute: "Story — Golden Era Integra",
+    description:
+      "Bought during COVID, hung out at the garage with my buddy, one thing led to another. The four-year origin story of a Milano Red '95 Integra GS-R.",
+  },
   gallery: {
     title: "Gallery",
     description:

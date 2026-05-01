@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 const links = [
-  { href: "/#origin", label: "Story" },
+  { href: "/story", label: "Story" },
   { href: "/build", label: "The Build" },
   { href: "/archive", label: "The Archive" },
   { href: "/sessions", label: "Sessions" },
