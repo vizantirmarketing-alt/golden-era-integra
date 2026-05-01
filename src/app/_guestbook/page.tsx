@@ -4,16 +4,24 @@ import { ChapterHeader } from "@/components/ChapterHeader";
 import { GradHeading } from "@/components/GradHeading";
 import { seo } from "@/lib/seo";
 
+/**
+ * Archived — `src/app/_guestbook` is excluded from Next.js routing.
+ * To restore: rename folder to `guestbook` and rename `src/app/api/_guestbook` → `api/guestbook`.
+ */
+const guestbookTitle = "Guestbook";
+const guestbookDescription =
+  "Sign the visitor's log — leave a note for fellow drivers and builders.";
+
 export const metadata: Metadata = {
-  title: seo.guestbook.title,
-  description: seo.guestbook.description,
+  title: guestbookTitle,
+  description: guestbookDescription,
   openGraph: {
-    title: `${seo.guestbook.title} · ${seo.siteName}`,
-    description: seo.guestbook.description,
+    title: `${guestbookTitle} · ${seo.siteName}`,
+    description: guestbookDescription,
   },
   twitter: {
-    title: `${seo.guestbook.title} · ${seo.siteName}`,
-    description: seo.guestbook.description,
+    title: `${guestbookTitle} · ${seo.siteName}`,
+    description: guestbookDescription,
   },
 };
 

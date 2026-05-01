@@ -6,7 +6,7 @@ export const seo = {
   home: {
     titleAbsolute: "Golden Era Integra — Las Vegas, Nevada",
     description:
-      "A documented restoration of a 1995 Acura Integra GS-R in Milano Red. Suzuka-built, Vegas-driven — specifications, gallery, guestbook, and film.",
+      "A documented restoration of a 1995 Acura Integra GS-R in Milano Red. Suzuka-built, Vegas-driven — specifications, gallery, and film.",
   },
   build: {
     title: "Specification",
@@ -28,11 +28,6 @@ export const seo = {
     title: "In Motion",
     description:
       "Video episodes — featured drives, garage notes, and the car in motion.",
-  },
-  guestbook: {
-    title: "Guestbook",
-    description:
-      "Sign the visitor’s log — leave a note for fellow drivers and builders.",
   },
   notFound: {
     title: "Page not found",

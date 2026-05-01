@@ -10,7 +10,6 @@ const links = [
   { href: "/build", label: "The Build" },
   { href: "/archive", label: "The Archive" },
   { href: "/sessions", label: "Sessions" },
-  { href: "/guestbook", label: "Guestbook" },
 ] as const;
 
 export function Nav() {

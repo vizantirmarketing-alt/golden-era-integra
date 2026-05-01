@@ -6,7 +6,6 @@ const sections = [
   { href: "/#origin", label: "Origin Story" },
   { href: "/build", label: "The Build" },
   { href: "/archive", label: "Archive" },
-  { href: "/guestbook", label: "Guestbook" },
 ] as const;
 
 const follow: ReadonlyArray<{

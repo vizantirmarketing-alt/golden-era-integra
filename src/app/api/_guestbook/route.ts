@@ -15,6 +15,7 @@ const guestbookPostBodySchema = z.object({
   name: z.string().min(1).max(40),
   handle: z.string().max(64).nullish(),
   message: z.string().min(4).max(280),
+  signature_svg: z.string().max(100000).nullable().optional(),
 });
 
 type GuestbookRowPublic = Omit<GuestbookEntry, "ip_hash">;
@@ -51,7 +52,7 @@ export async function GET() {
   const supabase = createSupabaseServiceRole();
   const { data, error } = await supabase
     .from("guestbook_entries")
-    .select("id, name, handle, message, created_at")
+    .select("id, name, handle, message, signature_svg, created_at")
     .order("created_at", { ascending: false })
     .limit(100);
 
@@ -84,6 +85,18 @@ export async function POST(request: Request) {
 
   const { name, message } = parsed.data;
   const handle = sanitizeGuestbookHandle(parsed.data.handle ?? undefined);
+
+  let signatureSvg: string | null = parsed.data.signature_svg ?? null;
+  if (signatureSvg === "") {
+    signatureSvg = null;
+  }
+  if (signatureSvg !== null) {
+    const trimmed = signatureSvg.trim();
+    if (!trimmed.startsWith("<svg") || !trimmed.includes("</svg>")) {
+      return Response.json({ error: "Invalid signature format." }, { status: 400 });
+    }
+    signatureSvg = trimmed;
+  }
 
   const partsToScan = [name, message, ...(handle ? [handle] : [])];
   for (const text of partsToScan) {
@@ -124,9 +137,10 @@ export async function POST(request: Request) {
       name,
       handle,
       message,
+      signature_svg: signatureSvg,
       ip_hash: ipHash,
     })
-    .select("id, name, handle, message, created_at")
+    .select("id, name, handle, message, signature_svg, created_at")
     .single();
 
   if (insertError || !inserted) {

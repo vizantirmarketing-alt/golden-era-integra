@@ -8,6 +8,7 @@ import {
   timeAgoFromIso,
 } from "@/lib/guestbookUi";
 import { motion } from "framer-motion";
+import DOMPurify from "dompurify";
 import {
   useCallback,
   useEffect,
@@ -16,17 +17,36 @@ import {
   type FormEvent,
 } from "react";
 
+import { SignaturePad } from "@/components/guestbook/SignaturePad";
+
 type GuestbookPublicRow = {
   id: string;
   name: string;
   handle: string | null;
   message: string;
+  signature_svg?: string | null;
   created_at: string;
 };
 
 function instagramHref(handle: string): string {
   const user = handle.replace(/^@/, "");
   return `https://instagram.com/${encodeURIComponent(user)}`;
+}
+
+function GuestbookEntrySignature({ svg }: { svg: string }) {
+  const html = useMemo(
+    () =>
+      DOMPurify.sanitize(svg, {
+        USE_PROFILES: { svg: true, svgFilters: true },
+      }),
+    [svg],
+  );
+  return (
+    <div
+      className="gb-entry-signature"
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
 }
 
 export function GuestbookClient() {
@@ -36,6 +56,7 @@ export function GuestbookClient() {
   const [name, setName] = useState("");
   const [handleCore, setHandleCore] = useState("");
   const [message, setMessage] = useState("");
+  const [signature, setSignature] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState<{
     kind: "success" | "error";
@@ -118,6 +139,7 @@ export function GuestbookClient() {
           body: JSON.stringify({
             name: n,
             message: m,
+            signature_svg: signature,
             ...(handlePayload !== undefined ? { handle: handlePayload } : {}),
           }),
         });
@@ -159,12 +181,13 @@ export function GuestbookClient() {
         setName("");
         setHandleCore("");
         setMessage("");
+        setSignature(null);
         setStatus({ kind: "success", text: "Thanks — your note is live." });
       } finally {
         setSubmitting(false);
       }
     },
-    [handleCore, message, name, validateClient],
+    [handleCore, message, name, signature, validateClient],
   );
 
   const countLabel = useMemo(() => {
@@ -237,6 +260,16 @@ export function GuestbookClient() {
             </div>
           </div>
 
+          <div className="gb-field">
+            <label htmlFor="gb-signature-canvas">Sign the log</label>
+            <div className="gb-field-sub-kanji">記帳</div>
+            <SignaturePad
+              canvasId="gb-signature-canvas"
+              value={signature}
+              onChange={setSignature}
+            />
+          </div>
+
           <button
             type="submit"
             className="gb-submit"
@@ -303,20 +336,39 @@ export function GuestbookClient() {
                     >
                       {avatar.initial}
                     </div>
-                    <div className="gb-name">{entry.name}</div>
-                    {entry.handle ? (
-                      <a
-                        className="gb-handle"
-                        href={instagramHref(entry.handle)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {entry.handle}
-                      </a>
-                    ) : null}
-                    <div className="gb-time">{timeAgoFromIso(entry.created_at)}</div>
+                    <div className="gb-entry-headline">
+                      <span className="gb-name">{entry.name}</span>
+                      {entry.handle ? (
+                        <>
+                          <span className="gb-entry-sep" aria-hidden>
+                            {" "}
+                            ·{" "}
+                          </span>
+                          <a
+                            className="gb-handle"
+                            href={instagramHref(entry.handle)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {entry.handle}
+                          </a>
+                        </>
+                      ) : null}
+                      <span className="gb-entry-sep" aria-hidden>
+                        {" "}
+                        ·{" "}
+                      </span>
+                      <span className="gb-time">
+                        {timeAgoFromIso(entry.created_at)}
+                      </span>
+                    </div>
                   </div>
-                  <div className="gb-msg">{entry.message}</div>
+                  <div className="gb-entry-body">
+                    <div className="gb-msg">{entry.message}</div>
+                    {entry.signature_svg ? (
+                      <GuestbookEntrySignature svg={entry.signature_svg} />
+                    ) : null}
+                  </div>
                 </motion.article>
               );
             })

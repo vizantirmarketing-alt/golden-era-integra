@@ -6,6 +6,7 @@ export type GuestbookEntry = {
   name: string;
   handle: string | null;
   message: string;
+  signature_svg: string | null;
   created_at: string;
   ip_hash: string | null;
 };
