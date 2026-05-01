@@ -37,8 +37,8 @@ type GalleryPhase =
   | "body-prep"
   | "fitting"
   | "paint"
-  | "engine"
   | "assembly"
+  | "engine"
   | "finished";
 
 type GalleryPhotoEntry = {
@@ -74,8 +74,8 @@ const PHASE_VALUES: readonly GalleryPhase[] = [
   "body-prep",
   "fitting",
   "paint",
-  "engine",
   "assembly",
+  "engine",
   "finished",
 ] as const;
 

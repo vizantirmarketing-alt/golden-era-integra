@@ -7,8 +7,8 @@ export const PHASE_LABELS: Record<GalleryPhase, { kanji: string; romaji: string 
   "body-prep": { kanji: "下地", romaji: "Body Prep" },
   fitting: { kanji: "仮合せ", romaji: "Fitting" },
   paint: { kanji: "塗装", romaji: "Paint" },
+  assembly: { kanji: "組立", romaji: "Kumitate" },
   engine: { kanji: "エンジン", romaji: "Engine" },
-  assembly: { kanji: "組立", romaji: "Assembly" },
   finished: { kanji: "完成", romaji: "Finished" },
 };
 
@@ -18,8 +18,8 @@ export const GALLERY_PHASE_ORDER: readonly GalleryPhase[] = [
   "body-prep",
   "fitting",
   "paint",
-  "engine",
   "assembly",
+  "engine",
   "finished",
 ] as const;
 

@@ -1722,6 +1722,7 @@
     max-width: 60ch;
   }
 
+  /* Archive phase jump-nav: items + order come from `groupGalleryImagesByPhase` / PHASE_LABELS (組立 follows 塗装 when both have images). */
   .gesi-phasenav {
     position: sticky;
     top: 0;
