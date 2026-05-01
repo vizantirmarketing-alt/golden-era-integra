@@ -99,7 +99,7 @@ export default function Home() {
               <ChapterHeader
                 chapterLabel="Chapter 02"
                 number="02"
-                label="Specification"
+                label="The Build"
                 kanji="仕様"
               />
             </div>
@@ -109,20 +109,20 @@ export default function Home() {
               </GradHeading>
               <div className="max-w-[36rem] space-y-4">
                 <p className="body-copy">
-                  When I bought the car in 2021, I had a vision. I wanted to
-                  restore it with as much Honda genuine as I could find. Not
-                  because anyone was checking. I just wanted it done right.
+                  It started during COVID. Everyone was bored, including me. I
+                  bought this car cheap, mostly so my buddy and I would have
+                  something to do on weekends.
                 </p>
                 <p className="body-copy">
-                  The car is a &apos;95 GS-R, but I wanted the 98-spec front
-                  and rear bumper, Type R spoiler, Type T side skirts, quad
-                  headlights. Every piece had to be Honda or right. If it
-                  wasn&apos;t, I waited.
+                  Then one thing led to another. A small fix turned into a
+                  bigger one. A bigger one turned into a teardown. The teardown
+                  turned into a vision.
                 </p>
                 <p className="body-copy">
-                  Four years of hunting. Junkyards. New old stock from Japan.
-                  An Acura dealer that had a brand-new 98 front bumper sitting
-                  on a shelf. Whatever it took.
+                  When I bought the car in 2021, I didn&apos;t have a plan. By
+                  the time I knew what I was building, I was already two years
+                  in. The plan caught up with the work — restore it with as
+                  much Honda genuine as I could find.
                 </p>
               </div>
             </div>
