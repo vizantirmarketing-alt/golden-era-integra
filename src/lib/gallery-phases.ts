@@ -7,7 +7,7 @@ export const PHASE_LABELS: Record<GalleryPhase, { kanji: string; romaji: string 
   "body-prep": { kanji: "下地", romaji: "Body Prep" },
   fitting: { kanji: "仮合せ", romaji: "Fitting" },
   paint: { kanji: "塗装", romaji: "Paint" },
-  assembly: { kanji: "組立", romaji: "Kumitate" },
+  assembly: { kanji: "組立", romaji: "Assembly" },
   engine: { kanji: "エンジン", romaji: "Engine" },
   finished: { kanji: "完成", romaji: "Finished" },
 };
