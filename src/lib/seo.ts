@@ -24,12 +24,6 @@ export const seo = {
     description:
       "Bought during COVID, hung out at the garage with my buddy, one thing led to another. The four-year origin story of a Milano Red '95 Integra GS-R.",
   },
-  parts: {
-    titleAbsolute: "Parts | Golden Era Integra",
-    description:
-      "A collection of pieces gathered through four years of building a 1995 Acura Integra GS-R. Some installed, some stored, some came and gone.",
-    ogImage: "/og/parts.jpg",
-  },
   gallery: {
     title: "Gallery",
     description:

@@ -1,4 +1,4 @@
-import type { GalleryImage, GridSpan } from "@/sanity/types";
+import type { GalleryImage, GalleryImageAspectRatio, GridSpan } from "@/sanity/types";
 
 export type PartsPhotoSpec = {
   file: string;
@@ -6,6 +6,8 @@ export type PartsPhotoSpec = {
   gridSpan: GridSpan;
   caption: string;
   alt: string;
+  /** Omit for landscape (default in import + grid). */
+  aspectRatio?: GalleryImageAspectRatio;
 };
 
 export type PartsSectionSpec = {
@@ -16,7 +18,7 @@ export type PartsSectionSpec = {
   photos: readonly PartsPhotoSpec[];
 };
 
-/** Single source for /parts layout and `scripts/import-parts-phase.ts` (order, gridSpan, caption, alt). */
+/** Source of truth for `scripts/import-parts-phase.ts` (order, gridSpan, caption, alt). Section copy is unused. */
 export const PARTS_SECTIONS: readonly PartsSectionSpec[] = [
   {
     titleEnglish: "ENGINE BAY",
@@ -59,6 +61,7 @@ export const PARTS_SECTIONS: readonly PartsSectionSpec[] = [
         file: "raychem-engine-tucked-wires.jpg",
         order: 50,
         gridSpan: "g4",
+        aspectRatio: "portrait",
         caption:
           "Raychem DR-25 milspec heat shrink. The same stuff used in aerospace and motorsports wiring.",
         alt: "Raychem DR-25 heat shrink on tucked engine wiring",
@@ -76,6 +79,7 @@ export const PARTS_SECTIONS: readonly PartsSectionSpec[] = [
         file: "jdm-steering-wheel-1.jpg",
         order: 60,
         gridSpan: "g6",
+        aspectRatio: "portrait",
         caption: "Before. Faded, dirty, well-used. Forty years of hands.",
         alt: "JDM Momo steering wheel before restoration, worn leather",
       },
@@ -83,6 +87,7 @@ export const PARTS_SECTIONS: readonly PartsSectionSpec[] = [
         file: "jdm-steering-wheel-2.jpg",
         order: 70,
         gridSpan: "g6",
+        aspectRatio: "portrait",
         caption: "The leather had given up. Time for fresh hide.",
         alt: "Worn steering wheel leather close-up",
       },
@@ -90,6 +95,7 @@ export const PARTS_SECTIONS: readonly PartsSectionSpec[] = [
         file: "jdm-steering-wheel-3.jpg",
         order: 80,
         gridSpan: "g6",
+        aspectRatio: "portrait",
         caption: "After Gabe Custom. Perforated leather, red cross-stitch.",
         alt: "Restored steering wheel with perforated leather",
       },
@@ -97,6 +103,7 @@ export const PARTS_SECTIONS: readonly PartsSectionSpec[] = [
         file: "jdm-steering-wheel-4.jpg",
         order: 90,
         gridSpan: "g6",
+        aspectRatio: "portrait",
         caption: "The stitch detail. Done by hand.",
         alt: "Hand cross-stitch detail on steering wheel",
       },
@@ -113,6 +120,7 @@ export const PARTS_SECTIONS: readonly PartsSectionSpec[] = [
         file: "bride-stradia-ii-kevlar-1.jpg",
         order: 100,
         gridSpan: "g4",
+        aspectRatio: "portrait",
         caption: "Bride Stradia II Low Max. Red gradation fabric, kevlar shell.",
         alt: "Bride Stradia II Low Max seat red gradation kevlar",
       },
@@ -120,6 +128,7 @@ export const PARTS_SECTIONS: readonly PartsSectionSpec[] = [
         file: "bride-stradia-ii-kevlar-2.jpg",
         order: 110,
         gridSpan: "g4",
+        aspectRatio: "portrait",
         caption: "The kevlar weave from the back. Made in Japan.",
         alt: "Back of Bride seat showing kevlar weave",
       },
@@ -142,6 +151,7 @@ export const PARTS_SECTIONS: readonly PartsSectionSpec[] = [
         file: "98-00-headlight.jpg",
         order: 130,
         gridSpan: "g6",
+        aspectRatio: "portrait",
         caption:
           "JDM 98-00 one-piece headlight. The car runs USDM quad headlights — both 94-97 and 98-00 USDM Integras came with quads stock. This is the Japan-spec piece. Stored.",
         alt: "JDM 98-00 one-piece Integra headlight",
@@ -167,6 +177,7 @@ export const PARTS_SECTIONS: readonly PartsSectionSpec[] = [
         file: "carbon-fiber-trunk-cover.jpg",
         order: 150,
         gridSpan: "g6",
+        aspectRatio: "portrait",
         caption: "Carbon fiber rear parcel shelf cover. The weave runs the length of the piece.",
         alt: "Carbon fiber rear parcel shelf cover",
       },
@@ -220,6 +231,7 @@ export const PARTS_SECTIONS: readonly PartsSectionSpec[] = [
         file: "heater-core.jpg",
         order: 210,
         gridSpan: "g4",
+        aspectRatio: "portrait",
         caption: "AC evaporator core. New, sealed, ready when the old one finally gives up.",
         alt: "New AC evaporator core in box",
       },

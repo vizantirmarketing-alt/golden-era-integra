@@ -937,14 +937,6 @@
     margin-right: auto;
   }
 
-  .gei-heritage__chapter {
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: color-mix(in srgb, var(--ink) 50%, transparent);
-    margin: 0 0 8px 0;
-  }
-
   .gei-heritage__title {
     font-family: var(--font-family-display);
     font-size: clamp(2.5rem, 6.5vw, 5rem);
@@ -1621,26 +1613,6 @@
     margin-top: 0.5rem;
     font-size: 1rem;
     letter-spacing: 0.18em;
-  }
-
-  /* /parts section sublabels (kanji + romaji under h2) */
-  .gesi-parts-section-sub {
-    margin-top: 0.4rem;
-  }
-  .gesi-parts-section-sub__kanji {
-    font-family: var(--font-family-jp);
-    font-size: 0.9375rem;
-    letter-spacing: 0.14em;
-    color: color-mix(in srgb, var(--amber) 48%, var(--ink) 52%);
-  }
-  .gesi-parts-section-sub__romaji {
-    margin-top: 0.2rem;
-    display: block;
-    font-family: var(--font-family-mono);
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: color-mix(in srgb, var(--amber) 38%, var(--ink) 62%);
   }
 
   .gesi-grid {

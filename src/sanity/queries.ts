@@ -22,22 +22,8 @@ export const galleryImagesQuery = defineQuery(`
   capturedAt,
   order,
   phase,
-  gridSpan
-}
-`);
-
-export const galleryPartsImagesQuery = defineQuery(`
-*[_type == "galleryImage" && phase == "parts"] | order(order asc) {
-  _id,
-  _type,
-  image { asset, alt, hotspot, crop },
-  caption,
-  location,
-  shotOn,
-  capturedAt,
-  order,
-  phase,
-  gridSpan
+  gridSpan,
+  aspectRatio
 }
 `);
 

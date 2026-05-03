@@ -12,7 +12,6 @@ export default async function HeritageSection() {
   return (
     <section className="gei-heritage" aria-labelledby="heritage-heading">
       <header className="gei-heritage__header">
-        <p className="gei-heritage__chapter">CHAPTER 04</p>
         <h2 id="heritage-heading" className="gei-heritage__title">
           HERITAGE.
         </h2>

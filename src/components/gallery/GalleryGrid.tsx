@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { urlFor } from "@/sanity/client";
-import type { GalleryImage, GridSpan } from "@/sanity/types";
+import type { GalleryImage, GalleryImageAspectRatio, GridSpan } from "@/sanity/types";
 
 type GalleryGridProps = {
   images: GalleryImage[];
@@ -14,6 +14,17 @@ function getGridSpanData(value?: string) {
   return validGridSpans.includes(value as GridSpan) ? value : "g2";
 }
 
+/** CSS `aspect-ratio` string for gallery media (matches cell shape so `object-fit: cover` crops correctly). */
+function getGalleryMediaAspectRatio(value?: GalleryImageAspectRatio | null): string {
+  if (value === "portrait") {
+    return "3 / 4";
+  }
+  if (value === "square") {
+    return "1 / 1";
+  }
+  return "3 / 2";
+}
+
 export function GalleryGrid({ images }: GalleryGridProps) {
   return (
     <div className="gesi-grid">
@@ -23,7 +34,10 @@ export function GalleryGrid({ images }: GalleryGridProps) {
           className="gesi-grid__cell"
           data-span={getGridSpanData(item.gridSpan)}
         >
-          <div className="gesi-grid__media">
+          <div
+            className="gesi-grid__media"
+            style={{ aspectRatio: getGalleryMediaAspectRatio(item.aspectRatio) }}
+          >
             {item.image ? (
               <Image
                 src={urlFor(item.image).width(1600).url()}

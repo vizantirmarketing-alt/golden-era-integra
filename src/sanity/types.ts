@@ -25,6 +25,9 @@ export type SpecCategory = {
 export type ShotOn = "Film 35mm" | "Digital" | "Medium Format";
 export type GridSpan = "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "g9" | "g12";
 
+/** `galleryImage.aspectRatio` — see `sanity/schemas/galleryImage.ts`. */
+export type GalleryImageAspectRatio = "landscape" | "portrait" | "square";
+
 /** `galleryImage.phase` — see `sanity/schemas/galleryImage.ts`. */
 export type GalleryPhase =
   | "before"
@@ -62,6 +65,7 @@ export type GalleryImage = {
   order?: number;
   phase?: GalleryPhase;
   gridSpan?: GridSpan;
+  aspectRatio?: GalleryImageAspectRatio;
 };
 
 /** `heritageShot` — see `sanity/schemas/heritageShot.ts`. */

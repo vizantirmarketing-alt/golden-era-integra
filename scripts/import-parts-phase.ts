@@ -1,6 +1,6 @@
 /**
  * Import Parts-phase gallery images from `gallery-uploads/parts/` into Sanity as `galleryImage`
- * (phase: `parts`, for the dedicated /parts route — excluded from /archive).
+ * (phase: `parts`, shown as the last segment of /archive when images exist).
  *
  * Dry run by default. Pass `--confirm` to upload assets and create/replace documents.
  *
@@ -218,6 +218,7 @@ async function main(): Promise<void> {
           order: entry.order,
           gridSpan: entry.gridSpan,
           phase: "parts",
+          aspectRatio: entry.aspectRatio ?? "landscape",
         }),
       entry.file,
     );

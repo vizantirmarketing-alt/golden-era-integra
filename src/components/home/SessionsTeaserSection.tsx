@@ -28,7 +28,7 @@ export default async function SessionsTeaserSection() {
     <div className="gesi-sessions-teaser__container">
       <div className="gesi-gallery-head">
         <div>
-          <div className="chapter-num-label">CHAPTER 03</div>
+          <div className="chapter-num-label">CHAPTER 04</div>
           <h2 className="gesi-gallery__title">The Present.</h2>
           <p className="gesi-sessions-teaser__jp-line" lang="ja">
             現在

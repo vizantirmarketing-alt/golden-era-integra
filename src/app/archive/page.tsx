@@ -33,7 +33,7 @@ export default async function GalleryPage() {
     { next: { revalidate: 300 } }
   );
 
-  const list = (images ?? []).filter((im) => im.phase !== "parts");
+  const list = images ?? [];
   const phaseGroups = groupGalleryImagesByPhase(list);
 
   return (
@@ -91,7 +91,7 @@ export default async function GalleryPage() {
                 className="gesi-gallery-phase-block"
               >
                 <GalleryPhaseDivider
-                  chapterNumber={idx + 2}
+                  phaseNumber={idx + 1}
                   phase={phase}
                   year={earliestCapturedYear(images)}
                 />

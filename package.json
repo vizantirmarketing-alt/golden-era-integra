@@ -11,6 +11,7 @@
     "import-gallery": "tsx scripts/import-gallery.ts",
     "import-assembly": "tsx scripts/import-assembly-phase.ts",
     "import-parts": "tsx scripts/import-parts-phase.ts",
+    "backfill-parts-aspect-ratio": "tsx scripts/backfill-parts-aspect-ratio.ts",
     "import-heritage": "tsx scripts/import-heritage.ts",
     "import-sessions": "tsx scripts/import-sessions.ts",
     "cleanup-gallery": "tsx scripts/cleanup-gallery.ts",

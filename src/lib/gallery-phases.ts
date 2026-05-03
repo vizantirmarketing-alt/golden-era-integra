@@ -23,6 +23,7 @@ export const GALLERY_PHASE_ORDER: readonly GalleryPhase[] = [
   "fitting",
   "paint",
   "assembly",
+  "parts",
   "engine",
   "finished",
 ] as const;
@@ -66,9 +67,6 @@ export function groupGalleryImagesByPhase(images: GalleryImage[]): GalleryPhaseG
     byPhase.set(p, []);
   }
   for (const img of images) {
-    if (img.phase === "parts") {
-      continue;
-    }
     const p = normalizeGalleryPhase(img.phase);
     byPhase.get(p)!.push(img);
   }

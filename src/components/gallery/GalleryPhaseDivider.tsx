@@ -26,8 +26,8 @@ const PHASE_KANJI: Record<GalleryPhase, string> = {
 };
 
 type GalleryPhaseDividerProps = {
-  /** Sub-chapter index within the gallery archive (first section = 2). */
-  chapterNumber: number;
+  /** 1-based index within the archive phase sequence (first block = 1). */
+  phaseNumber: number;
   phase: GalleryPhase;
   /** Earliest `capturedAt` year in this phase, or null when no dates. */
   year: string | null;
@@ -35,20 +35,20 @@ type GalleryPhaseDividerProps = {
 };
 
 export function GalleryPhaseDivider({
-  chapterNumber,
+  phaseNumber,
   phase,
   year,
   className,
 }: GalleryPhaseDividerProps) {
-  const padded = String(chapterNumber).padStart(2, "0");
-  const chapterLabel = `Chapter ${padded}`;
+  const padded = String(phaseNumber).padStart(2, "0");
+  const phaseLabel = `Phase ${padded}`;
 
   return (
     <header
       className={cn("gesi-gallery-phase-divider flex flex-col", className)}
-      aria-label={`${chapterLabel}: ${PHASE_EDITORIAL_LABEL[phase]}`}
+      aria-label={`${phaseLabel}: ${PHASE_EDITORIAL_LABEL[phase]}`}
     >
-      <p className="chapter-num-label">{chapterLabel}</p>
+      <p className="chapter-num-label">{phaseLabel}</p>
       <span aria-hidden className="chapter-num">
         {padded}
       </span>

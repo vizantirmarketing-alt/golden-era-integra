@@ -11,7 +11,7 @@ export default async function SessionsPage() {
   return (
     <main className="gei-sessions-page">
       <header className="gei-sessions-page__header">
-        <p className="gei-sessions-page__chapter">CHAPTER 05</p>
+        <p className="gei-sessions-page__chapter">CHAPTER 04</p>
         <h1 className="gei-sessions-page__title">SESSIONS.</h1>
         <p className="gei-sessions-page__kanji" lang="ja">
           撮影
