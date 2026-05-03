@@ -52,6 +52,10 @@ export type SanityImageField = {
   };
   hotspot?: { x: number; y: number; height: number; width: number };
   crop?: { top: number; bottom: number; left: number; right: number };
+  /** Present when expanded in GROQ via `asset->metadata` */
+  metadata?: {
+    dimensions?: { width?: number; height?: number };
+  } | null;
 } | null;
 
 export type GalleryImage = {

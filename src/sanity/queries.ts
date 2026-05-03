@@ -15,7 +15,13 @@ export const galleryImagesQuery = defineQuery(`
 *[_type == "galleryImage"] | order(order asc) {
   _id,
   _type,
-  image { asset, alt, hotspot, crop },
+  image {
+    asset,
+    alt,
+    hotspot,
+    crop,
+    "metadata": asset->metadata
+  },
   caption,
   location,
   shotOn,
