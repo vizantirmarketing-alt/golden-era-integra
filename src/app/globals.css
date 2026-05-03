@@ -1623,6 +1623,26 @@
     letter-spacing: 0.18em;
   }
 
+  /* /parts section sublabels (kanji + romaji under h2) */
+  .gesi-parts-section-sub {
+    margin-top: 0.4rem;
+  }
+  .gesi-parts-section-sub__kanji {
+    font-family: var(--font-family-jp);
+    font-size: 0.9375rem;
+    letter-spacing: 0.14em;
+    color: color-mix(in srgb, var(--amber) 48%, var(--ink) 52%);
+  }
+  .gesi-parts-section-sub__romaji {
+    margin-top: 0.2rem;
+    display: block;
+    font-family: var(--font-family-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--amber) 38%, var(--ink) 62%);
+  }
+
   .gesi-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -1661,6 +1681,9 @@
   .gesi-grid__cell[data-span="g9"] {
     grid-column: span 12;
   }
+  .gesi-grid__cell[data-span="g12"] {
+    grid-column: span 12;
+  }
 
   @media (max-width: 768px) {
     .gesi-grid__cell[data-span="g1"],
@@ -1673,7 +1696,8 @@
     .gesi-grid__cell[data-span="g6"],
     .gesi-grid__cell[data-span="g7"],
     .gesi-grid__cell[data-span="g8"],
-    .gesi-grid__cell[data-span="g9"] {
+    .gesi-grid__cell[data-span="g9"],
+    .gesi-grid__cell[data-span="g12"] {
       grid-column: span 12;
     }
   }

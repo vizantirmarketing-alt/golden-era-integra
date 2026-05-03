@@ -23,7 +23,7 @@ export type SpecCategory = {
 };
 
 export type ShotOn = "Film 35mm" | "Digital" | "Medium Format";
-export type GridSpan = "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "g9";
+export type GridSpan = "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "g9" | "g12";
 
 /** `galleryImage.phase` — see `sanity/schemas/galleryImage.ts`. */
 export type GalleryPhase =
@@ -34,7 +34,8 @@ export type GalleryPhase =
   | "paint"
   | "engine"
   | "assembly"
-  | "finished";
+  | "finished"
+  | "parts";
 
 /**
  * Aligned to `defineField` on `image` in `sanity/schemas/galleryImage.ts`.

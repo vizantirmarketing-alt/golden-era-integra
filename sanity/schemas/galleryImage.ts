@@ -10,6 +10,7 @@ const gridOptions = [
   { title: "G7 (span 4×2)", value: "g7" },
   { title: "G8 (span 8×3)", value: "g8" },
   { title: "G9 (span 4×2)", value: "g9" },
+  { title: "G12 (full width 12 col)", value: "g12" },
 ] as const;
 
 export default defineType({
@@ -54,6 +55,7 @@ export default defineType({
           { title: "Assembly", value: "assembly" },
           { title: "Engine Build", value: "engine" },
           { title: "Finished", value: "finished" },
+          { title: "Parts (collection page only)", value: "parts" },
         ],
         layout: "dropdown",
       },

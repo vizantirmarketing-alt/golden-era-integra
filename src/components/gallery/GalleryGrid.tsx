@@ -8,7 +8,7 @@ type GalleryGridProps = {
   images: GalleryImage[];
 };
 
-const validGridSpans: GridSpan[] = ["g1", "g2", "g3", "g4", "g5", "g6", "g7", "g8", "g9"];
+const validGridSpans: GridSpan[] = ["g1", "g2", "g3", "g4", "g5", "g6", "g7", "g8", "g9", "g12"];
 
 function getGridSpanData(value?: string) {
   return validGridSpans.includes(value as GridSpan) ? value : "g2";
@@ -27,7 +27,7 @@ export function GalleryGrid({ images }: GalleryGridProps) {
             {item.image ? (
               <Image
                 src={urlFor(item.image).width(1600).url()}
-                alt={item.caption ?? ""}
+                alt={item.image?.alt ?? item.caption ?? ""}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 unoptimized

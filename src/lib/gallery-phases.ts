@@ -1,7 +1,10 @@
 import type { GalleryImage, GalleryPhase } from "@/sanity/types";
 
 /** Kanji + romaji labels for gallery phase nav and UI (single source of truth). */
-export const PHASE_LABELS: Record<GalleryPhase, { kanji: string; romaji: string }> = {
+export const PHASE_LABELS: Record<
+  GalleryPhase,
+  { kanji: string; romaji: string; english?: string }
+> = {
   before: { kanji: "以前", romaji: "Before" },
   disassembly: { kanji: "分解", romaji: "Disassembly" },
   "body-prep": { kanji: "下地", romaji: "Body Prep" },
@@ -10,6 +13,7 @@ export const PHASE_LABELS: Record<GalleryPhase, { kanji: string; romaji: string 
   assembly: { kanji: "組立", romaji: "Assembly" },
   engine: { kanji: "エンジン", romaji: "Engine" },
   finished: { kanji: "完成", romaji: "Finished" },
+  parts: { kanji: "部品", romaji: "Parts", english: "Parts" },
 };
 
 export const GALLERY_PHASE_ORDER: readonly GalleryPhase[] = [
@@ -62,6 +66,9 @@ export function groupGalleryImagesByPhase(images: GalleryImage[]): GalleryPhaseG
     byPhase.set(p, []);
   }
   for (const img of images) {
+    if (img.phase === "parts") {
+      continue;
+    }
     const p = normalizeGalleryPhase(img.phase);
     byPhase.get(p)!.push(img);
   }

@@ -10,6 +10,7 @@ const PHASE_EDITORIAL_LABEL: Record<GalleryPhase, string> = {
   engine: "ENGINE BUILD",
   assembly: "ASSEMBLY",
   finished: "FINISHED",
+  parts: "PARTS",
 };
 
 const PHASE_KANJI: Record<GalleryPhase, string> = {
@@ -21,6 +22,7 @@ const PHASE_KANJI: Record<GalleryPhase, string> = {
   engine: "エンジン",
   assembly: "組立",
   finished: "完成",
+  parts: "部品",
 };
 
 type GalleryPhaseDividerProps = {

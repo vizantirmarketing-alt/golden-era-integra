@@ -10,6 +10,7 @@ const links = [
   { href: "/build", label: "The Build" },
   { href: "/archive", label: "The Archive" },
   { href: "/sessions", label: "Sessions" },
+  { href: "/parts", label: "Parts" },
 ] as const;
 
 export function Nav() {

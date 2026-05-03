@@ -26,6 +26,21 @@ export const galleryImagesQuery = defineQuery(`
 }
 `);
 
+export const galleryPartsImagesQuery = defineQuery(`
+*[_type == "galleryImage" && phase == "parts"] | order(order asc) {
+  _id,
+  _type,
+  image { asset, alt, hotspot, crop },
+  caption,
+  location,
+  shotOn,
+  capturedAt,
+  order,
+  phase,
+  gridSpan
+}
+`);
+
 export const heritageShotsQuery = defineQuery(`
 *[_type == "heritageShot"] | order(order asc) {
   _id,
