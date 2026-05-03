@@ -33,7 +33,7 @@ export default async function GalleryPage() {
     { next: { revalidate: 300 } }
   );
 
-  const list = images ?? [];
+  const list = (images ?? []).filter((im) => im.phase !== "parts");
   const phaseGroups = groupGalleryImagesByPhase(list);
 
   return (
