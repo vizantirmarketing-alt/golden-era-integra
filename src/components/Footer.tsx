@@ -46,6 +46,7 @@ export function Footer() {
                 height={80}
                 className="h-20 w-20 object-contain"
                 sizes="80px"
+                quality={85}
               />
               <div>
                 <p className="font-display text-[clamp(1.5rem,4vw,2.5rem)] leading-[0.95] text-ink uppercase">

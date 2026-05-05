@@ -35,8 +35,8 @@ export default async function SessionsPage() {
                   alt={session.title}
                   width={2400}
                   height={1600}
-                  sizes="100vw"
-                  unoptimized
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1000px"
+                  quality={75}
                   style={{ width: "100%", height: "auto", display: "block" }}
                 />
               ) : null}

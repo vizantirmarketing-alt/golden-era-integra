@@ -128,8 +128,8 @@ export function GalleryGrid({ images }: GalleryGridProps) {
                   src={urlFor(item.image).width(1600).url()}
                   alt={item.image?.alt ?? item.caption ?? ""}
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  unoptimized
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  quality={75}
                   style={{ objectFit: "cover" }}
                 />
               </button>

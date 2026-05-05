@@ -100,8 +100,8 @@ export default async function SessionPage({ params }: { params: Promise<{ slug: 
                 alt={`${session.title} — ${idx + 1}`}
                 width={2400}
                 height={1600}
-                sizes="100vw"
-                unoptimized
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                quality={75}
                 style={{ width: "100%", height: "auto", display: "block" }}
               />
             </div>

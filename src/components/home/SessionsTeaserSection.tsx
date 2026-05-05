@@ -52,8 +52,8 @@ export default async function SessionsTeaserSection() {
                 alt=""
                 fill
                 className="object-cover"
-                sizes="(max-width: 767px) 100vw, (max-width: 1399px) 33vw, 467px"
-                unoptimized
+                sizes="(max-width: 767px) 100vw, 33vw"
+                quality={75}
               />
             </div>
             <span className="gesi-sessions-teaser-idx" aria-hidden>

@@ -30,7 +30,7 @@ export default async function HeritageSection() {
                 width={2400}
                 height={1600}
                 sizes="100vw"
-                unoptimized
+                quality={75}
                 style={{ width: "100%", height: "auto", display: "block" }}
               />
             </div>
