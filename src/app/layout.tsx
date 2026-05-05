@@ -62,6 +62,9 @@ export const metadata: Metadata = {
   },
   description: seo.defaultDescription,
   applicationName: seo.siteName,
+  verification: {
+    google: seo.googleSiteVerification,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

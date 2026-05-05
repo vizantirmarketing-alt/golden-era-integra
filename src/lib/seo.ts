@@ -3,6 +3,7 @@ export const seo = {
   siteName: "Golden Era Integra",
   defaultDescription:
     "A 1995 Acura Integra GS-R in Milano Red — Las Vegas, Nevada. Premium build documentation and photography.",
+  googleSiteVerification: "rRvXehDXqrtilpTFBz9zxnf-o1O5MFu1BoQkJLas5sA",
   home: {
     titleAbsolute: "Golden Era Integra | Las Vegas, Nevada",
     description:
