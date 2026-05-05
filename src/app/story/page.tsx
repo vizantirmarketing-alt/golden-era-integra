@@ -9,10 +9,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: seo.story.titleAbsolute,
     description: seo.story.description,
+    images: ["/opengraph-image"],
   },
   twitter: {
     title: seo.story.titleAbsolute,
     description: seo.story.description,
+    images: ["/opengraph-image"],
   },
 };
 

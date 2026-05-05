@@ -4,38 +4,36 @@ export const seo = {
   defaultDescription:
     "A 1995 Acura Integra GS-R in Milano Red — Las Vegas, Nevada. Premium build documentation and photography.",
   home: {
-    titleAbsolute: "Golden Era Integra — Las Vegas, Nevada",
+    titleAbsolute: "Golden Era Integra | Las Vegas, Nevada",
     description:
       "A documented restoration of a 1995 Acura Integra GS-R in Milano Red. Suzuka-built, Vegas-driven — specifications, gallery, and film.",
   },
   build: {
-    title: "Specification",
-    description:
-      "Period-correct DC2 build specifications — engine, chassis, wheels, exterior — documented like a factory sheet set.",
-  },
-  buildStory: {
     titleAbsolute: "The Build | Golden Era Integra",
     title: "The Build",
     description:
       "Four years of sourcing genuine Honda parts, restoring glass, and rebuilding the B18C — the full build story of a 1995 Acura Integra GS-R.",
   },
   story: {
-    titleAbsolute: "Story — Golden Era Integra",
+    titleAbsolute: "Story | Golden Era Integra",
+    title: "Story",
     description:
       "Bought during COVID, hung out at the garage with my buddy, one thing led to another. The four-year origin story of a Milano Red '95 Integra GS-R.",
   },
-  gallery: {
-    title: "Gallery",
+  archive: {
+    titleAbsolute: "The Archive | Golden Era Integra",
+    title: "The Archive",
     description:
       "Photography from Las Vegas and the open road — film and digital frames from the Golden Era Integra archive.",
   },
-  film: {
-    title: "In Motion",
+  sessions: {
+    titleAbsolute: "Sessions | Golden Era Integra",
+    title: "Sessions",
     description:
-      "Video episodes — featured drives, garage notes, and the car in motion.",
+      "Photography sessions documenting a Milano Red 1995 Acura Integra GS-R across Las Vegas — gas stations, parking lots, night runs, and quiet moments between drives.",
   },
   notFound: {
     title: "Page not found",
-    description: "That page doesn’t exist. Return home or explore the build archive.",
+    description: "That page doesn't exist. Return home or explore the build archive.",
   },
 } as const;

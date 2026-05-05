@@ -15,14 +15,16 @@ import type { GalleryImage } from "@/sanity/types";
 
 export const metadata: Metadata = {
   title: "The Archive",
-  description: seo.gallery.description,
+  description: seo.archive.description,
   openGraph: {
-    title: `The Archive · ${seo.siteName}`,
-    description: seo.gallery.description,
+    title: seo.archive.titleAbsolute,
+    description: seo.archive.description,
+    images: ["/opengraph-image"],
   },
   twitter: {
-    title: `The Archive · ${seo.siteName}`,
-    description: seo.gallery.description,
+    title: seo.archive.titleAbsolute,
+    description: seo.archive.description,
+    images: ["/opengraph-image"],
   },
 };
 

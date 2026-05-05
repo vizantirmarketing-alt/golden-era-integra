@@ -4,15 +4,17 @@ import { GradHeading } from "@/components/GradHeading";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: { absolute: seo.buildStory.titleAbsolute },
-  description: seo.buildStory.description,
+  title: { absolute: seo.build.titleAbsolute },
+  description: seo.build.description,
   openGraph: {
-    title: seo.buildStory.titleAbsolute,
-    description: seo.buildStory.description,
+    title: seo.build.titleAbsolute,
+    description: seo.build.description,
+    images: ["/opengraph-image"],
   },
   twitter: {
-    title: seo.buildStory.titleAbsolute,
-    description: seo.buildStory.description,
+    title: seo.build.titleAbsolute,
+    description: seo.build.description,
+    images: ["/opengraph-image"],
   },
 };
 
