@@ -14,9 +14,10 @@ const follow: ReadonlyArray<{
   label: string;
   ext: boolean;
 }> = [
-  { href: "https://instagram.com", label: "Instagram", ext: true },
-  { href: "https://youtube.com", label: "YouTube", ext: true },
-  { href: "/#", label: "Newsletter", ext: false },
+  { href: "https://www.instagram.com/golden.era.integra", label: "Instagram", ext: true },
+  { href: "https://www.youtube.com/@golden.era.integra", label: "YouTube", ext: true },
+  { href: "https://www.tiktok.com/@golden.era.integra", label: "TikTok", ext: true },
+  { href: "https://www.facebook.com/share/1H5uPBoKaf/", label: "Facebook", ext: true },
 ];
 
 const credits: ReadonlyArray<{
@@ -97,7 +98,7 @@ export function Footer() {
                       "cursor-pointer"
                     )}
                     href={item.href}
-                    rel={item.ext ? "noreferrer" : undefined}
+                    rel={item.ext ? "noopener noreferrer" : undefined}
                     target={item.ext ? "_blank" : undefined}
                   >
                     {item.label}
