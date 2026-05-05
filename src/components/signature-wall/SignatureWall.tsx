@@ -231,12 +231,9 @@ export default function SignatureWall({
           </div>
 
           <footer className="border-t border-[#2a2722] py-8">
-            <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-start gap-4">
               <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#a8a29e]">
                 DC2 · DB8 · DC4 — Built different.
-              </p>
-              <p className="font-mono text-xs text-[#6b6560]">
-                Vizantir · Golden Era Integra
               </p>
             </div>
           </footer>
