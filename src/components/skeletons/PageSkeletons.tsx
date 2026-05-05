@@ -91,30 +91,3 @@ export function FilmRouteSkeleton() {
     </div>
   );
 }
-
-/** Guestbook — warm background. */
-export function GuestbookRouteSkeleton() {
-  return (
-    <div className="relative bg-bg-warm text-ink">
-      <div className="gesi-chapter pb-24">
-        <div className="gesi-container">
-          <div className="gesi-grid-12 mb-16">
-            <div className="gesi-col-side">
-              <PulseBlock className="mb-3 h-3 w-28" />
-              <PulseBlock className="mb-3 h-10 w-24" />
-              <PulseBlock className="h-6 w-16" />
-            </div>
-            <div className="gesi-col-main space-y-4">
-              <PulseBlock className="h-12 w-full max-w-xl" />
-              <PulseBlock className="h-4 w-full max-w-lg" />
-            </div>
-          </div>
-          <div className="grid gap-8 lg:grid-cols-12">
-            <PulseBlock className="h-96 lg:col-span-5" />
-            <PulseBlock className="h-96 lg:col-span-7" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}

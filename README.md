@@ -1,6 +1,6 @@
 # Golden Era Integra
 
-Premium tribute and build-documentation site for a 1995 Acura Integra GS-R (Milano Red), Las Vegas — Next.js App Router, Sanity CMS, Supabase guestbook, deployed on Vercel.
+Premium tribute and build-documentation site for a 1995 Acura Integra GS-R (Milano Red), Las Vegas — Next.js App Router, Sanity CMS, Supabase signature wall, deployed on Vercel.
 
 ## Requirements
 
@@ -27,9 +27,10 @@ cp .env.local.example .env.local
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Public | Canonical site URL for Open Graph, `sitemap.xml`, and `robots.txt` (e.g. `https://your-domain.vercel.app`). No trailing slash. |
 | `NEXT_PUBLIC_SUPABASE_URL` | Public | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public | Supabase anonymous key (guestbook reads from the browser via API routes) |
-| `SUPABASE_SERVICE_ROLE_KEY` | Server only | Service role key — **never** expose to the client; used only in `/api/guestbook` for inserts |
-| `GUESTBOOK_IP_SALT` | Server only | Salt for hashing IPs for rate limiting |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public | Supabase anonymous key (used by the browser for reads allowed by RLS) |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server only | Service role key — **never** expose to the client; used only in `/api/signatures` for inserts and moderation |
+| `SIGNATURE_IP_SALT` | Server only | Daily-rotated salt for hashing client IPs (rate limiting on signature submissions) |
+| `ADMIN_TOKEN` | Server only | Bearer token for admin moderation (`DELETE /api/signatures/[id]`, admin query/cookie flows) |
 | `NEXT_PUBLIC_SANITY_PROJECT_ID` | Public | Sanity project ID (`4dgncr6u` for this project) |
 | `NEXT_PUBLIC_SANITY_DATASET` | Public | Dataset name (`production`) |
 | `SANITY_API_TOKEN` | Server / tooling | Token with read access for Next.js fetches (and Studio if needed) |
@@ -56,13 +57,13 @@ This runs `sanity dev` from that folder. Configure project ID and dataset in `sa
 
 Content types include specification categories, gallery images, journal entries, and film episodes — see `sanity/schemas/`.
 
-## Supabase (guestbook)
+## Supabase (signature wall)
 
 1. Create a project at [supabase.com](https://supabase.com).
-2. In the SQL editor, run the script in `supabase/schema.sql` (table, indexes, RLS policies).
+2. In the SQL editor, run the script in `migration.sql` at the repo root (creates the `signatures` table, indexes, and RLS policies).
 3. Copy the project URL, anon key, and service role key into `.env.local`.
 
-Guestbook writes go only through `POST /api/guestbook` using the service role on the server.
+Signature wall writes go only through `POST /api/signatures` using the service role on the server; soft-delete and moderation use `ADMIN_TOKEN` as documented in `.env.local.example`.
 
 ## Build
 
@@ -88,7 +89,6 @@ The app expects the App Router entry at `src/app/`. Dynamic OG images are genera
 
 ## Project docs
 
-- `CURSOR_PROMPT.md` — phased build specification for this codebase.
 - `reference/golden-era-integra-hybrid.html` — static visual reference for layout and styling.
 
 ## License
