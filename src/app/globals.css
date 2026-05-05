@@ -8,14 +8,15 @@
   --bg-deep: #2a1a3e;
   --ink: #1a0e2e;
   --ink-soft: rgba(26, 14, 46, 0.72);
-  --ink-faint: rgba(26, 14, 46, 0.5);
-  --ink-ghost: rgba(26, 14, 46, 0.32);
+  --ink-faint: rgba(26, 14, 46, 0.62);
+  --ink-ghost: rgba(26, 14, 46, 0.55);
   --line: rgba(26, 14, 46, 0.14);
   --line-soft: rgba(26, 14, 46, 0.08);
 
   /* Sunset gradient stops */
   --blue: #3a4fd9;
   --magenta: #e838a4;
+  --magenta-text: #c41a87;
   --pink: #f25d8e;
   --orange: #f59e3a;
   --amber: #ffc36e;
@@ -42,6 +43,7 @@
   --color-line-soft: var(--line-soft);
   --color-blue: var(--blue);
   --color-magenta: var(--magenta);
+  --color-magenta-text: var(--magenta-text);
   --color-pink: var(--pink);
   --color-orange: var(--orange);
   --color-amber: var(--amber);
@@ -165,7 +167,7 @@
     font-size: 1.5rem;
     font-weight: 500;
     letter-spacing: 0.2em;
-    color: var(--magenta);
+    color: var(--magenta-text);
   }
 
   h2.chapter-h,
@@ -304,7 +306,7 @@
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.2em;
-    color: var(--magenta);
+    color: var(--magenta-text);
     text-transform: none;
   }
   .gesi-hero__meta-jp--bl {
@@ -520,6 +522,7 @@
     background: var(--milano);
     color: #fff;
     border-color: var(--milano);
+    font-weight: 600;
   }
 
   .gesi-hero__media {
@@ -829,7 +832,7 @@
     font-size: 1.5rem;
     font-weight: 500;
     letter-spacing: 0.2em;
-    color: var(--magenta);
+    color: var(--magenta-text);
   }
 
   .gesi-sessions-teaser__romaji {
@@ -988,7 +991,7 @@
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--ink) 40%, transparent);
+    color: color-mix(in srgb, var(--ink) 60%, transparent);
   }
 
   .gei-heritage__row-caption {
@@ -1003,7 +1006,7 @@
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--ink) 40%, transparent);
+    color: color-mix(in srgb, var(--ink) 60%, transparent);
     margin: 0;
   }
 
@@ -1074,7 +1077,7 @@
     margin-bottom: 0.35rem;
   }
   .gesi-journal-link {
-    color: var(--magenta);
+    color: var(--magenta-text);
     text-decoration: underline;
     text-underline-offset: 3px;
     transition: color 0.2s ease;
@@ -1127,7 +1130,7 @@
     font-weight: 600;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--magenta);
+    color: var(--magenta-text);
     margin-bottom: 0.5rem;
   }
   .gesi-journal-callout-body {
@@ -1310,7 +1313,7 @@
     font-size: 11px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--ink) 40%, transparent);
+    color: color-mix(in srgb, var(--ink) 60%, transparent);
     max-width: 60ch;
   }
 
@@ -1502,7 +1505,7 @@
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--ink) 40%, transparent);
+    color: color-mix(in srgb, var(--ink) 60%, transparent);
   }
 
   .gei-sessions-card__title {
@@ -1516,7 +1519,7 @@
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--ink) 40%, transparent);
+    color: color-mix(in srgb, var(--ink) 60%, transparent);
     margin: 0;
   }
 
@@ -1561,7 +1564,7 @@
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--ink) 40%, transparent);
+    color: color-mix(in srgb, var(--ink) 60%, transparent);
   }
 
   .gei-session__title {
@@ -1577,7 +1580,7 @@
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--ink) 40%, transparent);
+    color: color-mix(in srgb, var(--ink) 60%, transparent);
     margin: 0 0 24px 0;
   }
 
