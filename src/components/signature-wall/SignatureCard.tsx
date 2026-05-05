@@ -21,7 +21,7 @@ export function SignatureCard({
       className={`relative ${tilt} transition-transform duration-300 hover:-translate-y-1 hover:rotate-0`}
     >
       <div className="sw-pin" />
-      <div className="relative border border-line bg-bg p-5 pt-6 shadow-[0_4px_20px_rgba(26,14,46,0.08)]">
+      <div className="relative bg-[#faf8f3] p-5 pt-6 shadow-[0_8px_30px_rgba(0,0,0,0.35),0_2px_8px_rgba(0,0,0,0.2)]">
         <SignatureSVG paths={sig.paths} />
         <div className="mt-4 border-t border-dashed border-line pt-4">
           <div className="flex items-baseline justify-between gap-2">

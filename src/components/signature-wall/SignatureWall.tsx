@@ -9,10 +9,10 @@ import { SignModal } from "./SignModal";
 const PAGE_SIZE = 60;
 
 const swBtnPrimary =
-  "group relative inline-flex cursor-pointer items-center gap-2 rounded-full border-none bg-ink px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-bg shadow-[0_6px_20px_rgba(26,14,46,0.15)] transition-[transform,box-shadow,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#c8102e] hover:shadow-[0_12px_30px_rgba(200,16,46,0.35)]";
+  "group relative inline-flex cursor-pointer items-center gap-2 rounded-full border-none bg-[#faf8f3] px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-[#1a1816] shadow-[0_6px_20px_rgba(0,0,0,0.2)] transition-[transform,box-shadow,background-color,color] duration-300 hover:-translate-y-0.5 hover:bg-[#c8102e] hover:text-[#faf8f3] hover:shadow-[0_12px_30px_rgba(200,16,46,0.35)]";
 
 const swBtnOutline =
-  "cursor-pointer rounded-full border border-line bg-transparent px-6 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-ink-soft transition-[border-color,color,opacity] duration-300 hover:border-ink hover:text-ink disabled:cursor-not-allowed disabled:opacity-50";
+  "cursor-pointer rounded-full border border-[#6b6560] bg-transparent px-6 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-[#a8a29e] transition-[border-color,color,opacity] duration-300 hover:border-[#faf8f3] hover:text-[#faf8f3] disabled:cursor-not-allowed disabled:opacity-50";
 
 export default function SignatureWall({
   adminToken,
@@ -137,8 +137,8 @@ export default function SignatureWall({
       <style>{`
         .sw-grid-bg {
           background-image:
-            linear-gradient(rgba(26, 14, 46, 0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(26, 14, 46, 0.06) 1px, transparent 1px);
+            linear-gradient(rgba(250, 248, 243, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(250, 248, 243, 0.04) 1px, transparent 1px);
           background-size: 24px 24px;
         }
         .sw-card-tilt-1 { transform: rotate(-0.6deg); }
@@ -155,17 +155,17 @@ export default function SignatureWall({
 
       <MotionSection
         id="signature-wall"
-        className="gesi-chapter border-t border-line bg-bg-warm text-ink"
+        className="gesi-chapter border-t border-[#2a2722] bg-[#1a1816] text-[#faf8f3]"
       >
         <div className="gesi-container">
-          <header className="sw-grid-bg border-b border-line px-0 py-12">
-            <div className="font-mono text-xs uppercase tracking-[0.25em] text-ink-faint">
+          <header className="sw-grid-bg border-b border-[#2a2722] px-0 py-12">
+            <div className="font-mono text-xs uppercase tracking-[0.25em] text-[#a8a29e]">
               Golden Era · 1994 — 2001
             </div>
-            <h2 className="mt-3 font-[family-name:var(--font-family-display)] text-[clamp(2.25rem,6vw,3.75rem)] uppercase leading-[0.95] tracking-tight text-ink">
+            <h2 className="mt-3 font-[family-name:var(--font-family-display)] text-[clamp(2.25rem,6vw,3.75rem)] uppercase leading-[0.95] tracking-tight text-[#faf8f3]">
               The Signature Wall
             </h2>
-            <p className="mt-4 max-w-xl font-sans text-base leading-relaxed text-ink-soft">
+            <p className="mt-4 max-w-xl font-sans text-base leading-relaxed text-[#a8a29e]">
               Owner, admirer, or just passing through — leave your mark. Sign the
               wall, drop a note, become part of the page.
             </p>
@@ -176,7 +176,7 @@ export default function SignatureWall({
                   →
                 </span>
               </button>
-              <span className="font-mono text-xs text-ink-faint">
+              <span className="font-mono text-xs text-[#a8a29e]">
                 {signatures.length.toString().padStart(3, "0")} signatures
               </span>
               {isAdmin ? (
@@ -189,7 +189,7 @@ export default function SignatureWall({
 
           <div className="py-16">
             {loading ? (
-              <div className="py-20 text-center font-mono text-sm text-ink-faint">
+              <div className="py-20 text-center font-mono text-sm text-[#a8a29e]">
                 Loading signatures…
               </div>
             ) : error ? (
@@ -197,7 +197,7 @@ export default function SignatureWall({
                 {error}
               </div>
             ) : signatures.length === 0 ? (
-              <div className="py-20 text-center font-mono text-sm text-ink-faint">
+              <div className="py-20 text-center font-mono text-sm text-[#a8a29e]">
                 Be the first to sign the wall.
               </div>
             ) : (
@@ -230,12 +230,12 @@ export default function SignatureWall({
             )}
           </div>
 
-          <footer className="border-t border-line py-8">
+          <footer className="border-t border-[#2a2722] py-8">
             <div className="flex flex-wrap items-center justify-between gap-4">
-              <p className="font-mono text-xs uppercase tracking-[0.25em] text-ink-faint">
+              <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#a8a29e]">
                 DC2 · DB8 · DC4 — Built different.
               </p>
-              <p className="font-mono text-xs text-ink-ghost">
+              <p className="font-mono text-xs text-[#6b6560]">
                 Vizantir · Golden Era Integra
               </p>
             </div>
