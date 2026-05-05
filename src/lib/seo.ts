@@ -14,7 +14,7 @@ export const seo = {
       "Period-correct DC2 build specifications — engine, chassis, wheels, exterior — documented like a factory sheet set.",
   },
   buildStory: {
-    titleAbsolute: "The Build · Golden Era Integra",
+    titleAbsolute: "The Build | Golden Era Integra",
     title: "The Build",
     description:
       "Four years of sourcing genuine Honda parts, restoring glass, and rebuilding the B18C — the full build story of a 1995 Acura Integra GS-R.",

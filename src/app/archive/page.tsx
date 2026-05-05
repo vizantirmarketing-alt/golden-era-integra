@@ -54,7 +54,7 @@ export default async function GalleryPage() {
             <GradHeading as="h1" className="!mb-8 !text-balance sm:!pr-4">
               THE
               <br />
-              <span className="grad">THE ARCHIVE.</span>
+              <span className="grad">ARCHIVE.</span>
             </GradHeading>
             <p className="body-copy max-w-[36rem]">
               Four years of work, in chronological order. Before, during, and

@@ -74,7 +74,10 @@ export const photoSessionBySlugQuery = defineQuery(`
   capturedAt,
   intro,
   order,
-  photos
+  photos,
+  seoTitle,
+  seoDescription,
+  ogImage
 }
 `);
 

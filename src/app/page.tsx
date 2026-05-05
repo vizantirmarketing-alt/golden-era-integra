@@ -66,7 +66,7 @@ export default async function Home({
               />
             </div>
             <div className="gesi-col-main">
-              <GradHeading as="h2" className="!mb-8 !text-balance sm:!pr-4">
+              <GradHeading as="h1" className="!mb-8 !text-balance sm:!pr-4">
                 The first one I
                 {" "}
                 <span className="grad">burned through</span>.

@@ -43,11 +43,11 @@ export function Hero() {
               <span className="gesi-hero__eyebrow-dot" aria-hidden />
               The Last Great Honda
             </div>
-            <h1 className="gesi-hero__h1 text-ink">
+            <div className="gesi-hero__h1 text-ink">
               <span className="gesi-hero__line">Golden</span>
               <span className="gesi-hero__line gesi-hero__line--grad">Era</span>
               <span className="gesi-hero__line gesi-hero__line--outline">Integra.</span>
-            </h1>
+            </div>
             <p className="gesi-hero__title-jp" lang="ja">
               黄金時代のインテグラ
             </p>

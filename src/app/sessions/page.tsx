@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { urlFor } from "@/sanity/client";
 import { fetchPhotoSessions } from "@/sanity/photoSessions";
+
+export const metadata: Metadata = {
+  title: "Sessions",
+  description:
+    "Photography sessions documenting a Milano Red 1995 Acura Integra GS-R across Las Vegas — gas stations, parking lots, night runs, and quiet moments between drives.",
+};
 
 export const revalidate = 300;
 

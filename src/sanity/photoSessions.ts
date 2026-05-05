@@ -26,6 +26,9 @@ export type PhotoSessionDetail = {
   intro?: string;
   order?: number;
   photos?: SanityImageField[] | null;
+  seoTitle?: string;
+  seoDescription?: string;
+  ogImage?: SanityImageField;
 };
 
 export async function fetchPhotoSessions(): Promise<PhotoSessionListItem[]> {
