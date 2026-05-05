@@ -7,11 +7,13 @@ export function SignatureCard({
   sig,
   tilt,
   isAdmin,
+  deleteConfirmArmed = false,
   onDelete,
 }: {
   sig: Signature;
   tilt: string;
   isAdmin: boolean;
+  deleteConfirmArmed?: boolean;
   onDelete: () => void;
 }) {
   return (
@@ -42,7 +44,11 @@ export function SignatureCard({
           <button
             type="button"
             onClick={onDelete}
-            className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center bg-ink font-mono text-sm leading-none text-bg transition-colors hover:bg-[#c8102e]"
+            className={`absolute right-2 top-2 flex h-7 w-7 items-center justify-center font-mono text-sm leading-none text-bg transition-[transform,background-color] ${
+              deleteConfirmArmed
+                ? "scale-110 bg-[#c8102e]"
+                : "bg-ink hover:bg-[#c8102e]"
+            }`}
             aria-label="Hide signature"
           >
             ×

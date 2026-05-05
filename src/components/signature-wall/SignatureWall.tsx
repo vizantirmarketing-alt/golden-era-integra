@@ -2,7 +2,7 @@
 
 import type { Signature, SignaturePath } from "@/lib/supabase/signatures";
 import { MotionSection } from "@/components/home/MotionSection";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { SignatureCard } from "./SignatureCard";
 import { SignModal } from "./SignModal";
 
@@ -25,6 +25,9 @@ export default function SignatureWall({
   const [hasMore, setHasMore] = useState(true);
   const [open, setOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [confirmingDelete, setConfirmingDelete] = useState<string | null>(null);
+
+  const deleteTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isAdmin = !!adminToken;
 
@@ -58,6 +61,12 @@ export default function SignatureWall({
     };
   }, [fetchPage]);
 
+  useEffect(() => {
+    return () => {
+      if (deleteTimeoutRef.current) clearTimeout(deleteTimeoutRef.current);
+    };
+  }, []);
+
   async function loadMore() {
     if (loadingMore || !hasMore) return;
     setLoadingMore(true);
@@ -89,9 +98,29 @@ export default function SignatureWall({
     setOpen(false);
   }
 
-  async function handleDelete(id: string) {
+  function handleDeleteClick(id: string) {
     if (!adminToken) return;
-    if (!confirm("Hide this signature?")) return;
+
+    if (confirmingDelete === id) {
+      if (deleteTimeoutRef.current) {
+        clearTimeout(deleteTimeoutRef.current);
+        deleteTimeoutRef.current = null;
+      }
+      setConfirmingDelete(null);
+      void performDelete(id);
+      return;
+    }
+
+    if (deleteTimeoutRef.current) clearTimeout(deleteTimeoutRef.current);
+    setConfirmingDelete(id);
+    deleteTimeoutRef.current = setTimeout(() => {
+      setConfirmingDelete(null);
+      deleteTimeoutRef.current = null;
+    }, 3000);
+  }
+
+  async function performDelete(id: string) {
+    if (!adminToken) return;
     const res = await fetch(`/api/signatures/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${adminToken}` },
@@ -180,7 +209,8 @@ export default function SignatureWall({
                       sig={sig}
                       tilt={`sw-card-tilt-${(i % 4) + 1}`}
                       isAdmin={isAdmin}
-                      onDelete={() => handleDelete(sig.id)}
+                      deleteConfirmArmed={confirmingDelete === sig.id}
+                      onDelete={() => handleDeleteClick(sig.id)}
                     />
                   ))}
                 </div>

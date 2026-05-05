@@ -43,8 +43,10 @@ export function SignModal({
   const [current, setCurrent] = useState<SignaturePath | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [confirmingClear, setConfirmingClear] = useState(false);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const clearTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const W = 600;
   const H = 240;
 
@@ -69,6 +71,12 @@ export function SignModal({
       ctx.stroke();
     }
   }, [strokes, current]);
+
+  useEffect(() => {
+    return () => {
+      if (clearTimeoutRef.current) clearTimeout(clearTimeoutRef.current);
+    };
+  }, []);
 
   const getPos = useCallback(
     (e: React.MouseEvent | React.TouchEvent): [number, number] => {
@@ -106,9 +114,25 @@ export function SignModal({
     setCurrent(null);
   }
 
-  function clearCanvas() {
+  function handleClearClick() {
     if (strokes.length === 0) return;
-    if (confirm("Clear the canvas?")) setStrokes([]);
+
+    if (confirmingClear) {
+      setStrokes([]);
+      setConfirmingClear(false);
+      if (clearTimeoutRef.current) {
+        clearTimeout(clearTimeoutRef.current);
+        clearTimeoutRef.current = null;
+      }
+      return;
+    }
+
+    setConfirmingClear(true);
+    if (clearTimeoutRef.current) clearTimeout(clearTimeoutRef.current);
+    clearTimeoutRef.current = setTimeout(() => {
+      setConfirmingClear(false);
+      clearTimeoutRef.current = null;
+    }, 3000);
   }
 
   async function submit() {
@@ -242,10 +266,14 @@ export function SignModal({
             </select>
             <button
               type="button"
-              onClick={clearCanvas}
-              className="ml-auto cursor-pointer border-none bg-transparent font-mono text-[10px] uppercase tracking-[0.25em] text-ink-faint underline decoration-1 underline-offset-[3px] transition-colors hover:text-[#c8102e]"
+              onClick={handleClearClick}
+              className={`ml-auto cursor-pointer border-none bg-transparent font-mono text-[10px] uppercase tracking-widest underline decoration-1 underline-offset-[3px] transition-colors ${
+                confirmingClear
+                  ? "text-[#c8102e]"
+                  : "text-ink-faint hover:text-[#c8102e]"
+              }`}
             >
-              Clear
+              {confirmingClear ? "Tap again to confirm" : "Redraw"}
             </button>
           </div>
 
