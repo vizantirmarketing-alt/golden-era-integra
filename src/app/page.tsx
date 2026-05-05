@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { ChapterHeader } from "@/components/ChapterHeader";
 import { GradHeading } from "@/components/GradHeading";
 import { Marquee } from "@/components/Marquee";
@@ -6,8 +7,11 @@ import HeritageSection from "@/components/home/HeritageSection";
 import { Hero } from "@/components/home/Hero";
 import { MotionSection } from "@/components/home/MotionSection";
 import SessionsTeaserSection from "@/components/home/SessionsTeaserSection";
+import SignatureWall from "@/components/signature-wall/SignatureWall";
 import { seo } from "@/lib/seo";
 import Link from "next/link";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: { absolute: seo.home.titleAbsolute },
@@ -30,7 +34,22 @@ function Star() {
   );
 }
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ admin?: string }>;
+}) {
+  const params = await searchParams;
+  const cookieStore = await cookies();
+  const cookieToken = cookieStore.get("vizantir_admin")?.value;
+  const queryToken = params.admin;
+  const adminToken =
+    queryToken && queryToken === process.env.ADMIN_TOKEN
+      ? queryToken
+      : cookieToken && cookieToken === process.env.ADMIN_TOKEN
+        ? cookieToken
+        : undefined;
+
   return (
     <>
       <Hero />
@@ -136,6 +155,7 @@ export default function Home() {
       <MotionSection id="sessions" className="gesi-chapter gesi-gallery-sec text-ink">
         <SessionsTeaserSection />
       </MotionSection>
+      <SignatureWall adminToken={adminToken} />
     </>
   );
 }

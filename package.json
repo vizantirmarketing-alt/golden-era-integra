@@ -22,7 +22,7 @@
     "@portabletext/types": "^4.0.2",
     "@sanity/client": "^7.22.0",
     "@sanity/image-url": "^2.1.1",
-    "@supabase/supabase-js": "^2.105.0",
+    "@supabase/supabase-js": "^2.105.3",
     "dompurify": "^3.4.2",
     "framer-motion": "^12.38.0",
     "lucide-react": "^1.11.0",
