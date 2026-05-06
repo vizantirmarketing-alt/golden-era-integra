@@ -12,8 +12,8 @@ export function Nav() {
     { href: "/story", label: "Story" },
     { href: "/build", label: "The Build" },
     { href: "/archive", label: "The Archive" },
-    { href: "/garage-sale", label: "Garage Sale", soon: garageSoon },
     { href: "/sessions", label: "Sessions" },
+    { href: "/garage-sale", label: "Garage Sale", soon: garageSoon },
   ];
 
   const [open, setOpen] = useState(false);
