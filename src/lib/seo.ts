@@ -13,7 +13,7 @@ export const seo = {
     titleAbsolute: "The Build | Golden Era Integra",
     title: "The Build",
     description:
-      "Four years of sourcing genuine Honda parts, restoring glass, and rebuilding the B18C — the full build story of a 1995 Acura Integra GS-R.",
+      "Four years of sourcing genuine Honda parts, restoring glass, and rebuilding the B18C1 — the full build story of a 1995 Acura Integra GS-R.",
   },
   story: {
     titleAbsolute: "Story | Golden Era Integra",
