@@ -1,13 +1,7 @@
 import { cn } from "@/lib/cn";
+import { isGarageSaleLive } from "@/lib/garage-sale/gate";
 import Image from "next/image";
 import Link from "next/link";
-
-const sections = [
-  { href: "/story", label: "Story" },
-  { href: "/build", label: "The Build" },
-  { href: "/archive", label: "The Archive" },
-  { href: "/sessions", label: "Sessions" },
-] as const;
 
 const follow: ReadonlyArray<{
   href: string;
@@ -30,6 +24,15 @@ const credits: ReadonlyArray<{
 ];
 
 export function Footer() {
+  const garageSoon = !isGarageSaleLive();
+  const sections: { href: string; label: string; soon?: boolean }[] = [
+    { href: "/story", label: "Story" },
+    { href: "/build", label: "The Build" },
+    { href: "/archive", label: "The Archive" },
+    { href: "/garage-sale", label: "Garage Sale", soon: garageSoon },
+    { href: "/sessions", label: "Sessions" },
+  ];
+
   return (
     <footer
       className="relative border-t border-line bg-bg"
@@ -80,6 +83,11 @@ export function Footer() {
                     href={item.href}
                   >
                     {item.label}
+                    {item.soon ? (
+                      <span className="ml-1.5 align-middle font-mono text-[10px] tracking-[0.18em] text-[#c8102e] uppercase">
+                        Soon
+                      </span>
+                    ) : null}
                   </Link>
                 </li>
               ))}

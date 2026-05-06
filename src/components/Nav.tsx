@@ -1,18 +1,21 @@
 "use client";
 
 import { cn } from "@/lib/cn";
+import { isGarageSaleLive } from "@/lib/garage-sale/gate";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
-const links = [
-  { href: "/story", label: "Story" },
-  { href: "/build", label: "The Build" },
-  { href: "/archive", label: "The Archive" },
-  { href: "/sessions", label: "Sessions" },
-] as const;
-
 export function Nav() {
+  const garageSoon = !isGarageSaleLive();
+  const links: { href: string; label: string; soon?: boolean }[] = [
+    { href: "/story", label: "Story" },
+    { href: "/build", label: "The Build" },
+    { href: "/archive", label: "The Archive" },
+    { href: "/garage-sale", label: "Garage Sale", soon: garageSoon },
+    { href: "/sessions", label: "Sessions" },
+  ];
+
   const [open, setOpen] = useState(false);
   const id = useId();
   const panelId = `nav-menu-${id}`;
@@ -85,7 +88,7 @@ export function Nav() {
             "md:translate-y-0 md:opacity-100 md:pointer-events-auto"
           )}
         >
-          {links.map(({ href, label }, index) => (
+          {links.map(({ href, label, soon }, index) => (
             <Link
               key={href}
               ref={index === 0 ? firstLinkRef : undefined}
@@ -94,6 +97,11 @@ export function Nav() {
               onClick={close}
             >
               {label}
+              {soon ? (
+                <span className="ml-1.5 align-middle font-mono text-[10px] tracking-[0.18em] text-[#c8102e] uppercase">
+                  Soon
+                </span>
+              ) : null}
               <span
                 className="pointer-events-none absolute -bottom-1 left-0 hidden h-0.5 w-full origin-left scale-x-0 transform bg-gradient-to-r from-magenta to-orange transition-transform duration-300 group-hover:scale-x-100 md:block"
                 aria-hidden
