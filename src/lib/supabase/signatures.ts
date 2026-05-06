@@ -43,3 +43,45 @@ export type SignatureRow = Signature & {
   user_agent: string | null;
   is_hidden: boolean;
 };
+
+const SIGNATURE_SELECT = "id, name, location, note, paths, created_at";
+
+type FetchSignaturesOptions = {
+  limit?: number;
+  offset?: number;
+};
+
+export async function fetchSignatures({
+  limit,
+  offset = 0,
+}: FetchSignaturesOptions = {}): Promise<Signature[]> {
+  let query = supabasePublic
+    .from("signatures")
+    .select(SIGNATURE_SELECT)
+    .order("created_at", { ascending: false });
+
+  if (typeof limit === "number") {
+    const safeLimit = Math.max(1, Math.min(limit, 1000));
+    const safeOffset = Math.max(0, offset);
+    query = query.range(safeOffset, safeOffset + safeLimit - 1);
+  }
+
+  const { data, error } = await query;
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data ?? [];
+}
+
+export async function fetchSignaturesCount(): Promise<number> {
+  const { count, error } = await supabasePublic
+    .from("signatures")
+    .select("*", { count: "exact", head: true });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return count ?? 0;
+}

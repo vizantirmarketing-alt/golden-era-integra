@@ -2,27 +2,25 @@
 
 import type { Signature, SignaturePath } from "@/lib/supabase/signatures";
 import { MotionSection } from "@/components/home/MotionSection";
-import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { SignatureCard } from "./SignatureCard";
 import { SignModal } from "./SignModal";
-
-const PAGE_SIZE = 60;
 
 const swBtnPrimary =
   "group relative inline-flex cursor-pointer items-center gap-2 rounded-full border-none bg-[#faf8f3] px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-[#1a1816] shadow-[0_6px_20px_rgba(0,0,0,0.2)] transition-[transform,box-shadow,background-color,color] duration-300 hover:-translate-y-0.5 hover:bg-[#c8102e] hover:text-[#faf8f3] hover:shadow-[0_12px_30px_rgba(200,16,46,0.35)]";
 
-const swBtnOutline =
-  "cursor-pointer rounded-full border border-[#6b6560] bg-transparent px-6 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-[#a8a29e] transition-[border-color,color,opacity] duration-300 hover:border-[#faf8f3] hover:text-[#faf8f3] disabled:cursor-not-allowed disabled:opacity-50";
-
 export default function SignatureWall({
   adminToken,
+  signatures: initialSignatures,
+  totalCount: initialTotalCount,
 }: {
   adminToken?: string;
+  signatures: Signature[];
+  totalCount: number;
 }) {
-  const [signatures, setSignatures] = useState<Signature[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [loadingMore, setLoadingMore] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
+  const [signatures, setSignatures] = useState<Signature[]>(initialSignatures);
+  const [totalCount, setTotalCount] = useState<number>(initialTotalCount);
   const [open, setOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [confirmingDelete, setConfirmingDelete] = useState<string | null>(null);
@@ -31,55 +29,11 @@ export default function SignatureWall({
 
   const isAdmin = !!adminToken;
 
-  const fetchPage = useCallback(async (offset: number) => {
-    const res = await fetch(
-      `/api/signatures?limit=${PAGE_SIZE}&offset=${offset}`,
-      { cache: "no-store" },
-    );
-    if (!res.ok) throw new Error("Failed to load signatures");
-    const json = (await res.json()) as { signatures: Signature[] };
-    return json.signatures;
-  }, []);
-
-  useEffect(() => {
-    let alive = true;
-    (async () => {
-      try {
-        const first = await fetchPage(0);
-        if (!alive) return;
-        setSignatures(first);
-        setHasMore(first.length === PAGE_SIZE);
-      } catch (e: unknown) {
-        if (alive)
-          setError(e instanceof Error ? e.message : "Failed to load");
-      } finally {
-        if (alive) setLoading(false);
-      }
-    })();
-    return () => {
-      alive = false;
-    };
-  }, [fetchPage]);
-
   useEffect(() => {
     return () => {
       if (deleteTimeoutRef.current) clearTimeout(deleteTimeoutRef.current);
     };
   }, []);
-
-  async function loadMore() {
-    if (loadingMore || !hasMore) return;
-    setLoadingMore(true);
-    try {
-      const next = await fetchPage(signatures.length);
-      setSignatures((prev) => [...prev, ...next]);
-      setHasMore(next.length === PAGE_SIZE);
-    } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : "Failed to load");
-    } finally {
-      setLoadingMore(false);
-    }
-  }
 
   async function handleSubmit(entry: {
     name: string;
@@ -94,7 +48,8 @@ export default function SignatureWall({
     });
     const json = (await res.json()) as { error?: string; signature: Signature };
     if (!res.ok) throw new Error(json.error || "Failed to submit");
-    setSignatures((prev) => [json.signature, ...prev]);
+    setSignatures((prev) => [json.signature, ...prev].slice(0, initialSignatures.length));
+    setTotalCount((prev) => prev + 1);
     setOpen(false);
   }
 
@@ -126,10 +81,11 @@ export default function SignatureWall({
       headers: { Authorization: `Bearer ${adminToken}` },
     });
     if (!res.ok) {
-      alert("Delete failed");
+      setError("Delete failed");
       return;
     }
     setSignatures((prev) => prev.filter((s) => s.id !== id));
+    setTotalCount((prev) => Math.max(0, prev - 1));
   }
 
   return (
@@ -177,7 +133,7 @@ export default function SignatureWall({
                 </span>
               </button>
               <span className="font-mono text-xs text-[#a8a29e]">
-                {signatures.length.toString().padStart(3, "0")} signatures
+                {totalCount.toString().padStart(3, "0")} signatures
               </span>
               {isAdmin ? (
                 <span className="bg-[#c8102e] px-2 py-1 font-mono text-xs uppercase tracking-wider text-white">
@@ -188,11 +144,7 @@ export default function SignatureWall({
           </header>
 
           <div className="py-16">
-            {loading ? (
-              <div className="py-20 text-center font-mono text-sm text-[#a8a29e]">
-                Loading signatures…
-              </div>
-            ) : error ? (
+            {error ? (
               <div className="py-20 text-center font-mono text-sm text-[#c8102e]">
                 {error}
               </div>
@@ -214,16 +166,17 @@ export default function SignatureWall({
                     />
                   ))}
                 </div>
-                {hasMore ? (
-                  <div className="mt-12 text-center">
-                    <button
-                      type="button"
-                      onClick={loadMore}
-                      disabled={loadingMore}
-                      className={swBtnOutline}
+                {totalCount > signatures.length ? (
+                  <div className="mt-10">
+                    <Link
+                      href="/signatures"
+                      className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.24em] text-[rgba(250,248,243,0.65)] transition-colors hover:text-[#faf8f3]"
                     >
-                      {loadingMore ? "Loading…" : "Load More"}
-                    </button>
+                      <span>View all {totalCount} signatures</span>
+                      <span className="text-[#c8102e] transition-transform group-hover:translate-x-1">
+                        →
+                      </span>
+                    </Link>
                   </div>
                 ) : null}
               </>

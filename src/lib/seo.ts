@@ -33,6 +33,13 @@ export const seo = {
     description:
       "Photography sessions documenting a Milano Red 1995 Acura Integra GS-R across Las Vegas — gas stations, parking lots, night runs, and quiet moments between drives.",
   },
+  signatures: {
+    titleAbsolute: "The Signature Wall | Golden Era Integra",
+    title: "The Signature Wall",
+    description:
+      "Names from owners, admirers, and visitors who signed the Golden Era Integra signature wall.",
+    openGraphImages: ["/opengraph-image"] as const,
+  },
   garageSale: {
     titleAbsolute: "The Garage Sale | Golden Era Integra",
     title: "The Garage Sale",

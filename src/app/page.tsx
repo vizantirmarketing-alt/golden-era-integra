@@ -9,6 +9,7 @@ import { MotionSection } from "@/components/home/MotionSection";
 import SessionsTeaserSection from "@/components/home/SessionsTeaserSection";
 import SignatureWall from "@/components/signature-wall/SignatureWall";
 import { seo } from "@/lib/seo";
+import { fetchSignatures, fetchSignaturesCount } from "@/lib/supabase/signatures";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
@@ -49,6 +50,10 @@ export default async function Home({
       : cookieToken && cookieToken === process.env.ADMIN_TOKEN
         ? cookieToken
         : undefined;
+  const [signatures, totalCount] = await Promise.all([
+    fetchSignatures({ limit: 3 }),
+    fetchSignaturesCount(),
+  ]);
 
   return (
     <>
@@ -155,7 +160,11 @@ export default async function Home({
       <MotionSection id="sessions" className="gesi-chapter gesi-gallery-sec text-ink">
         <SessionsTeaserSection />
       </MotionSection>
-      <SignatureWall adminToken={adminToken} />
+      <SignatureWall
+        adminToken={adminToken}
+        signatures={signatures}
+        totalCount={totalCount}
+      />
     </>
   );
 }
