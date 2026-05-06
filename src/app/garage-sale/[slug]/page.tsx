@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { InquiryForm } from "@/components/garage-sale/InquiryForm";
 import { PartGallery, type PartGalleryImage } from "@/components/garage-sale/PartGallery";
 import { PartPortableText } from "@/components/garage-sale/PartPortableText";
+import { isGarageSaleLive } from "@/lib/garage-sale/gate";
 import { formatPartEyebrow, formatSoldMonthYear, usdWhole } from "@/lib/parts/format";
 import { seo } from "@/lib/seo";
 import { urlFor } from "@/sanity/client";
@@ -16,11 +17,21 @@ type PartPageProps = {
 };
 
 export async function generateStaticParams() {
+  if (!isGarageSaleLive()) {
+    return [];
+  }
   const slugs = await fetchAllPartSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PartPageProps): Promise<Metadata> {
+  if (!isGarageSaleLive()) {
+    return {
+      title: "Not Found",
+      robots: { index: false, follow: true },
+    };
+  }
+
   const { slug } = await params;
   const part = await fetchPartBySlug(slug);
 
@@ -61,6 +72,10 @@ export async function generateMetadata({ params }: PartPageProps): Promise<Metad
 }
 
 export default async function GarageSalePartPage({ params }: PartPageProps) {
+  if (!isGarageSaleLive()) {
+    notFound();
+  }
+
   const { slug } = await params;
   const part = await fetchPartBySlug(slug);
 

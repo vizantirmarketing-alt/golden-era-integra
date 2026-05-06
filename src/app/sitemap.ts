@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { isGarageSaleLive } from "@/lib/garage-sale/gate";
 import { getSiteUrl } from "@/lib/site";
 import { fetchPhotoSessions } from "@/sanity/photoSessions";
 import { fetchSitemapPartSlugs } from "@/sanity/parts";
@@ -6,6 +7,7 @@ import { fetchSitemapPartSlugs } from "@/sanity/parts";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = getSiteUrl();
   const now = new Date();
+  const garageLive = isGarageSaleLive();
 
   // Static routes — known at build time
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -39,12 +41,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    {
-      url: `${base}/garage-sale`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.75,
-    },
+    ...(garageLive
+      ? [
+          {
+            url: `${base}/garage-sale`,
+            lastModified: now,
+            changeFrequency: "weekly" as const,
+            priority: 0.75,
+          },
+        ]
+      : []),
   ];
 
   // Dynamic routes — fetched from Sanity at request time
@@ -63,16 +69,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   let partRoutes: MetadataRoute.Sitemap = [];
-  try {
-    const slugs = await fetchSitemapPartSlugs();
-    partRoutes = slugs.map((slug) => ({
-      url: `${base}/garage-sale/${slug}`,
-      lastModified: now,
-      changeFrequency: "weekly" as const,
-      priority: 0.65,
-    }));
-  } catch (error) {
-    console.error("Sitemap: failed to fetch garage sale parts from Sanity", error);
+  if (garageLive) {
+    try {
+      const slugs = await fetchSitemapPartSlugs();
+      partRoutes = slugs.map((slug) => ({
+        url: `${base}/garage-sale/${slug}`,
+        lastModified: now,
+        changeFrequency: "weekly" as const,
+        priority: 0.65,
+      }));
+    } catch (error) {
+      console.error("Sitemap: failed to fetch garage sale parts from Sanity", error);
+    }
   }
 
   return [...staticRoutes, ...sessionRoutes, ...partRoutes];

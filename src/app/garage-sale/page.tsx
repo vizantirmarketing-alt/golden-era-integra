@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ComingSoon } from "@/components/garage-sale/ComingSoon";
 import { GarageSalePartCard } from "@/components/garage-sale/GarageSalePartCard";
+import { isGarageSaleLive } from "@/lib/garage-sale/gate";
 import { PART_CATEGORY_LABELS, PART_CATEGORY_ORDER, isPartCategory } from "@/lib/parts/constants";
 import { usdWhole } from "@/lib/parts/format";
 import { seo } from "@/lib/seo";
@@ -11,26 +13,41 @@ export const revalidate = 300;
 
 const TYPE_R_RED = "#c8102e";
 
-export const metadata: Metadata = {
-  title: { absolute: seo.garageSale.titleAbsolute },
-  description: seo.garageSale.description,
-  openGraph: {
-    title: seo.garageSale.titleAbsolute,
+export async function generateMetadata(): Promise<Metadata> {
+  if (!isGarageSaleLive()) {
+    return {
+      title: { absolute: "Coming soon | Golden Era Integra" },
+      description:
+        "Leftover parts from a four-year Acura Integra GS-R restoration. Listings drop soon.",
+      robots: { index: false, follow: true },
+    };
+  }
+
+  return {
+    title: { absolute: seo.garageSale.titleAbsolute },
     description: seo.garageSale.description,
-    images: [...seo.garageSale.openGraphImages],
-  },
-  twitter: {
-    title: seo.garageSale.titleAbsolute,
-    description: seo.garageSale.description,
-    images: [...seo.garageSale.openGraphImages],
-  },
-};
+    openGraph: {
+      title: seo.garageSale.titleAbsolute,
+      description: seo.garageSale.description,
+      images: [...seo.garageSale.openGraphImages],
+    },
+    twitter: {
+      title: seo.garageSale.titleAbsolute,
+      description: seo.garageSale.description,
+      images: [...seo.garageSale.openGraphImages],
+    },
+  };
+}
 
 type GarageSalePageProps = {
   searchParams?: Promise<{ category?: string | string[] }>;
 };
 
 export default async function GarageSalePage({ searchParams }: GarageSalePageProps) {
+  if (!isGarageSaleLive()) {
+    return <ComingSoon />;
+  }
+
   const sp = (await searchParams) ?? {};
   const rawCat = Array.isArray(sp.category) ? sp.category[0] : sp.category;
   const activeCategory =
