@@ -28,6 +28,13 @@ export default function SignatureWall({
   const deleteTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isAdmin = !!adminToken;
+  const visibleSignatureCount = signatures.length;
+  const desktopGridClassName =
+    visibleSignatureCount === 1
+      ? "md:max-w-[560px] md:grid-cols-1"
+      : visibleSignatureCount === 2
+        ? "md:max-w-[820px] md:grid-cols-2"
+        : "md:max-w-[1200px] md:grid-cols-3";
 
   useEffect(() => {
     return () => {
@@ -154,7 +161,9 @@ export default function SignatureWall({
               </div>
             ) : (
               <>
-                <div className="mx-auto grid max-w-[560px] grid-cols-1 gap-7">
+                <div
+                  className={`mx-auto grid w-full grid-cols-1 gap-6 ${desktopGridClassName}`}
+                >
                   {signatures.map((sig, i) => (
                     <SignatureCard
                       key={sig.id}
