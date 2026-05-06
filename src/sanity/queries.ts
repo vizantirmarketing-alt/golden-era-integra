@@ -95,3 +95,57 @@ export const filmEpisodesQuery = defineQuery(`
   thumbnail { asset, hotspot, crop }
 }
 `);
+
+export const partsListQuery = defineQuery(`
+*[_type == "part"] {
+  _id,
+  _createdAt,
+  featured,
+  title,
+  "slug": slug.current,
+  category,
+  condition,
+  price,
+  status,
+  "photos": photos[0]{ asset, alt, hotspot, crop },
+  partNumber
+}
+`);
+
+export const partBySlugQuery = defineQuery(`
+*[_type == "part" && slug.current == $slug][0] {
+  _id,
+  _createdAt,
+  title,
+  "slug": slug.current,
+  category,
+  condition,
+  partNumber,
+  fitment,
+  description,
+  photos[]{ asset, alt, hotspot, crop },
+  price,
+  shippingNotes,
+  status,
+  featured,
+  soldDate,
+  seoTitle,
+  seoDescription
+}
+`);
+
+export const partsCategoriesQuery = defineQuery(`
+array::unique(*[_type == "part" && status == "available"].category)
+`);
+
+export const partsSitemapSlugsQuery = defineQuery(`
+*[_type == "part" && status in ["available", "pending"]]{
+  "slug": slug.current
+}
+`);
+
+export const partsAllSlugsQuery = defineQuery(`
+*[_type == "part"]{
+  "slug": slug.current
+}
+`);

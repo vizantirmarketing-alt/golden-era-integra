@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/lib/site";
 import { fetchPhotoSessions } from "@/sanity/photoSessions";
+import { fetchSitemapPartSlugs } from "@/sanity/parts";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = getSiteUrl();
@@ -38,6 +39,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      url: `${base}/garage-sale`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
   ];
 
   // Dynamic routes — fetched from Sanity at request time
@@ -55,5 +62,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Sitemap: failed to fetch sessions from Sanity", error);
   }
 
-  return [...staticRoutes, ...sessionRoutes];
+  let partRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const slugs = await fetchSitemapPartSlugs();
+    partRoutes = slugs.map((slug) => ({
+      url: `${base}/garage-sale/${slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.65,
+    }));
+  } catch (error) {
+    console.error("Sitemap: failed to fetch garage sale parts from Sanity", error);
+  }
+
+  return [...staticRoutes, ...sessionRoutes, ...partRoutes];
 }

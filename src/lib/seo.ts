@@ -33,6 +33,13 @@ export const seo = {
     description:
       "Photography sessions documenting a Milano Red 1995 Acura Integra GS-R across Las Vegas — gas stations, parking lots, night runs, and quiet moments between drives.",
   },
+  garageSale: {
+    titleAbsolute: "The Garage Sale | Golden Era Integra",
+    title: "The Garage Sale",
+    description:
+      "Leftover parts from a four-year Acura Integra GS-R restoration. Honda-genuine, JDM-spec, and rare USDM pieces — sourced, vetted, and now for sale.",
+    openGraphImages: ["/opengraph-image"] as const,
+  },
   notFound: {
     title: "Page not found",
     description: "That page doesn't exist. Return home or explore the build archive.",
