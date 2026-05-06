@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SignatureSVG } from "@/components/signature-wall/SignatureSVG";
+import { SignatureCardCompact } from "@/components/signature-wall/SignatureCardCompact";
 import { seo } from "@/lib/seo";
 import { fetchSignatures } from "@/lib/supabase/signatures";
 
@@ -62,31 +62,33 @@ export default async function SignaturesPage() {
           <p className="font-mono text-[11px] tracking-[0.25em] text-[#c8102e] uppercase">
             Vol. 03 - The Signature Wall
           </p>
-          <h1 className="mt-3 font-[family-name:var(--font-family-display)] text-[clamp(36px,6vw,64px)] uppercase leading-[0.95] tracking-tight">
+          <h1 className="mt-2 font-[family-name:var(--font-family-display)] text-[clamp(28px,4vw,44px)] uppercase leading-[0.95] tracking-tight">
             The full wall.
           </h1>
           <p className="mt-4 max-w-2xl font-sans text-base leading-[1.6] text-[rgba(250,248,243,0.75)]">
             Every name that&apos;s signed, in order. Click to sign yours.
           </p>
 
-          <div
-            className="mt-9 grid grid-cols-1 border-y border-[rgba(250,248,243,0.12)] sm:grid-cols-3"
-            aria-label="Signature wall stats"
-          >
-            {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="flex min-h-[86px] flex-col justify-center gap-1 border-b border-[rgba(250,248,243,0.12)] px-4 py-4 sm:border-r sm:border-b-0 sm:last:border-r-0"
-              >
-                <span className="font-display text-[22px] leading-none text-[#c8102e]">
-                  {stat.value}
-                </span>
-                <span className="font-mono text-[10px] tracking-[0.2em] text-[rgba(250,248,243,0.55)] uppercase">
-                  / {stat.label}
-                </span>
-              </div>
-            ))}
-          </div>
+          {signatures.length >= 5 ? (
+            <div
+              className="mt-8 grid grid-cols-1 border-y border-[rgba(250,248,243,0.12)] sm:grid-cols-3"
+              aria-label="Signature wall stats"
+            >
+              {stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="flex min-h-[72px] flex-col justify-center gap-1 border-b border-[rgba(250,248,243,0.12)] px-4 py-3 sm:border-r sm:border-b-0 sm:last:border-r-0"
+                >
+                  <span className="font-display text-[18px] leading-none text-[#c8102e]">
+                    {stat.value}
+                  </span>
+                  <span className="font-mono text-[9px] tracking-[0.22em] text-[rgba(250,248,243,0.55)] uppercase">
+                    / {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          ) : null}
 
           <div className="mt-8">
             <Link
@@ -99,28 +101,9 @@ export default async function SignaturesPage() {
           </div>
         </header>
 
-        <div className="grid grid-cols-1 gap-6 py-10 md:grid-cols-2">
+        <div className="mx-auto grid max-w-[1000px] grid-cols-1 gap-6 py-10 md:grid-cols-2">
           {signatures.map((signature) => (
-            <article key={signature.id} className="relative bg-[#faf8f3] p-3.5 shadow-[0_8px_30px_rgba(0,0,0,0.2)]">
-              <SignatureSVG paths={signature.paths} />
-              <div className="mt-3 border-t border-dashed border-[#d8d2ca] pt-3">
-                <div className="flex items-baseline justify-between gap-2">
-                  <h2 className="truncate font-[family-name:var(--font-family-display)] text-[18px] leading-tight uppercase text-[#1a1816]">
-                    {signature.name}
-                  </h2>
-                  {signature.location ? (
-                    <p className="whitespace-nowrap font-mono text-[11px] uppercase tracking-wider text-[rgba(26,24,22,0.6)]">
-                      {signature.location}
-                    </p>
-                  ) : null}
-                </div>
-                {signature.note ? (
-                  <p className="mt-1.5 font-sans text-[14px] leading-snug italic text-[#c8102e]">
-                    &ldquo;{signature.note}&rdquo;
-                  </p>
-                ) : null}
-              </div>
-            </article>
+            <SignatureCardCompact key={signature.id} signature={signature} />
           ))}
         </div>
 

@@ -18,24 +18,24 @@ export function SignatureCard({
 }) {
   return (
     <div
-      className={`relative ${tilt} transition-transform duration-300 hover:-translate-y-1 hover:rotate-0`}
+      className={`relative mx-auto w-full max-w-[560px] ${tilt} transition-transform duration-300 hover:-translate-y-1 hover:rotate-0`}
     >
       <div className="sw-pin" />
-      <div className="relative bg-[#faf8f3] p-5 pt-6 shadow-[0_8px_30px_rgba(0,0,0,0.35),0_2px_8px_rgba(0,0,0,0.2)]">
+      <div className="relative bg-[#faf8f3] p-6 pt-7 shadow-[0_8px_30px_rgba(0,0,0,0.35),0_2px_8px_rgba(0,0,0,0.2)]">
         <SignatureSVG paths={sig.paths} />
         <div className="mt-4 border-t border-dashed border-line pt-4">
           <div className="flex items-baseline justify-between gap-2">
-            <div className="truncate font-[family-name:var(--font-family-display)] text-lg leading-tight uppercase text-ink">
+            <div className="truncate font-[family-name:var(--font-family-display)] text-[22px] leading-tight uppercase text-ink">
               {sig.name}
             </div>
             {sig.location ? (
-              <div className="whitespace-nowrap font-mono text-[10px] uppercase tracking-wider text-ink-faint">
+              <div className="whitespace-nowrap font-mono text-[11px] uppercase tracking-wider text-ink-faint">
                 {sig.location}
               </div>
             ) : null}
           </div>
           {sig.note ? (
-            <div className="mt-2 font-mono text-[11px] italic leading-snug text-[#c8102e]">
+            <div className="mt-2 font-sans text-[14px] italic leading-snug text-[#c8102e]">
               &ldquo;{sig.note}&rdquo;
             </div>
           ) : null}

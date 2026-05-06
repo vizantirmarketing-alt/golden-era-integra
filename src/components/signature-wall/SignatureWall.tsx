@@ -154,7 +154,7 @@ export default function SignatureWall({
               </div>
             ) : (
               <>
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="mx-auto grid max-w-[560px] grid-cols-1 gap-7">
                   {signatures.map((sig, i) => (
                     <SignatureCard
                       key={sig.id}
