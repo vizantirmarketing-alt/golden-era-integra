@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  /** Embedded Sanity Studio: transpile Sanity + styled-components for the App Router. */
+  transpilePackages: ["sanity", "@sanity/vision", "styled-components"],
   images: {
     remotePatterns: [
       {
