@@ -2,7 +2,7 @@
 
 import { GradHeading } from "@/components/GradHeading";
 import type { BuildOutro, BuildSection } from "@/data/build-sections";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 type BuildPageContentProps = {
   sections: readonly BuildSection[];
@@ -24,6 +24,21 @@ function scrollSectionIntoView(
   el.scrollIntoView({ behavior, block: "start" });
 }
 
+function subscribePrefersReducedMotion(onStoreChange: () => void): () => void {
+  const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mq.addEventListener("change", onStoreChange);
+  return () => mq.removeEventListener("change", onStoreChange);
+}
+
+function getPrefersReducedMotionSnapshot(): boolean {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+/** SSR / server pre-render: assume false (matches prior initial `useState(false)`). */
+function getPrefersReducedMotionServerSnapshot(): boolean {
+  return false;
+}
+
 export function BuildPageContent({
   sections,
   introParagraphs,
@@ -31,16 +46,14 @@ export function BuildPageContent({
 }: BuildPageContentProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [readPct, setReadPct] = useState(0);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const reducedMotion = useSyncExternalStore(
+    subscribePrefersReducedMotion,
+    getPrefersReducedMotionSnapshot,
+    getPrefersReducedMotionServerSnapshot,
+  );
 
   const chipRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
   const scrollTicking = useRef(false);
-
-  useEffect(() => {
-    setReducedMotion(
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-    );
-  }, []);
 
   const setChipRef = useCallback((id: string, el: HTMLAnchorElement | null) => {
     const map = chipRefs.current;
