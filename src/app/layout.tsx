@@ -7,8 +7,10 @@ import {
   Noto_Serif_JP,
 } from "next/font/google";
 import "./globals.css";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
+import { Analytics } from "@vercel/analytics/next";
 import { seo } from "@/lib/seo";
 import { getSiteUrl } from "@/lib/site";
 
@@ -102,6 +104,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <GoogleAnalytics />
+        <Analytics />
       </body>
     </html>
   );
