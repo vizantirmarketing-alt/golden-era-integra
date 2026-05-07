@@ -45,7 +45,7 @@ export type SignatureRow = Signature & {
   is_hidden: boolean;
 };
 
-const SIGNATURE_SELECT = "id, name, location, state, note, paths, created_at";
+export const SIGNATURE_SELECT = "id, name, location, state, note, paths, created_at";
 
 type FetchSignaturesOptions = {
   limit?: number;

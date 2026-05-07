@@ -3,6 +3,7 @@ import { createHash } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import {
   getSupabaseAdmin,
+  SIGNATURE_SELECT,
   supabasePublic,
   type SignaturePath,
 } from "@/lib/supabase/signatures";
@@ -42,7 +43,7 @@ export async function GET(req: NextRequest) {
 
   const { data, error } = await supabasePublic
     .from("signatures")
-    .select("id, name, location, note, paths, created_at")
+    .select(SIGNATURE_SELECT)
     .order("created_at", { ascending: false })
     .range(offset, offset + limit - 1);
 
@@ -164,7 +165,7 @@ export async function POST(req: NextRequest) {
       ip_hash: ipHash,
       user_agent: userAgent,
     })
-    .select("id, name, location, state, note, paths, created_at")
+    .select(SIGNATURE_SELECT)
     .single();
 
   if (error) {
