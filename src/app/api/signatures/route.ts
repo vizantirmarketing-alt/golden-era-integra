@@ -6,6 +6,7 @@ import {
   supabasePublic,
   type SignaturePath,
 } from "@/lib/supabase/signatures";
+import { VALID_STATE_CODES } from "@/lib/states";
 
 // One signature per IP per 24h
 const RATE_LIMIT_WINDOW_HOURS = 24;
@@ -104,6 +105,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Signature too large" }, { status: 413 });
   }
 
+  const state = typeof b.state === "string" ? b.state.toUpperCase() : null;
+  if (!state || !VALID_STATE_CODES.has(state)) {
+    return NextResponse.json(
+      { error: "State is required and must be a valid US state code or INTL" },
+      { status: 400 },
+    );
+  }
+
   // ---- Profanity filter (lightweight — replace with a real list in prod) ----
   const blocked = ["fuck", "shit", "nigger", "faggot", "cunt"];
   const haystack = `${name} ${location} ${note}`.toLowerCase();
@@ -149,12 +158,13 @@ export async function POST(req: NextRequest) {
     .insert({
       name,
       location: location || null,
+      state,
       note: note || null,
       paths,
       ip_hash: ipHash,
       user_agent: userAgent,
     })
-    .select("id, name, location, note, paths, created_at")
+    .select("id, name, location, state, note, paths, created_at")
     .single();
 
   if (error) {

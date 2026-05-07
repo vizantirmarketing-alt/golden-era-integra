@@ -33,6 +33,7 @@ export type Signature = {
   id: string;
   name: string;
   location: string | null;
+  state: string | null;
   note: string | null;
   paths: SignaturePath[];
   created_at: string;
@@ -44,7 +45,7 @@ export type SignatureRow = Signature & {
   is_hidden: boolean;
 };
 
-const SIGNATURE_SELECT = "id, name, location, note, paths, created_at";
+const SIGNATURE_SELECT = "id, name, location, state, note, paths, created_at";
 
 type FetchSignaturesOptions = {
   limit?: number;
