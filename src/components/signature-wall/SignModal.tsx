@@ -1,6 +1,7 @@
 "use client";
 
 import type { SignaturePath } from "@/lib/supabase/signatures";
+import { ALL_REGIONS } from "@/lib/states";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const COLORS = [
@@ -29,11 +30,13 @@ export function SignModal({
   onSubmit: (entry: {
     name: string;
     location: string;
+    state: string;
     note: string;
     paths: SignaturePath[];
   }) => Promise<void>;
 }) {
   const [name, setName] = useState("");
+  const [state, setState] = useState("");
   const [location, setLocation] = useState("");
   const [note, setNote] = useState("");
   const [color, setColor] = useState(COLORS[0].value);
@@ -137,6 +140,10 @@ export function SignModal({
 
   async function submit() {
     setSubmitError(null);
+    if (!state) {
+      setSubmitError("Please select a state");
+      return;
+    }
     if (!name.trim()) {
       setSubmitError("Please add your name.");
       return;
@@ -151,9 +158,11 @@ export function SignModal({
       await onSubmit({
         name: name.trim(),
         location: location.trim(),
+        state,
         note: note.trim(),
         paths: strokes,
       });
+      setState("");
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : "Something went wrong.";
       setSubmitError(msg);
@@ -209,6 +218,24 @@ export function SignModal({
               onChange={setName}
               placeholder="Your name"
             />
+            <label className="block">
+              <span className="mb-1 block font-mono text-[10px] uppercase tracking-[0.25em] text-ink-faint">
+                State <span className="text-[#c8102e]">*</span>
+              </span>
+              <select
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+                required
+                className="w-full rounded border border-line bg-bg-warm px-3 py-2 font-sans text-sm text-ink transition-[border-color,box-shadow,background-color] duration-300 placeholder:text-ink-ghost focus:border-magenta focus:bg-bg focus:outline-none focus:shadow-[0_0_0_3px_rgba(232,56,164,0.12)]"
+              >
+                <option value="">Select your state</option>
+                {ALL_REGIONS.map((r) => (
+                  <option key={r.code} value={r.code}>
+                    {r.name}
+                  </option>
+                ))}
+              </select>
+            </label>
             <Field
               label="Location"
               value={location}

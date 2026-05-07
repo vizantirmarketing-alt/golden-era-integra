@@ -45,6 +45,7 @@ export default function SignatureWall({
   async function handleSubmit(entry: {
     name: string;
     location: string;
+    state: string;
     note: string;
     paths: SignaturePath[];
   }) {
