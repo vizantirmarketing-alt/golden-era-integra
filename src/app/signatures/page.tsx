@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SignatureCardCompact } from "@/components/signature-wall/SignatureCardCompact";
+import { SignatureGrid } from "@/components/signature-wall/SignatureGrid";
 import { seo } from "@/lib/seo";
 import { fetchSignatures } from "@/lib/supabase/signatures";
 
@@ -103,11 +103,7 @@ export default async function SignaturesPage() {
           </div>
         </header>
 
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-6 py-10 sm:grid-cols-2 lg:grid-cols-4">
-          {signatures.map((signature) => (
-            <SignatureCardCompact key={signature.id} signature={signature} />
-          ))}
-        </div>
+        <SignatureGrid signatures={signatures} />
 
         <div className="border-t border-[#2a2722] pt-8">
           <Link
