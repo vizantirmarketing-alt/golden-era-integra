@@ -103,7 +103,7 @@ export default async function SignaturesPage() {
           </div>
         </header>
 
-        <div className="mx-auto grid max-w-[1000px] grid-cols-1 gap-6 py-10 md:grid-cols-2">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-6 py-10 sm:grid-cols-2 lg:grid-cols-4">
           {signatures.map((signature) => (
             <SignatureCardCompact key={signature.id} signature={signature} />
           ))}
