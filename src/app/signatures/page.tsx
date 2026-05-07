@@ -4,6 +4,8 @@ import { SignatureCardCompact } from "@/components/signature-wall/SignatureCardC
 import { seo } from "@/lib/seo";
 import { fetchSignatures } from "@/lib/supabase/signatures";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: { absolute: seo.signatures.titleAbsolute },
   description: seo.signatures.description,
