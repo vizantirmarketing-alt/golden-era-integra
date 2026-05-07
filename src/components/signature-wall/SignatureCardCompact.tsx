@@ -1,4 +1,5 @@
 import type { Signature } from "@/lib/supabase/signatures";
+import { getStateName } from "@/lib/states";
 import { SignatureSVG } from "./SignatureSVG";
 
 export function SignatureCardCompact({ signature }: { signature: Signature }) {
@@ -11,11 +12,9 @@ export function SignatureCardCompact({ signature }: { signature: Signature }) {
           <h2 className="truncate font-[family-name:var(--font-family-display)] text-[18px] leading-tight uppercase text-[#1a1816]">
             {signature.name}
           </h2>
-          {signature.location ? (
-            <p className="whitespace-nowrap font-mono text-[10px] uppercase tracking-wider text-[rgba(26,24,22,0.6)]">
-              {signature.location}
-            </p>
-          ) : null}
+          <p className="whitespace-nowrap font-mono text-[10px] uppercase tracking-wider text-[rgba(26,24,22,0.6)]">
+            {signature.location ?? getStateName(signature.state)}
+          </p>
         </div>
         {signature.note ? (
           <p className="mt-1.5 font-sans text-[13px] leading-snug italic text-[#c8102e]">

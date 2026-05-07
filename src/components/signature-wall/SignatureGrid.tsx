@@ -9,7 +9,7 @@ type FilterMode = "newest" | "oldest" | "location" | "withNotes";
 const FILTERS: { id: FilterMode; label: string }[] = [
   { id: "newest", label: "Newest" },
   { id: "oldest", label: "Oldest" },
-  { id: "location", label: "By Location" },
+  { id: "location", label: "By State" },
   { id: "withNotes", label: "With Notes" },
 ];
 
@@ -29,9 +29,11 @@ export function SignatureGrid({ signatures }: { signatures: Signature[] }) {
             new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
         );
       case "location":
-        return [...signatures].sort((a, b) =>
-          (a.location ?? "zzz").localeCompare(b.location ?? "zzz"),
-        );
+        return [...signatures].sort((a, b) => {
+          const aState = a.state ?? "ZZ";
+          const bState = b.state ?? "ZZ";
+          return aState.localeCompare(bState);
+        });
       case "withNotes":
         return signatures.filter((s) => s.note && s.note.trim().length > 0);
       default:
