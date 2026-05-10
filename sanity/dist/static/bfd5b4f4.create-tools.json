@@ -1,0 +1,26 @@
+[
+  {
+    "icon": null,
+    "name": "structure",
+    "title": "Structure",
+    "type": "sanity/structure"
+  },
+  {
+    "icon": null,
+    "name": "vision",
+    "title": "Vision",
+    "type": "sanity/vision"
+  },
+  {
+    "icon": null,
+    "name": "schedules",
+    "title": "Schedules",
+    "type": "sanity/scheduled-publishing"
+  },
+  {
+    "icon": null,
+    "name": "releases",
+    "title": "Releases",
+    "type": "sanity/schedules"
+  }
+]

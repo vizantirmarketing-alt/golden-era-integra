@@ -1,0 +1,21 @@
+{
+  "createdAt": "2026-05-10T07:01:46.483Z",
+  "studioVersion": "5.24.0",
+  "version": 3,
+  "workspaces": [
+    {
+      "basePath": "/",
+      "dataset": "production",
+      "icon": null,
+      "mediaLibrary": {
+        "enabled": false,
+        "__internal": {}
+      },
+      "name": "default",
+      "projectId": "4dgncr6u",
+      "schema": "d09a8189.create-schema.json",
+      "title": "Golden Era Integra",
+      "tools": "bfd5b4f4.create-tools.json"
+    }
+  ]
+}
