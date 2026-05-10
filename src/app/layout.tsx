@@ -41,11 +41,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const notoSerifJP = Noto_Serif_JP({
-  weight: ["400", "500", "700"],
+  weight: "400",
   variable: "--font-jp",
   display: "swap",
-  // @ts-expect-error — `japanese` is valid for this family; Next’s font typings omit it
-  subsets: ["latin", "japanese"],
+  // @ts-expect-error — `text` is valid at runtime; Next's font typings omit it
+  text: "下仕代以仮作具分制前動合品在地塗外子完室工席座影成所技撮操時本業様機源火灯現田研硝立系組置舵行装製解記譜走起部金鈴録関鹿黄",
 });
 
 const fontVarClasses = [
