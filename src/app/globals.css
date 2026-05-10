@@ -50,17 +50,16 @@
   --color-milano: var(--milano);
   --color-milano-dark: var(--milano-dark);
 
-  /* Semantic font stacks: next/font sets --font-body, --font-anton, --font-bebas, --font-mono, --font-jp on <html> */
+  /* Semantic font stacks: next/font sets --font-body, --font-anton, --font-mono, --font-jp on <html> */
   --font-family-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-family-display: var(--font-display);
-  --font-family-condensed: var(--font-bebas), ui-sans-serif, sans-serif;
   --font-family-mono: var(--font-mono), ui-monospace, SFMono-Regular, menlo, monospace;
   --font-family-jp: var(--font-jp), "Hiragino Mincho ProN", serif;
 }
 
 @layer base {
   html {
-    --font-display: var(--font-anton), var(--font-bebas), ui-sans-serif, sans-serif;
+    --font-display: var(--font-anton), ui-sans-serif, sans-serif;
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
   }

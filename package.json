@@ -25,7 +25,6 @@
     "@supabase/supabase-js": "^2.105.3",
     "@vercel/analytics": "^2.0.1",
     "dompurify": "^3.4.2",
-    "framer-motion": "^12.38.0",
     "lucide-react": "^1.11.0",
     "next": "16.2.4",
     "next-sanity": "^12.4.2",

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import {
   Anton,
-  Bebas_Neue,
   Inter,
   JetBrains_Mono,
   Noto_Serif_JP,
@@ -18,13 +17,6 @@ const anton = Anton({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-anton",
-  display: "swap",
-});
-
-const bebasNeue = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-bebas",
   display: "swap",
 });
 
@@ -50,7 +42,6 @@ const notoSerifJP = Noto_Serif_JP({
 
 const fontVarClasses = [
   anton.variable,
-  bebasNeue.variable,
   inter.variable,
   jetbrainsMono.variable,
   notoSerifJP.variable,

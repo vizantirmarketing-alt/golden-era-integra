@@ -1,16 +1,14 @@
 "use client";
 
-import { motion, type HTMLMotionProps } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
-import type { ReactNode } from "react";
-
-const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 type MotionSectionProps = {
   id?: string;
   className?: string;
   children: ReactNode;
-} & Omit<HTMLMotionProps<"section">, "children">;
+} & Omit<ComponentPropsWithoutRef<"section">, "children">;
 
 export function MotionSection({
   id,
@@ -18,17 +16,41 @@ export function MotionSection({
   children,
   ...rest
 }: MotionSectionProps) {
+  const ref = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <motion.section
+    <section
+      ref={ref}
       id={id}
-      className={cn(className)}
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2, margin: "0% 0% -8% 0%" }}
-      transition={{ duration: 0.8, ease }}
+      className={cn(
+        "transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+        visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
+        className
+      )}
       {...rest}
     >
       {children}
-    </motion.section>
+    </section>
   );
 }
