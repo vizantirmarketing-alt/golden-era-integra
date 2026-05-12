@@ -42,15 +42,17 @@ export function Footer() {
         <div className="mb-12 grid max-w-full grid-cols-2 gap-8 sm:max-md:grid-cols-2 md:grid-cols-12">
           <div className="col-span-2 md:col-span-5">
             <div className="flex max-w-sm items-center gap-4">
-              <Image
-                src="/logo.png"
-                alt="Golden Era Integra"
-                width={80}
-                height={80}
-                className="h-20 w-20 object-contain"
-                sizes="80px"
-                quality={85}
-              />
+              <Link href="/">
+                <Image
+                  src="/logo.png"
+                  alt="Golden Era Integra"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                  sizes="80px"
+                  quality={85}
+                />
+              </Link>
               <div>
                 <p className="font-display text-[clamp(1.5rem,4vw,2.5rem)] leading-[0.95] text-ink uppercase">
                   Golden <br className="max-sm:hidden" />
