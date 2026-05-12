@@ -81,11 +81,11 @@ export function Nav() {
           id={panelId}
           className={cn(
             "absolute top-full right-0 left-0 z-10 flex max-h-[min(100vh,480px)] flex-col gap-0 overflow-y-auto border-b border-line bg-bg shadow-[0_12px_40px_rgba(26,14,46,0.08)] transition-[opacity,transform] duration-300",
-            "md:static md:ml-auto md:max-h-none md:flex md:w-auto md:max-w-none md:flex-row md:items-center md:justify-end md:gap-6 lg:gap-8 md:overflow-visible md:border-0 md:bg-transparent md:shadow-none",
+            "lg:static lg:ml-auto lg:max-h-none lg:flex lg:w-auto lg:max-w-none lg:flex-row lg:items-center lg:justify-end lg:gap-6 lg:gap-8 lg:overflow-visible lg:border-0 lg:bg-transparent lg:shadow-none",
             open
-              ? "max-md:visible translate-y-0 max-md:opacity-100"
-              : "-translate-y-3 max-md:pointer-events-none max-md:invisible max-md:select-none max-md:opacity-0",
-            "md:translate-y-0 md:opacity-100 md:pointer-events-auto"
+              ? "max-lg:visible translate-y-0 max-lg:opacity-100"
+              : "-translate-y-3 max-lg:pointer-events-none max-lg:invisible max-lg:select-none max-lg:opacity-0",
+            "lg:translate-y-0 lg:opacity-100 lg:pointer-events-auto"
           )}
         >
           {links.map(({ href, label, soon }, index) => (
@@ -93,7 +93,7 @@ export function Nav() {
               key={href}
               ref={index === 0 ? firstLinkRef : undefined}
               href={href}
-              className="group relative border-b border-line-soft px-4 py-3.5 font-mono text-ink no-underline transition-colors last:max-md:border-b-0 max-md:text-xs md:border-0 md:px-0 md:py-0 md:text-[10px] lg:text-[11px] md:tracking-[0.16em] lg:tracking-[0.2em] uppercase sm:px-6"
+              className="group relative whitespace-nowrap border-b border-line-soft px-4 py-3.5 font-mono text-ink no-underline transition-colors last:max-lg:border-b-0 max-lg:text-xs lg:border-0 lg:px-0 lg:py-0 lg:text-[11px] lg:tracking-[0.2em] uppercase sm:px-6"
               onClick={close}
             >
               {label}
@@ -103,7 +103,7 @@ export function Nav() {
                 </span>
               ) : null}
               <span
-                className="pointer-events-none absolute -bottom-1 left-0 hidden h-0.5 w-full origin-left scale-x-0 transform bg-gradient-to-r from-magenta to-orange transition-transform duration-300 group-hover:scale-x-100 md:block"
+                className="pointer-events-none absolute -bottom-1 left-0 hidden h-0.5 w-full origin-left scale-x-0 transform bg-gradient-to-r from-magenta to-orange transition-transform duration-300 group-hover:scale-x-100 lg:block"
                 aria-hidden
               />
             </Link>
@@ -112,7 +112,7 @@ export function Nav() {
 
         <button
           type="button"
-          className="z-20 flex h-10 cursor-pointer flex-col items-center justify-center gap-1 rounded border border-line px-3 md:hidden"
+          className="z-20 flex h-10 cursor-pointer flex-col items-center justify-center gap-1 rounded border border-line px-3 lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls={panelId}
