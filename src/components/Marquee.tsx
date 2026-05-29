@@ -33,7 +33,7 @@ function MarqueeGroup({ segments }: { segments: MarqueeSegment[] }) {
           {seg.type === "text" && <span className="whitespace-nowrap">{seg.value}</span>}
           {seg.type === "jp" && (
             <span
-              className="whitespace-nowrap font-jp text-[0.7em] font-medium [letter-spacing:0.1em] [text-transform:none]"
+              className="whitespace-nowrap font-jp text-[0.7em] font-normal [letter-spacing:0.1em] [text-transform:none]"
               lang="ja"
             >
               {seg.value}

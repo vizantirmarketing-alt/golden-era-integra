@@ -324,7 +324,7 @@ export function SignModal({
             />
             {strokes.length === 0 && !current ? (
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                <span className="font-sans text-2xl font-light italic text-ink-ghost">
+                <span className="font-sans text-2xl font-normal italic text-ink-ghost">
                   Sign here
                 </span>
               </div>

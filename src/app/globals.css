@@ -9,7 +9,8 @@
   --ink: #1a0e2e;
   --ink-soft: rgba(26, 14, 46, 0.72);
   --ink-faint: rgba(26, 14, 46, 0.62);
-  --ink-ghost: rgba(26, 14, 46, 0.55);
+  --ink-ghost: rgba(26, 14, 46, 0.68);
+  --ink-muted: #736878;
   --line: rgba(26, 14, 46, 0.14);
   --line-soft: rgba(26, 14, 46, 0.08);
 
@@ -39,6 +40,7 @@
   --color-ink-soft: var(--ink-soft);
   --color-ink-faint: var(--ink-faint);
   --color-ink-ghost: var(--ink-ghost);
+  --color-ink-muted: var(--ink-muted);
   --color-line: var(--line);
   --color-line-soft: var(--line-soft);
   --color-blue: var(--blue);
@@ -164,7 +166,7 @@
     display: block;
     font-family: var(--font-family-jp);
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.2em;
     color: var(--magenta-text);
   }
@@ -303,7 +305,7 @@
     z-index: 5;
     font-family: var(--font-family-jp);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.2em;
     color: var(--magenta-text);
     text-transform: none;
@@ -494,10 +496,10 @@
     margin-top: 10px;
     font-family: var(--font-family-jp);
     font-size: clamp(0.875rem, 3.85vw, 2.75rem);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.25;
     letter-spacing: 0.08em;
-    color: color-mix(in srgb, var(--ink) 55%, transparent);
+    color: var(--ink-muted);
   }
 
   .gesi-hero__chips {
@@ -518,9 +520,9 @@
     color: var(--ink-soft);
   }
   .gesi-chip--milano {
-    background: var(--milano);
+    background: var(--milano-dark);
     color: #fff;
-    border-color: var(--milano);
+    border-color: var(--milano-dark);
     font-weight: 600;
   }
 
@@ -829,7 +831,7 @@
     display: block;
     font-family: var(--font-family-jp);
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.2em;
     color: var(--magenta-text);
   }

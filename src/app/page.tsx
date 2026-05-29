@@ -7,7 +7,7 @@ import HeritageSection from "@/components/home/HeritageSection";
 import { Hero } from "@/components/home/Hero";
 import { MotionSection } from "@/components/home/MotionSection";
 import SessionsTeaserSection from "@/components/home/SessionsTeaserSection";
-import SignatureWall from "@/components/signature-wall/SignatureWall";
+import { SignatureWallLazy } from "@/components/signature-wall/SignatureWallLazy";
 import { seo } from "@/lib/seo";
 import { fetchSignatures, fetchSignaturesCount } from "@/lib/supabase/signatures";
 import Link from "next/link";
@@ -160,7 +160,7 @@ export default async function Home({
       <MotionSection id="sessions" className="gesi-chapter gesi-gallery-sec text-ink">
         <SessionsTeaserSection />
       </MotionSection>
-      <SignatureWall
+      <SignatureWallLazy
         adminToken={adminToken}
         signatures={signatures}
         totalCount={totalCount}

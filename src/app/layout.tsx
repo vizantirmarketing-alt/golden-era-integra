@@ -6,7 +6,6 @@ import {
   Noto_Serif_JP,
 } from "next/font/google";
 import "./globals.css";
-import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
 import { Analytics } from "@vercel/analytics/next";
@@ -18,24 +17,32 @@ const anton = Anton({
   subsets: ["latin"],
   variable: "--font-anton",
   display: "swap",
+  preload: true,
 });
 
 const inter = Inter({
+  weight: ["400", "600"],
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
+  preload: true,
 });
 
 const jetbrainsMono = JetBrains_Mono({
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
+  preload: false,
 });
 
+// WARNING: `text` is a runtime-only subset — it includes glyphs for current site copy only.
+// Adding new Japanese characters to the UI requires updating this string or the font will fall back.
 const notoSerifJP = Noto_Serif_JP({
   weight: "400",
   variable: "--font-jp",
   display: "swap",
+  preload: false,
   // @ts-expect-error — `text` is valid at runtime; Next's font typings omit it
   text: "下仕代以仮作具分制前動合品在地塗外子完室工席座影成所技撮操時本業様機源火灯現田研硝立系組置舵行装製解記譜走起部金鈴録関鹿黄",
 });
@@ -95,7 +102,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <GoogleAnalytics />
         <Analytics />
       </body>
     </html>

@@ -34,7 +34,8 @@ export function Hero() {
             fill
             className="object-cover"
             priority
-            sizes="(max-width: 640px) 100vw, (max-width: 1080px) 50vw, 40vw"
+            quality={70}
+            sizes="(max-width: 899px) min(90vw, 647px), 647px"
           />
         </div>
         <div className="gesi-hero__copy">

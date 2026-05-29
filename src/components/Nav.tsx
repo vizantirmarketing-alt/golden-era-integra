@@ -64,7 +64,7 @@ export function Nav() {
             height={44}
             className="h-9 w-9 object-contain sm:h-11 sm:w-11"
             sizes="44px"
-            quality={85}
+            quality={75}
             priority
           />
           <div className="flex min-w-0 flex-col leading-none">

@@ -50,7 +50,7 @@ export function Footer() {
                   height={80}
                   className="h-20 w-20 object-contain"
                   sizes="80px"
-                  quality={85}
+                  quality={75}
                 />
               </Link>
               <div>
@@ -61,7 +61,7 @@ export function Footer() {
                   <span className="grad">Integra.</span>
                 </p>
                 <span
-                  className="mt-2 block text-[12px] font-normal tracking-[0.06em] text-[color-mix(in_srgb,var(--ink)_40%,transparent)] [font-family:var(--font-family-jp)]"
+                  className="mt-2 block text-[12px] font-normal tracking-[0.06em] text-ink-muted [font-family:var(--font-family-jp)]"
                   lang="ja"
                 >
                   黄金時代のインテグラ
@@ -76,7 +76,7 @@ export function Footer() {
             className="col-span-1 md:col-span-3"
             aria-label="Footer site sections"
           >
-            <h2 className="eyebrow-mono mb-4 text-magenta">Sections</h2>
+            <h2 className="eyebrow-mono mb-4 text-magenta-text">Sections</h2>
             <ul className="space-y-2">
               {sections.map((item) => (
                 <li key={item.href}>
@@ -99,7 +99,7 @@ export function Footer() {
             className="col-span-1 md:col-span-2"
             aria-label="Follow"
           >
-            <h2 className="eyebrow-mono mb-4 text-magenta">Follow</h2>
+            <h2 className="eyebrow-mono mb-4 text-magenta-text">Follow</h2>
             <ul className="space-y-2">
               {follow.map((item) => (
                 <li key={item.label}>
@@ -122,7 +122,7 @@ export function Footer() {
             className="col-span-1 md:col-span-2"
             aria-label="Credits"
           >
-            <h2 className="eyebrow-mono mb-4 text-magenta">Credits</h2>
+            <h2 className="eyebrow-mono mb-4 text-magenta-text">Credits</h2>
             <ul className="space-y-2">
               {credits.map((item) => (
                 <li key={item.label}>
