@@ -1,7 +1,7 @@
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
 import type { PortableTextBlock } from "@portabletext/types";
-import { urlFor } from "@/sanity/client";
+import { urlFor } from "@/sanity/image-url";
 import type { SanityImageField } from "@/sanity/types";
 
 type CalloutValue = {

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { urlFor } from "@/sanity/client";
+import { urlFor } from "@/sanity/image-url";
 import { fetchPhotoSessionBySlug } from "@/sanity/photoSessions";
 import type { SanityImageField } from "@/sanity/types";
 

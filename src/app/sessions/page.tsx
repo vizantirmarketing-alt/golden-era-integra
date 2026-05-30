@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { urlFor } from "@/sanity/client";
+import { urlFor } from "@/sanity/image-url";
 import { fetchPhotoSessions } from "@/sanity/photoSessions";
 
 export const metadata: Metadata = {

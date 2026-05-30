@@ -7,7 +7,7 @@ import { PartPortableText } from "@/components/garage-sale/PartPortableText";
 import { isGarageSaleLive } from "@/lib/garage-sale/gate";
 import { formatPartEyebrow, formatSoldMonthYear, usdWhole } from "@/lib/parts/format";
 import { seo } from "@/lib/seo";
-import { urlFor } from "@/sanity/client";
+import { urlFor } from "@/sanity/image-url";
 import { fetchAllPartSlugs, fetchPartBySlug } from "@/sanity/parts";
 
 export const revalidate = 300;

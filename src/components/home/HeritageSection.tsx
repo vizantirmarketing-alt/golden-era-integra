@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { urlFor } from "@/sanity/client";
+import { urlFor } from "@/sanity/image-url";
 import { fetchHeritageShots } from "@/sanity/heritageShots";
 
 export default async function HeritageSection() {

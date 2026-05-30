@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { urlFor } from "@/sanity/client";
+import { urlFor } from "@/sanity/image-url";
 import type { GalleryImage, GalleryImageAspectRatio, GridSpan, SanityImageField } from "@/sanity/types";
 import type { Plugin } from "yet-another-react-lightbox";
 

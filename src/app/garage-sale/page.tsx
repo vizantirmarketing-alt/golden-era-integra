@@ -6,7 +6,7 @@ import { isGarageSaleLive } from "@/lib/garage-sale/gate";
 import { PART_CATEGORY_LABELS, PART_CATEGORY_ORDER, isPartCategory } from "@/lib/parts/constants";
 import { usdWhole } from "@/lib/parts/format";
 import { seo } from "@/lib/seo";
-import { urlFor } from "@/sanity/client";
+import { urlFor } from "@/sanity/image-url";
 import { fetchPartCategories, fetchPartsList } from "@/sanity/parts";
 
 export const revalidate = 300;
