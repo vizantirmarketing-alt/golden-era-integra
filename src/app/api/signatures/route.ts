@@ -1,5 +1,6 @@
 // app/api/signatures/route.ts
 import { createHash } from "crypto";
+import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 import {
   getSupabaseAdmin,
@@ -171,5 +172,6 @@ export async function POST(req: NextRequest) {
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
+  revalidateTag("signatures", { expire: 0 });
   return NextResponse.json({ signature: data }, { status: 201 });
 }

@@ -1,4 +1,5 @@
 // lib/supabase/signatures.ts
+import { unstable_cache } from "next/cache";
 import { createClient } from "@supabase/supabase-js";
 
 // Public client (anon key) — for reading on the client side.
@@ -52,7 +53,7 @@ type FetchSignaturesOptions = {
   offset?: number;
 };
 
-export async function fetchSignatures({
+async function fetchSignaturesImpl({
   limit,
   offset = 0,
 }: FetchSignaturesOptions = {}): Promise<Signature[]> {
@@ -60,29 +61,37 @@ export async function fetchSignatures({
     .from("signatures")
     .select(SIGNATURE_SELECT)
     .order("created_at", { ascending: false });
-
   if (typeof limit === "number") {
     const safeLimit = Math.max(1, Math.min(limit, 1000));
     const safeOffset = Math.max(0, offset);
     query = query.range(safeOffset, safeOffset + safeLimit - 1);
   }
-
   const { data, error } = await query;
   if (error) {
     throw new Error(error.message);
   }
-
   return data ?? [];
 }
 
-export async function fetchSignaturesCount(): Promise<number> {
+export const fetchSignatures = (opts: FetchSignaturesOptions = {}) =>
+  unstable_cache(
+    () => fetchSignaturesImpl(opts),
+    ["signatures", JSON.stringify(opts)],
+    { tags: ["signatures"], revalidate: 3600 },
+  )();
+
+async function fetchSignaturesCountImpl(): Promise<number> {
   const { count, error } = await supabasePublic
     .from("signatures")
     .select("*", { count: "exact", head: true });
-
   if (error) {
     throw new Error(error.message);
   }
-
   return count ?? 0;
 }
+
+export const fetchSignaturesCount = unstable_cache(
+  fetchSignaturesCountImpl,
+  ["signatures-count"],
+  { tags: ["signatures"], revalidate: 3600 },
+);

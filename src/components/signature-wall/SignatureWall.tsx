@@ -1,6 +1,7 @@
 "use client";
 
 import type { Signature, SignaturePath } from "@/lib/supabase/signatures";
+import { useAdminToken } from "@/components/admin/AdminProvider";
 import { MotionSection } from "@/components/home/MotionSection";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -11,14 +12,13 @@ const swBtnPrimary =
   "group relative inline-flex cursor-pointer items-center gap-2 rounded-full border-none bg-[#faf8f3] px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-[#1a1816] shadow-[0_6px_20px_rgba(0,0,0,0.2)] transition-[transform,box-shadow,background-color,color] duration-300 hover:-translate-y-0.5 hover:bg-[#c8102e] hover:text-[#faf8f3] hover:shadow-[0_12px_30px_rgba(200,16,46,0.35)]";
 
 export default function SignatureWall({
-  adminToken,
   signatures: initialSignatures,
   totalCount: initialTotalCount,
 }: {
-  adminToken?: string;
   signatures: Signature[];
   totalCount: number;
 }) {
+  const adminToken = useAdminToken();
   const [signatures, setSignatures] = useState<Signature[]>(initialSignatures);
   const [totalCount, setTotalCount] = useState<number>(initialTotalCount);
   const [open, setOpen] = useState(false);

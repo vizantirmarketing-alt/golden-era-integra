@@ -1,4 +1,5 @@
 // app/api/signatures/[id]/route.ts
+import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase/signatures";
 
@@ -31,5 +32,6 @@ export async function DELETE(
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
+  revalidateTag("signatures", { expire: 0 });
   return NextResponse.json({ ok: true });
 }

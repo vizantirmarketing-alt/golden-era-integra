@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
 import { ChapterHeader } from "@/components/ChapterHeader";
 import { GradHeading } from "@/components/GradHeading";
 import { Marquee } from "@/components/Marquee";
@@ -12,7 +11,7 @@ import { seo } from "@/lib/seo";
 import { fetchSignatures, fetchSignaturesCount } from "@/lib/supabase/signatures";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: { absolute: seo.home.titleAbsolute },
@@ -35,21 +34,7 @@ function Star() {
   );
 }
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ admin?: string }>;
-}) {
-  const params = await searchParams;
-  const cookieStore = await cookies();
-  const cookieToken = cookieStore.get("vizantir_admin")?.value;
-  const queryToken = params.admin;
-  const adminToken =
-    queryToken && queryToken === process.env.ADMIN_TOKEN
-      ? queryToken
-      : cookieToken && cookieToken === process.env.ADMIN_TOKEN
-        ? cookieToken
-        : undefined;
+export default async function Home() {
   const [signatures, totalCount] = await Promise.all([
     fetchSignatures({ limit: 3 }),
     fetchSignaturesCount(),
@@ -161,7 +146,6 @@ export default async function Home({
         <SessionsTeaserSection />
       </MotionSection>
       <SignatureWallLazy
-        adminToken={adminToken}
         signatures={signatures}
         totalCount={totalCount}
       />

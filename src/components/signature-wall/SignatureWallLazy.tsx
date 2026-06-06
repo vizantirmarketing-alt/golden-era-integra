@@ -10,17 +10,14 @@ const SignatureWall = dynamic(() => import("./SignatureWall"), {
 });
 
 export function SignatureWallLazy({
-  adminToken,
   signatures,
   totalCount,
 }: {
-  adminToken?: string;
   signatures: Signature[];
   totalCount: number;
 }) {
   return (
     <SignatureWall
-      adminToken={adminToken}
       signatures={signatures}
       totalCount={totalCount}
     />
