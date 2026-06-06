@@ -29,13 +29,14 @@ export function Hero() {
       <div className="gesi-hero__grid gesi-hero__grid--enter">
         <div className="gesi-hero__media">
           <Image
-            src="/hero/engine-bay.jpg"
+            src="/hero/engine-bay.avif"
             alt="1995 Acura Integra GS-R engine bay"
             fill
             className="object-cover"
             priority
+            fetchPriority="high"
             quality={70}
-            sizes="(max-width: 899px) min(90vw, 647px), 647px"
+            sizes="(max-width: 640px) 380px, (max-width: 1024px) 50vw, 660px"
           />
         </div>
         <div className="gesi-hero__copy">

@@ -16,17 +16,17 @@ import { getSiteUrl } from "@/lib/site";
 const anton = Anton({
   weight: "400",
   subsets: ["latin"],
-  variable: "--font-anton",
+  variable: "--font-display",
   display: "swap",
   preload: true,
 });
 
 const inter = Inter({
-  weight: ["400", "600"],
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
-  preload: true,
+  preload: false,
 });
 
 const jetbrainsMono = JetBrains_Mono({
