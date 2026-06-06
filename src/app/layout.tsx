@@ -89,13 +89,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVarClasses}>
       <head>
-        <link
-          rel="preload"
-          as="image"
-          href="/hero/engine-bay.avif"
-          type="image/avif"
-          fetchPriority="high"
-        />
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
       </head>
       <body className="flex min-h-dvh flex-col bg-bg">
         <AdminProvider>

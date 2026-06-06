@@ -35,7 +35,7 @@ export function Hero() {
             className="object-cover"
             priority
             fetchPriority="high"
-            quality={70}
+            quality={55}
             sizes="(max-width: 640px) 380px, (max-width: 1024px) 50vw, 660px"
           />
         </div>
