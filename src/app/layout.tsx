@@ -25,15 +25,15 @@ const inter = Inter({
   weight: ["400", "500", "600"],
   subsets: ["latin"],
   variable: "--font-body",
-  display: "swap",
+  display: "optional",
   preload: false,
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  weight: ["400", "500", "600"],
+  weight: ["400", "600"],
   subsets: ["latin"],
   variable: "--font-mono",
-  display: "swap",
+  display: "optional",
   preload: false,
 });
 
@@ -42,7 +42,7 @@ const jetbrainsMono = JetBrains_Mono({
 const notoSerifJP = Noto_Serif_JP({
   weight: "400",
   variable: "--font-jp",
-  display: "swap",
+  display: "optional",
   preload: false,
   // @ts-expect-error — `text` is valid at runtime; Next's font typings omit it
   text: "下仕代以仮作具分制前動合品在地塗外子完室工席座影成所技撮操時本業様機源火灯現田研硝立系組置舵行装製解記譜走起部金鈴録関鹿黄",
@@ -88,6 +88,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={fontVarClasses}>
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/hero/engine-bay.avif"
+          type="image/avif"
+          fetchPriority="high"
+        />
+      </head>
       <body className="flex min-h-dvh flex-col bg-bg">
         <AdminProvider>
           <a
