@@ -41,8 +41,8 @@ export function Footer() {
       <div className="mx-auto max-w-[var(--container)] px-6 py-20 pb-8 sm:px-8">
         <div className="mb-12 grid max-w-full grid-cols-2 gap-8 sm:max-md:grid-cols-2 md:grid-cols-12">
           <div className="col-span-2 md:col-span-5">
-            <div className="flex max-w-sm items-center gap-4">
-              <Link href="/">
+            <div className="flex items-start gap-4">
+              <Link href="/" className="shrink-0">
                 <Image
                   src="/logo.png"
                   alt="Golden Era Integra"
@@ -53,12 +53,11 @@ export function Footer() {
                   quality={75}
                 />
               </Link>
-              <div>
-                <p className="font-display text-[clamp(1.5rem,4vw,2.5rem)] leading-[0.95] text-ink uppercase">
-                  Golden <br className="max-sm:hidden" />
-                  Era
-                  <br className="sm:hidden" />
-                  <span className="grad">Integra.</span>
+              <div className="min-w-0">
+                <p className="flex h-20 items-center">
+                  <span className="font-display text-[1.25rem] leading-none text-ink uppercase whitespace-nowrap sm:text-[1.375rem] lg:text-[2rem] xl:text-[2.5rem]">
+                    Golden <span className="grad">Era</span> Integra.
+                  </span>
                 </p>
                 <span
                   className="mt-2 block text-[12px] font-normal tracking-[0.06em] text-ink-muted [font-family:var(--font-family-jp)]"

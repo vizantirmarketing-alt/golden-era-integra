@@ -44,7 +44,7 @@ export function Nav() {
 
   return (
     <nav
-      className="fixed top-0 right-0 left-0 z-50 border-b border-line-soft px-4 py-4 sm:px-6"
+      className="fixed top-0 right-0 left-0 z-50 overflow-visible border-b border-line-soft px-4 py-2 sm:px-6 sm:py-4"
       style={{
         WebkitBackdropFilter: "blur(12px) saturate(1.2)",
         backdropFilter: "blur(12px) saturate(1.2)",
@@ -54,19 +54,21 @@ export function Nav() {
       <div className="relative mx-auto flex max-w-[var(--container)] items-center justify-between gap-6">
         <Link
           href="/"
-          className="flex min-w-0 items-center gap-3"
+          className="flex min-w-0 items-center gap-3 overflow-visible sm:gap-5"
           onClick={close}
         >
-          <Image
-            src="/logo.png"
-            alt="Golden Era Integra"
-            width={44}
-            height={44}
-            className="h-9 w-9 object-contain sm:h-11 sm:w-11"
-            sizes="44px"
-            quality={75}
-            priority
-          />
+          <span className="relative h-12 w-12 shrink-0 overflow-visible sm:h-11 sm:w-11">
+            <Image
+              src="/logo.png"
+              alt="Golden Era Integra"
+              width={64}
+              height={64}
+              className="absolute top-1/2 left-1/2 h-14 w-14 max-w-none -translate-x-1/2 -translate-y-1/2 object-contain sm:h-16 sm:w-16"
+              sizes="64px"
+              quality={75}
+              priority
+            />
+          </span>
           <div className="flex min-w-0 flex-col leading-none">
             <span className="font-display text-[15px] tracking-wider text-ink uppercase whitespace-nowrap sm:text-lg">
               Golden Era Integra
