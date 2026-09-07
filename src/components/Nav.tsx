@@ -71,7 +71,7 @@ export function Nav() {
             <span className="font-display text-[15px] tracking-wider text-ink uppercase whitespace-nowrap sm:text-lg">
               Golden Era Integra
             </span>
-            <span className="mt-1 truncate font-mono text-[8px] text-ink-ghost tracking-[0.3em] uppercase sm:text-[9px]">
+            <span className="mt-1 font-mono text-[8px] text-ink-ghost tracking-[0.3em] whitespace-nowrap uppercase sm:text-[9px]">
               Las Vegas, NV
             </span>
           </div>
