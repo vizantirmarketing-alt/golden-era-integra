@@ -42,7 +42,7 @@ export function Footer() {
         <div className="mb-12 grid max-w-full grid-cols-2 gap-8 sm:max-md:grid-cols-2 md:grid-cols-12">
           <div className="col-span-2 md:col-span-5">
             <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4">
-              <Link href="/" className="row-start-1 self-center">
+              <Link href="/" className="shrink-0">
                 <Image
                   src="/logo.png"
                   alt="Golden Era Integra"
@@ -53,20 +53,22 @@ export function Footer() {
                   quality={75}
                 />
               </Link>
-              <p className="row-start-1 self-center text-left">
-                <span className="font-display text-[1.25rem] leading-none text-ink uppercase whitespace-nowrap sm:text-[1.375rem] lg:text-[2rem] xl:text-[2.5rem]">
-                  Golden <span className="grad">Era</span> Integra.
-                </span>
-              </p>
-              <p
-                className="col-start-2 mt-2 text-left text-[12px] font-normal tracking-[0.06em] text-ink-muted [font-family:var(--font-family-jp)]"
-                lang="ja"
-              >
-                黄金時代のインテグラ
-              </p>
-              <p className="col-start-2 mt-4 text-left font-mono text-ink-ghost text-[11px] tracking-[0.3em] uppercase">
-                Las Vegas, Nevada / Vol. 01
-              </p>
+              <div className="min-w-0 pt-[calc((5rem-1em)/2)] text-[1.25rem] leading-none sm:text-[1.375rem] lg:text-[2rem] xl:text-[2.5rem]">
+                <p className="text-left">
+                  <span className="font-display text-ink uppercase whitespace-nowrap">
+                    Golden <span className="grad">Era</span> Integra.
+                  </span>
+                </p>
+                <p
+                  className="mt-1.5 text-left text-[12px] font-normal leading-normal tracking-[0.06em] text-ink-muted [font-family:var(--font-family-jp)]"
+                  lang="ja"
+                >
+                  黄金時代のインテグラ
+                </p>
+                <p className="mt-1.5 text-left font-mono text-[11px] leading-normal text-ink-ghost tracking-[0.3em] uppercase">
+                  Las Vegas, Nevada / Vol. 01
+                </p>
+              </div>
             </div>
           </div>
           <nav
