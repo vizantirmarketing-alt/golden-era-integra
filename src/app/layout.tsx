@@ -5,6 +5,7 @@ import {
   JetBrains_Mono,
   Noto_Serif_JP,
 } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { AdminProvider } from "@/components/admin/AdminProvider";
 import { Footer } from "@/components/Footer";
@@ -81,6 +82,8 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -109,6 +112,22 @@ export default function RootLayout({
           </main>
           <Footer />
           <Analytics />
+          {gaMeasurementId ? (
+            <>
+              <Script
+                src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+                strategy="afterInteractive"
+              />
+              <Script id="google-analytics" strategy="afterInteractive">
+                {`
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${gaMeasurementId}');
+                `}
+              </Script>
+            </>
+          ) : null}
         </AdminProvider>
       </body>
     </html>
