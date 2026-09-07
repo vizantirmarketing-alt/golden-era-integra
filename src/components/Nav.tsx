@@ -54,7 +54,7 @@ export function Nav() {
       <div className="relative mx-auto flex max-w-[var(--container)] items-center justify-between gap-6">
         <Link
           href="/"
-          className="flex max-w-[min(100%,280px)] items-center gap-3"
+          className="flex min-w-0 items-center gap-3"
           onClick={close}
         >
           <Image
@@ -68,10 +68,10 @@ export function Nav() {
             priority
           />
           <div className="flex min-w-0 flex-col leading-none">
-            <span className="font-display text-[15px] tracking-wider text-ink uppercase sm:text-lg">
+            <span className="font-display text-[15px] tracking-wider text-ink uppercase whitespace-nowrap sm:text-lg">
               Golden Era Integra
             </span>
-            <span className="mt-1 font-mono text-[8px] text-ink-ghost tracking-[0.3em] uppercase sm:text-[9px]">
+            <span className="mt-1 truncate font-mono text-[8px] text-ink-ghost tracking-[0.3em] uppercase sm:text-[9px]">
               Las Vegas, NV
             </span>
           </div>
